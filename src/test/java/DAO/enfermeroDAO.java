@@ -132,7 +132,7 @@ public class enfermeroDAO {
     }
     
     public CallableStatement cantidadCitas(String fecha1, String fecha2, String especialidad, String estadoCita) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call tratamientosPaciente(?,?,?,?)}");
+        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call cantidadCitas(?,?,?,?)}");
         if (fecha1.isEmpty() == true){
             entrada.setNull(1, java.sql.Types.VARCHAR);
         }else{
@@ -196,7 +196,11 @@ public class enfermeroDAO {
        return entrada;
    }
    
-   //DETALLES HOSPITALIZACION 
+   public void detallesHospitalizacion(String nombre) throws SQLException{
+        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call detalleHospitalizacion(?)}");
+        entrada.setString(1, nombre);
+        entrada.execute();
+   }
 }
 
 
