@@ -30,7 +30,7 @@ public class doctorDAO {
     public void asignarCitaPaciente(int idCita, int pIDPaciente) throws SQLException{
         CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call anadirCitas(?,?,?,?)}"); 
         entrada.setString(1,cita.getIDcita());
-        entrada.setString(2,cita.g);//Falta
+        entrada.setString(2,cita.getEstado());//Falta
         entrada.execute();
     }
     
