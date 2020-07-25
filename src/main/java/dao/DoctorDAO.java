@@ -1,12 +1,12 @@
 package dao;
 
-import Conexiones.conexionSQL;
+import conexion.conexionSQL;
 
 import java.sql.CallableStatement;
 import java.sql.SQLException;
 
 import modelo.citas;
-import modelo.pacientes;
+import modelo.paciente;
 
 /**
  *
@@ -16,8 +16,9 @@ public class DoctorDAO {
 
 
 public class doctorDAO {
-    public static pacientes paciente;
-    public static  citas cita;
+   
+    public  paciente paciente;
+    public  citas cita;
     
     public void cancelarCita( int pIDCita, int pIDFuncionario)throws SQLException{
        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call cancelarCitaCentro(?,?)}"); 
@@ -28,8 +29,8 @@ public class doctorDAO {
     
     public void asignarCitaPaciente(int idCita, int pIDPaciente) throws SQLException{
         CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call anadirCitas(?,?,?,?)}"); 
-        entrada.setString(1,citas.getIDcita());
-        entrada.setString(2,citas.getIDPaciente());
+        entrada.setString(1,cita.getIDcita());
+        entrada.setString(2,cita.g);//Falta
         entrada.execute();
     }
     
