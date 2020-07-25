@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package DAO;
-
+/*
 import conexion.conexionSQL;
 import static dao.diagnosticoDAO.result; //FALTA
 import java.sql.CallableStatement;
@@ -12,38 +12,38 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.diagnosticos; //FALTA
 import modelo.tratamientos; //FALTA
-
+*/
 /**
  *
  * @author Masiel Castro Mora
  */
 
-public class tratamientosDAO {
+public class TratamientosDAO {
     public static tratamientos tratamiento;
     public static ResultSet resul;
-    
+
     public void añadirNombreTratamientos(String nombre, int IDNombreDiag) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call anadirnombresT(?,?)}"); 
+        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call anadirnombresT(?,?)}");
         entrada.setString(1, nombre);
         entrada.setInt(2,IDNombreDiag);
         entrada.execute();
     }
-    
+
      public void consultarNombre(String nombre) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call consultarNombreT(?)}"); 
+        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call consultarNombreT(?)}");
         entrada.setString(1, nombre);
         entrada.execute();
     }
-    
+
     public void modificarNombre(int IDCategoria, String nombre) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call modificarNombresT(?,?)}"); 
+        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call modificarNombresT(?,?)}");
         entrada.setInt(1, IDCategoria);
         entrada.setString(2, nombre);
         entrada.execute();
     }
-    
+
     public void eliminarNombre(String nombre) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call eliminarNombreT(?)}"); 
+        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call eliminarNombreT(?)}");
         entrada.setString(1, nombre);
         entrada.execute();
     }
@@ -58,3 +58,4 @@ public class tratamientosDAO {
         }
     }
 }
+*/
