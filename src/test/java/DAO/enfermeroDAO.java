@@ -4,17 +4,18 @@
  * and open the template in the editor.
  */
 package DAO;
-
+/*
 import Conexiones.conexionSQL;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
 import modelo.citas;
 import modelo.pacientes;
-
+*/
 /**
  *
  * @author Masiel Castro Mora
  */
+/*
 public class enfermeroDAO {
     public static pacientes paciente;
     public static  citas cita;
@@ -202,5 +203,5 @@ public class enfermeroDAO {
         entrada.execute();
    }
 }
-
+*/
 
