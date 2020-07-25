@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package DAO;
-
+/*
 import conexion.conexionSQL;
 import static dao.diagnosticoDAO.result; //FALTA
 import java.sql.CallableStatement;
@@ -12,12 +12,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.diagnosticos; //FALTA
 import modelo.tratamientos; //FALTA
-
+*/
 /**
  *
  * @author Masiel Castro Mora
  */
-
+/*
 public class tratamientosDAO {
     public static tratamientos tratamiento;
     public static ResultSet resul;
@@ -58,3 +58,4 @@ public class tratamientosDAO {
         }
     }
 }
+*/
