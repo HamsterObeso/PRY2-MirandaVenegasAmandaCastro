@@ -18,7 +18,7 @@ import modelo.tratamientos; //FALTA
  * @author Masiel Castro Mora
  */
 
-public class tratamientosDAO {
+public class TratamientosDAO {
     public static tratamientos tratamiento;
     public static ResultSet resul;
     
