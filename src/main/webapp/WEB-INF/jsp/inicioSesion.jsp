@@ -67,7 +67,7 @@
         </style>
     </head>
     <body>
-        <h2>Login Form</h2>
+        <h2>Iniciar Sesion</h2>
         <form action="inicioSesion" method="post" commandName="userForm">
             <div class="container">
                 <label for="usuario"><b>Usuario</b></label>

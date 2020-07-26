@@ -1,5 +1,6 @@
 package controlador;
 
+import conexion.ConexionSQL;
 import java.util.Map;
 import modelo.Cuenta;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,8 @@ public class InicioSesion {
     @RequestMapping(method = RequestMethod.POST)
     public String validarInicioSesion(@ModelAttribute("userForm") Cuenta cuenta,
         Map<String, Object> model) {
-      //TODO logica inicio de sesion     
+      //TODO logica inicio de sesion
+      ConexionSQL.getConnection();
       return "home";
     }
     
