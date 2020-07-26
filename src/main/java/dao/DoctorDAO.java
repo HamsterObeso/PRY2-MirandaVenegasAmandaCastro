@@ -1,12 +1,12 @@
 package dao;
 
-import conexion.conexionSQL;
+import conexion.ConexionSQL;
 
 import java.sql.CallableStatement;
 import java.sql.SQLException;
 
-import modelo.citas;
-import modelo.paciente;
+import modelo.Cita;
+import modelo.Paciente;
 
 /**
  *
@@ -17,25 +17,25 @@ public class DoctorDAO {
 
 public class doctorDAO {
    
-    public  paciente paciente;
-    public  citas cita;
+    public  Paciente paciente;
+    public  Cita cita;
     
     public void cancelarCita( int pIDCita, int pIDFuncionario)throws SQLException{
-       CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call cancelarCitaCentro(?,?)}"); 
+       CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cancelarCitaCentro(?,?)}"); 
        entrada.setInt(1, pIDCita);
        entrada.setInt(2, pIDFuncionario);
        entrada.execute();
     }
     
     public void asignarCitaPaciente(int idCita, int pIDPaciente) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call anadirCitas(?,?,?,?)}"); 
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call anadirCitas(?,?,?,?)}"); 
         entrada.setString(1,cita.getIDcita());
         entrada.setString(2,cita.getEstado());//Falta
         entrada.execute();
     }
     
     public void registrarDiagnosticos(int cita, String nivel, String observaciones, String nombreDiagnostico) throws SQLException{
-         CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call registrarDiagnosticos(?,?,?,?)}");
+         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call registrarDiagnosticos(?,?,?,?)}");
          entrada.setInt(1, cita);
          entrada.setString(2, nivel);
          entrada.setString(3, observaciones);
@@ -44,7 +44,7 @@ public class doctorDAO {
     }
     
     public void registrarTratamientos(String nombreTrata, String dosis, String tipo, int idDiagnostico) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call registrarTratamientos(?,?,?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call registrarTratamientos(?,?,?,?)}");
         entrada.setString(1, nombreTrata);
         entrada.setString(2, dosis);
         entrada.setString(3, tipo);

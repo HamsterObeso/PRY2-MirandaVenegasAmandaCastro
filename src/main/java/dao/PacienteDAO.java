@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import modelo.Paciente;
 
-import conexion.conexionSQL;
+import conexion.ConexionSQL;
 
 /**
  *
@@ -17,8 +17,8 @@ public class PacienteDAO {
     public static ResultSet result;
     
     public void ingresarProveedor(Paciente paciente) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call anadirPaciente(?,?,?,?,?,?,?,?,?)}");
-        entrada.setString(1,paciente.getID());
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call anadirPaciente(?,?,?,?,?,?,?,?,?)}");
+        /*entrada.setString(1,paciente.getID());
         entrada.setString(2,paciente.getUsuario());
         entrada.setString(3,paciente.getContraseña());
         entrada.setString(4,paciente.getNombre());
@@ -26,7 +26,7 @@ public class PacienteDAO {
         entrada.setString(6,paciente.getSitioWeb());
         entrada.setString(7,paciente.getCorreo());
         entrada.setString(8,paciente.getHorarioAtencion());
-        entrada.setString(9,paciente.getPerfilSocialPrincipal());
+        entrada.setString(9,paciente.getPerfilSocialPrincipal());*/
         entrada.executeUpdate();
     }
 }

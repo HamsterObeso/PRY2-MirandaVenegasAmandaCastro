@@ -9,9 +9,9 @@ package modelo;
  *
  * @author Masiel Castro Mora
  */
-public class tratamientos {
+public class Tratamientos {
 
-    public tratamientos(int aInt, int aInt0, int aInt1, String string, int aInt2) {
+    public Tratamientos(int aInt, int aInt0, int aInt1, String string, int aInt2) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

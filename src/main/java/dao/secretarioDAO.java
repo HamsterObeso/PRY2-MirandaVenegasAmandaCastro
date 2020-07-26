@@ -1,10 +1,10 @@
 package dao;
 
-import conexion.conexionSQL;
+import conexion.ConexionSQL;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import modelo.citas;
+import modelo.Cita;
 
 /**
  *
@@ -12,11 +12,11 @@ import modelo.citas;
  */
 public class secretarioDAO {
     
-    public citas citas;
+    public Cita citas;
     public ResultSet result;
     
     public void cancelarCita( int idCita, int idFuncionario) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call cancelarCitaCentro(?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cancelarCitaCentro(?,?)}");
         entrada.setInt(1, idCita);
         entrada.setInt(2,idFuncionario);
         entrada.execute();
@@ -24,14 +24,14 @@ public class secretarioDAO {
     }
    
     public void asignarCitaPaciente (int idCita, int idFuncionario) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call asignarCita(?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call asignarCita(?,?)}");
         entrada.setInt(1, idCita);
         entrada.setInt(2, idFuncionario);
         entrada.execute();
     }
     
     public void citasRegistradas(String fecha1, String fecha2, String estado, String especialidad, String nombrePaciente) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call citasEnSistema(?,?,?,?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call citasEnSistema(?,?,?,?,?)}");
         if (fecha1.isEmpty() == true){
             entrada.setNull(1, java.sql.Types.VARCHAR);
         }else{
@@ -61,7 +61,7 @@ public class secretarioDAO {
     }
     
     public void hospitalizacionesRegistradas (String fechaIni1, String fechaIni2, String fechaFinal1, String fechaFinal2, String estado, String especialidad, String nombrePaciente) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call hospitalizacionesRegistradas(?,?,?,?,?,?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call hospitalizacionesRegistradas(?,?,?,?,?,?,?)}");
         if (fechaIni1.isEmpty() == true){
             entrada.setNull(1, java.sql.Types.VARCHAR);
         }else{

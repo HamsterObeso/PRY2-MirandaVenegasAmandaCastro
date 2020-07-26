@@ -1,33 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 
-import conexion.conexionSQL;
+import conexion.ConexionSQL;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
-import modelo.citas;
-import modelo.paciente;
+import modelo.Cita;
+import modelo.Paciente;
 
 /**
  *
  * @author Masiel Castro Mora
  */
-
 public class enfermeroDAO {
-    public static paciente paciente;
-    public static  citas cita;
+    public static Paciente paciente;
+    public static Cita cita;
     
     public void cancelarCita( int pIDCita, int pIDFuncionario)throws SQLException{
-       CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call cancelarCitaCentro(?,?)}"); 
+       CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cancelarCitaCentro(?,?)}"); 
        entrada.setInt(1, pIDCita);
        entrada.setInt(2, pIDFuncionario);
        entrada.execute();
     }
      public void registrarDiagnosticos(int cita, String nivel, String observaciones, String nombreDiagnostico) throws SQLException{
-         CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call registrarDiagnosticos(?,?,?,?)}");
+         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call registrarDiagnosticos(?,?,?,?)}");
          entrada.setInt(1, cita);
          entrada.setString(2, nivel);
          entrada.setString(3, observaciones);
@@ -36,7 +30,7 @@ public class enfermeroDAO {
     }
     
     public void registrarTratamientos(String nombreTrata, String dosis, String tipo, int idDiagnostico) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call registrarTratamientos(?,?,?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call registrarTratamientos(?,?,?,?)}");
         entrada.setString(1, nombreTrata);
         entrada.setString(2, dosis);
         entrada.setString(3, tipo);
@@ -44,7 +38,7 @@ public class enfermeroDAO {
         entrada.execute();
     }
     public CallableStatement citasSistemas(String fecha1,String fecha2, String estado, String especialidad, String nombrePaciente) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call citasSistemas(?,?,?,?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call citasSistemas(?,?,?,?,?)}");
         if (fecha1.isEmpty() == true){
             entrada.setNull(1, java.sql.Types.VARCHAR);
         }else{
@@ -73,7 +67,7 @@ public class enfermeroDAO {
         return entrada;
     }
     public CallableStatement diagnosticosPaciente(String fecha1, String fecha2, String nivel, String nombre, String identificacion) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call diagnosticosPaciente(?,?,?,?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call diagnosticosPaciente(?,?,?,?,?)}");
         if (fecha1.isEmpty() == true){
             entrada.setNull(1, java.sql.Types.VARCHAR);
         }else{
@@ -103,7 +97,7 @@ public class enfermeroDAO {
     }
     
     public CallableStatement tratamientosPaciente(String fecha1, String fecha2, String tipo, String nombre, String identificacion) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call tratamientosPaciente(?,?,?,?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call tratamientosPaciente(?,?,?,?,?)}");
         if (fecha1.isEmpty() == true){
             entrada.setNull(1, java.sql.Types.VARCHAR);
         }else{
@@ -133,7 +127,7 @@ public class enfermeroDAO {
     }
     
     public CallableStatement cantidadCitas(String fecha1, String fecha2, String especialidad, String estadoCita) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call cantidadCitas(?,?,?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cantidadCitas(?,?,?,?)}");
         if (fecha1.isEmpty() == true){
             entrada.setNull(1, java.sql.Types.VARCHAR);
         }else{
@@ -158,7 +152,7 @@ public class enfermeroDAO {
     }
     
     public CallableStatement cantidadDiagnosticos(String nivel, String especialidad,String identificacion) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call cantidadDiagnosticos(?,?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cantidadDiagnosticos(?,?,?)}");
          if (nivel.isEmpty() == true){
             entrada.setNull(1, java.sql.Types.VARCHAR);
         }else{
@@ -178,7 +172,7 @@ public class enfermeroDAO {
     }
     
    public CallableStatement cantidadTratamientos(String tipo, String especialidad, String identificacion) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call cantidadTratamientos(?,?,?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cantidadTratamientos(?,?,?)}");
          if (tipo.isEmpty() == true){
             entrada.setNull(1, java.sql.Types.VARCHAR);
         }else{
@@ -198,7 +192,7 @@ public class enfermeroDAO {
    }
    
    public void detallesHospitalizacion(String nombre) throws SQLException{
-        CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call detalleHospitalizacion(?)}");
+        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call detalleHospitalizacion(?)}");
         entrada.setString(1, nombre);
         entrada.execute();
    }

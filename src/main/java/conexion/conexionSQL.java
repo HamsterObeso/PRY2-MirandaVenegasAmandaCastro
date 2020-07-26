@@ -1,16 +1,18 @@
 package conexion;
 
-/**
- *
- * @author Masiel Castro Mora
- */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.Statement;
-public class conexionSQL {
+
+/**
+ *
+ * @author Masiel Castro Mora
+ */
+public class ConexionSQL {
+  
     static Connection contact = null;   
   
   /**Metodo para conectarse a la base de datos de sql
