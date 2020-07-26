@@ -1,33 +1,30 @@
 package conexion;
 
-/**
- *
- * @author Masiel Castro Mora
- */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.Statement;
-public class conexionSQL {
-    static Connection contact = null;   
+
+/**
+ *
+ * @author Masiel Castro Mora
+ */
+public class ConexionSQL {
+  
+   private static Connection contact = null;   
   
   /**Metodo para conectarse a la base de datos de sql
    * @return  la coneccion con sql
    */
   public static Connection getConnection(){
-    String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=proyecto2"; 
-    try{
-      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");           
-    }catch (ClassNotFoundException e){
-      JOptionPane.showMessageDialog(null,"No se pudo establecer la conexion"+ e.getMessage(),
-         "Error de conexion",JOptionPane.ERROR_MESSAGE);
-    }try{
-       contact = DriverManager.getConnection(url,"sa","sa");
-    }catch(SQLException e){
-       JOptionPane.showMessageDialog(null,"Error"+ e.getMessage(),
-          "Error de conexion",JOptionPane.ERROR_MESSAGE);
+    try {
+      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+      String dbURL = "jdbc:sqlserver://DESKTOP-EGNA5V0\\BASEDATOS:1433;databaseName=proyecto2;user=sa;password=sa";
+      contact = DriverManager.getConnection(dbURL);
+    } catch (SQLException | ClassNotFoundException ex) {
+        ex.printStackTrace();
     }
     return contact;
   }
