@@ -1,19 +1,23 @@
-package dao;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package DAO;
 
-import Conexiones.conexionSQL;
-
+import conexion.conexionSQL;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
-
 import modelo.citas;
-import modelo.pacientes;
+import modelo.paciente;
 
 /**
  *
- * @author Muro
+ * @author Masiel Castro Mora
  */
-public class EnfermeroDAO {
-    public static pacientes paciente;
+
+public class enfermeroDAO {
+    public static paciente paciente;
     public static  citas cita;
     
     public void cancelarCita( int pIDCita, int pIDFuncionario)throws SQLException{
@@ -199,4 +203,5 @@ public class EnfermeroDAO {
         entrada.execute();
    }
 }
-}
+
+
