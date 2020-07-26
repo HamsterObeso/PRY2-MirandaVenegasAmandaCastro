@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 public class secretarioControlador {
     @RequestMapping(value="/secretario", method = RequestMethod.GET)
-    public String viewPaciente(){
+    public String viewSecretario(){
         return "secretario";
     }
 }
