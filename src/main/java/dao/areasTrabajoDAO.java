@@ -14,19 +14,19 @@ import conexion.conexionSQL;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import modelo.areasTrabajo;
+import modelo.AreasTrabajo;
 
 /**
  *
  * @author Amanda Castro, Miranda Venegas 
  */
 public class areasTrabajoDAO {
-    public static areasTrabajo areas;
+    public static AreasTrabajo areas;
     public static ResultSet result;
     
     //Gestión de areas
     
-    public void agregarArea(areasTrabajo areas) throws SQLException{
+    public void agregarArea(AreasTrabajo areas) throws SQLException{
         CallableStatement entrada = conexionSQL.getConnection().prepareCall("{call anadirAreas(?)}");
         entrada.setString(1,areas.getNombre());
         entrada.execute();

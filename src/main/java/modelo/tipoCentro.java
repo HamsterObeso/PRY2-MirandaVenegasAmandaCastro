@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Masiel Castro Mora
  */
-public class tipoCentro {
+public class TipoCentro {
     public String IDcentro;
     public String nombre;
 
@@ -29,7 +29,7 @@ public class tipoCentro {
         this.nombre = nombre;
     }
 
-    public tipoCentro(String IDcentro, String nombre) {
+    public TipoCentro(String IDcentro, String nombre) {
         this.IDcentro = IDcentro;
         this.nombre = nombre;
     }

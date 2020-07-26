@@ -4,7 +4,7 @@ package modelo;
  *
  * @author Amanda Castro, Miranda Venegas 
  */
-public class areasTrabajo {
+public class AreasTrabajo {
 
     public String IDarea;
     public String nombre;
@@ -25,7 +25,7 @@ public class areasTrabajo {
         this.nombre = nombre;
     }
 
-    public areasTrabajo(String IDarea, String nombre) {
+    public AreasTrabajo(String IDarea, String nombre) {
         this.IDarea = IDarea;
         this.nombre = nombre;
     }

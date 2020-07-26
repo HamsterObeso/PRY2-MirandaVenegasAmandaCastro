@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Masiel Castro Mora
  */
-public class citas {
+public class Citas {
  
   
     public String especialidad;
@@ -58,7 +58,7 @@ public class citas {
         this.estado = estado;
     }
 
-    public citas(String especialidad, String fechaHora, String observacion, String IDcita, String estado) {
+    public Citas(String especialidad, String fechaHora, String observacion, String IDcita, String estado) {
         this.especialidad = especialidad;
         this.fechaHora = fechaHora;
         this.observacion = observacion;

@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Amanda Castro, Miranda Venegas
  */
-public class centroAtencion {
+public class CentroAtencion {
     
     
     public String codigoCentro;
@@ -58,7 +58,7 @@ public class centroAtencion {
         this.tipo = tipo;
     }
     
-    public centroAtencion(String codigoCentro, String nombre, String lugar, int capacidadMax, String tipo) {
+    public CentroAtencion(String codigoCentro, String nombre, String lugar, int capacidadMax, String tipo) {
         this.codigoCentro = codigoCentro;
         this.nombre = nombre;
         this.lugar = lugar;

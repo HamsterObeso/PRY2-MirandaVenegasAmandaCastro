@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Masiel Castro Mora
  */
-public class funcionario {
+public class Funcionario {
     public String identificacion;
     public String nombre;
     public String tipo;
@@ -61,7 +61,7 @@ public class funcionario {
         return "funcionario{" + "identificacion=" + identificacion + ", nombre=" + nombre + ", tipo=" + tipo + ", fechaIngreso=" + fechaIngreso + ", areaTrabajo=" + areaTrabajo + '}';
     }
 
-    public funcionario(String identificacion, String nombre, String tipo, String fechaIngreso, String areaTrabajo) {
+    public Funcionario(String identificacion, String nombre, String tipo, String fechaIngreso, String areaTrabajo) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.tipo = tipo;
