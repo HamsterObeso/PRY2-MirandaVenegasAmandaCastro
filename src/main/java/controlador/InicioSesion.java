@@ -1,6 +1,7 @@
 package controlador;
 
 import conexion.ConexionSQL;
+import contexto.ContextoUsuario;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,6 +36,9 @@ public class InicioSesion {
         model.put("opacity", 1);
         return "inicioSesion";
       } else {
+        ContextoUsuario.setCuenta(cuenta.getUsuario(), tipoUsuario);
+        model.put("usuario", cuenta.getUsuario());
+        model.put("tipo", tipoUsuario);
         return "menu";
       }
     }
