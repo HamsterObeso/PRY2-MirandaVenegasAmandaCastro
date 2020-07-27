@@ -35,16 +35,6 @@
                 background-color: #f44336;
             }
 
-            .imgcontainer {
-                text-align: center;
-                margin: 24px 0 12px 0;
-            }
-
-            img.avatar {
-                width: 40%;
-                border-radius: 50%;
-            }
-
             .container {
                 padding: 16px;
             }
@@ -54,6 +44,10 @@
                 padding-top: 16px;
             }
 
+            #error {
+                color: red;
+            }
+            
             /* Change styles for span and cancel button on extra small screens */
             @media screen and (max-width: 300px) {
                 span.psw {
@@ -61,7 +55,7 @@
                     float: none;
                 }
                 .cancelbtn {
-                    width: 100%;
+                    width: 100%;                   
                 }
             }
         </style>
@@ -77,5 +71,6 @@
                 <button type="submit">Iniciar Sesion</button>
             </div>
         </form>
+        <label id="error" style="opacity: ${opacity};"><b>Usuario o contraseña incorrecta, por favor revise los datos</b></label>
     </body>
 </html>
