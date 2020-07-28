@@ -10,13 +10,34 @@ package controlador;
  * @author Masiel Castro Mora
  */
 
+import dao.secretarioDAO;
+import java.sql.SQLException;
+import java.util.Map;
+import modelo.Cuenta;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+@Controller 
+@RequestMapping(value = "/secretario")
 public class secretarioControlador {
-    @RequestMapping(value="/secretario", method = RequestMethod.GET)
-    public String viewSecretario(){
+    
+     
+    @RequestMapping(method = RequestMethod.GET)
+    public String viewSecretario(Map<String, Object> model){
+        Cuenta cuenta = new Cuenta();
+        model.put("userForm", cuenta);
         return "secretario";
     }
+    
+    public void cancelarCita( int idCita, int idFuncionario){
+        try{
+            secretarioDAO.cancelarCita(idCita, idFuncionario);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
 }

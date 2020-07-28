@@ -15,7 +15,7 @@ public class secretarioDAO {
     public Cita citas;
     public ResultSet result;
     
-    public void cancelarCita( int idCita, int idFuncionario) throws SQLException{
+    public static void cancelarCita( int idCita, int idFuncionario) throws SQLException{
         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cancelarCitaCentro(?,?)}");
         entrada.setInt(1, idCita);
         entrada.setInt(2,idFuncionario);
@@ -23,14 +23,14 @@ public class secretarioDAO {
 
     }
    
-    public void asignarCitaPaciente (int idCita, int idFuncionario) throws SQLException{
+    public static void asignarCitaPaciente (int idCita, int idFuncionario) throws SQLException{
         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call asignarCita(?,?)}");
         entrada.setInt(1, idCita);
         entrada.setInt(2, idFuncionario);
         entrada.execute();
     }
     
-    public void citasRegistradas(String fecha1, String fecha2, String estado, String especialidad, String nombrePaciente) throws SQLException{
+    public static void citasRegistradas(String fecha1, String fecha2, String estado, String especialidad, String nombrePaciente) throws SQLException{
         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call citasEnSistema(?,?,?,?,?)}");
         if (fecha1.isEmpty() == true){
             entrada.setNull(1, java.sql.Types.VARCHAR);
@@ -60,7 +60,7 @@ public class secretarioDAO {
        
     }
     
-    public void hospitalizacionesRegistradas (String fechaIni1, String fechaIni2, String fechaFinal1, String fechaFinal2, String estado, String especialidad, String nombrePaciente) throws SQLException{
+    public static void hospitalizacionesRegistradas (String fechaIni1, String fechaIni2, String fechaFinal1, String fechaFinal2, String estado, String especialidad, String nombrePaciente) throws SQLException{
         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call hospitalizacionesRegistradas(?,?,?,?,?,?,?)}");
         if (fechaIni1.isEmpty() == true){
             entrada.setNull(1, java.sql.Types.VARCHAR);
