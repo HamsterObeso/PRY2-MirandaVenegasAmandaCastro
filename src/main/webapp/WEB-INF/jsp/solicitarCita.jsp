@@ -16,7 +16,7 @@
         height: 500px;
         background-color: #FFFFFF;
         border-radius: 10px;
-        display: flex;
+        display: block;
         box-shadow: 0 5px 10px 0 rgba(32, 11, 11, 0.5)
       }
 
@@ -39,12 +39,40 @@
         text-align: center;
         padding: 14px 20px;
         box-shadow: 0 5px 15px 0 rgba(22,50,30,0.3);
-        color: black;
+        background-color: #4CAF50;
+        color: white;
         width: 20%;
       }
 
       button:hover {
         opacity: 0.8;
+      }
+
+      h2 {
+        margin: 10px;
+      }
+
+      label {
+        display: block;
+      }
+
+      form {
+        margin: 10px;
+      }
+
+      form > label {
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+
+      form > button {
+        margin-top: 20px;
+        margin-left: 10px;
+      }
+
+      form > input {
+        margin-left: 10px;
+        margin-top: 5px;
       }
 
     </style>
@@ -56,25 +84,24 @@
   <body>
 
     <div class="container">
+
         <h2> Solicitar Cita </h2>
 
-        <form action="solicitarCita" method="post" commandName="pacientForm">
-            
-          <div class="content info">
+        <div class="form">
+
+          <form action="solicitarCita" method="post" commandName="patientForm">
+
             <label for="especialidad"><b>Especialidad</b></label>
             <input type="text" placeholder="Ingrese la especialidad deseada" name="especialidad" path="especialidad" required>
             <label for="fecha"><b>Fecha de la cita</b></label>
-            <input type="datetime-local" placeholder="Ingrese el día y hora deseados para la cita" name="fecha" path="fecha" required>
-          </div>
+            <input type="datetime-local" placeholder="Ingrese el día y hora deseados para la cita" name="fecha" path="fechaHora" required>
+            <label for="observacion"><b>Observación</b></label>
+            <input type="text" placeholder="Ingrese alguna observacion" name="observacion" path="observacion">
+            <button type="submit">Solicitar Cita</button>
 
-          <div class="content info2">
-              <label for="observacion"><b>Observación</b></label>
-              <input type="text" placeholder="Ingrese alguna observacion" name="observacion" path="observacion">
-              <button type="submit">Solicitar Cita</button>
-          </div>
-            
-        </form>
-    </div>
+          </form>
+
+        </div>
 
   </body>
 

@@ -1,27 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
+
+import java.time.LocalDateTime;
 
 /**
  *
  * @author Masiel Castro Mora
  */
 public class Cita {
- 
   
-    public String especialidad;
-    public String fechaHora;
-    public String observacion;
-    public String estado;
-
+    private String especialidad;
+    private LocalDateTime fechaHora;
+    private String observacion;
+    private String estado;
+    
     public String getEspecialidad() {
         return especialidad;
     }
 
-    public String getFechaHora() {
+    public LocalDateTime getFechaHora() {
         return fechaHora;
     }
 
@@ -37,7 +33,7 @@ public class Cita {
         this.especialidad = especialidad;
     }
 
-    public void setFechaHora(String fechaHora) {
+    public void setFechaHora(LocalDateTime fechaHora) {
         this.fechaHora = fechaHora;
     }
 
@@ -49,15 +45,10 @@ public class Cita {
         this.estado = estado;
     }
 
-    public Cita(){
-      
-    }
-
     @Override
     public String toString() {
         return "citas{" + "especialidad=" + especialidad + ", fechaHora=" + fechaHora + ", observacion=" + observacion + ", estado=" + estado + '}';
     }
     
-
 }
 
