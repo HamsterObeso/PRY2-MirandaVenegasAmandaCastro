@@ -31,35 +31,14 @@ public class InicioSesion {
     @RequestMapping(method = RequestMethod.POST)
     public String validarInicioSesion(@ModelAttribute("userForm") Cuenta cuenta,
         Map<String, Object> model) {
-      String tipoUsuario = iniciarSesion(cuenta.getUsuario(), cuenta.getPassword());
-      if(tipoUsuario == null) {
+      if(!cuenta.iniciarSesion()) {
         model.put("opacity", 1);
         return "inicioSesion";
       } else {
-        ContextoUsuario.setCuenta(cuenta.getUsuario(), tipoUsuario);
-        model.put("usuario", cuenta.getUsuario());
-        model.put("tipo", tipoUsuario);
+        model.put("usuario", ContextoUsuario.getUsuario());
+        model.put("tipo", ContextoUsuario.getTipo());
         return "menu";
       }
-    }
-    
-    private String iniciarSesion(String usuario, String password) {
-      try(CallableStatement cstmt = ConexionSQL.getConnection()
-          .prepareCall("{call iniciarSesion(?, ?)}");) {
-        cstmt.setString(1, usuario);
-        cstmt.setString(2, password);       
-        try(ResultSet result = cstmt.executeQuery()) {
-          String tipoUsuario = null;
-          while(result.next()) {         
-            tipoUsuario = result.getString("TipoUsuario");
-          }
-          result.close();
-          return tipoUsuario;
-        }    
-      } catch(SQLException e) {
-        e.printStackTrace();       
-      }
-      return null;
     }
     
 }
