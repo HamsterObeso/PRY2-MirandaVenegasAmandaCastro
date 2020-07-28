@@ -26,20 +26,20 @@ public class areasTrabajoDAO {
     
     //Gestión de areas
     
-    public void agregarArea(areasTrabajo areas) throws SQLException{
+    public static void agregarArea(String nombre) throws SQLException{
         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call anadirAreas(?)}");
         entrada.setString(1,areas.getNombre());
         entrada.execute();
     }
     
-    public void consultarArea(String pNombre) throws SQLException{
+    public static void consultarArea(String pNombre) throws SQLException{
         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call consultarArea(?)}");
         System.out.println(entrada);
         entrada.setString(1,pNombre);
         entrada.execute(); 
     }
     
-    public void borrarArea(String pNombre) throws SQLException{
+    public static void borrarArea(String pNombre) throws SQLException{
         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call borrarArea(?)}");
         entrada.setString(1,pNombre);
         entrada.execute(); 
