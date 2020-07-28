@@ -15,7 +15,6 @@ public class Cita {
     public String especialidad;
     public String fechaHora;
     public String observacion;
-    public String IDcita;
     public String estado;
 
     public String getEspecialidad() {
@@ -28,10 +27,6 @@ public class Cita {
 
     public String getObservacion() {
         return observacion;
-    }
-
-    public String getIDcita() {
-        return IDcita;
     }
 
     public String getEstado() {
@@ -49,26 +44,18 @@ public class Cita {
     public void setObservacion(String observacion) {
         this.observacion = observacion;
     }
-
-    public void setIDcita(String IDcita) {
-        this.IDcita = IDcita;
-    }
-
+    
     public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public Cita(String especialidad, String fechaHora, String observacion, String IDcita, String estado) {
-        this.especialidad = especialidad;
-        this.fechaHora = fechaHora;
-        this.observacion = observacion;
-        this.IDcita = IDcita;
-        this.estado = estado;
+    public Cita(){
+      
     }
 
     @Override
     public String toString() {
-        return "citas{" + "especialidad=" + especialidad + ", fechaHora=" + fechaHora + ", observacion=" + observacion + ", IDcita=" + IDcita + ", estado=" + estado + '}';
+        return "citas{" + "especialidad=" + especialidad + ", fechaHora=" + fechaHora + ", observacion=" + observacion + ", estado=" + estado + '}';
     }
     
 

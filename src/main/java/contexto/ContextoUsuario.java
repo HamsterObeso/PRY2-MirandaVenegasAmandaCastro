@@ -17,5 +17,4 @@ public class ContextoUsuario {
   public static String getTipo() {
     return tipo;
   }
-   
 }

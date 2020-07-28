@@ -27,12 +27,12 @@ public class doctorDAO {
        entrada.execute();
     }
     
-    public void asignarCitaPaciente(int idCita, int pIDPaciente) throws SQLException{
-        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call anadirCitas(?,?,?,?)}"); 
-        entrada.setString(1,cita.getIDcita());
-        entrada.setString(2,cita.getEstado());//Falta
-        entrada.execute();
-    }
+//    public void asignarCitaPaciente(int idCita, int pIDPaciente) throws SQLException{
+//        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call anadirCitas(?,?,?,?)}"); 
+//        entrada.setString(1,cita.getIDcita());
+//        entrada.setString(2,cita.getEstado());//Falta
+//        entrada.execute();
+//    }
     
     public void registrarDiagnosticos(int cita, String nivel, String observaciones, String nombreDiagnostico) throws SQLException{
          CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call registrarDiagnosticos(?,?,?,?)}");
