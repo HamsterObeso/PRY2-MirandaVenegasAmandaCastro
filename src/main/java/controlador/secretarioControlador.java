@@ -53,12 +53,6 @@ public class secretarioControlador {
             e.printStackTrace();
         }
     }
-    public void hospitalizacionesRegistradas(String fechaIni1, String fechaIni2, String fechaFinal1, String fechaFinal2, String estado, String especialidad, String nombrePaciente){
-        try{
-            secretarioDAO.hospitalizacionesRegistradas(fechaIni1, fechaIni2, fechaFinal1, fechaFinal2, estado, especialidad, nombrePaciente);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
+    
     
 }
