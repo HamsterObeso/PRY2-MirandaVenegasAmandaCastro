@@ -10,7 +10,7 @@ import modelo.Paciente;
  *
  * @author Masiel Castro Mora
  */
-public class enfermeroDAO {
+public class EnfermeroDAO {
     public static Paciente paciente;
     public static Cita cita;
     
