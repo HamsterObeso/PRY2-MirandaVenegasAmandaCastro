@@ -9,6 +9,6 @@ package formulario;
  *
  * @author Muro
  */
-public class PacienteSolicitarCita {
+public class SecretarioHospitalizacionesRegistradas {
   
 }

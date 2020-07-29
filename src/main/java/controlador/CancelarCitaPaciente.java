@@ -29,8 +29,6 @@ public class CancelarCitaPaciente {
         Map<String, Object> model) {
       //cancelarCita(cita.getIdCita(), ContextoUsuario.getIdUsuario())
       System.out.println(cita.getIdCita());
-      model.put("usuario", ContextoUsuario.getUsuario());
-      model.put("tipo", ContextoUsuario.getTipo());
       return "menu";
     }
 }
