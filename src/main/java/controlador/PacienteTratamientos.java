@@ -31,6 +31,6 @@ public class PacienteTratamientos {
     System.out.println(form.getFecha2());
     System.out.println(form.getTipoTratamiento());
     System.out.println(form.getNombre());
-    return "menu";
+    return "tratamientosAsociadosPaciente";
   }
 }

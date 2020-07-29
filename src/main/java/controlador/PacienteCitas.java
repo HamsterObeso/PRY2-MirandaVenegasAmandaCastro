@@ -31,6 +31,6 @@ public class PacienteCitas {
       System.out.println(form.getFecha2());
       System.out.println(form.getEstado());
       System.out.println(form.getEspecialidad());
-      return "menu";
+      return "citasAsociadasPaciente";
     }
 }

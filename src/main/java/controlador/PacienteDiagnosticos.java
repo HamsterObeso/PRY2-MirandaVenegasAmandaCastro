@@ -31,6 +31,6 @@ public class PacienteDiagnosticos {
     System.out.println(form.getFecha2());
     System.out.println(form.getNivel());
     System.out.println(form.getNombre());
-    return "menu";
+    return "diagnosticosAsociadosPaciente";
   }
 }
