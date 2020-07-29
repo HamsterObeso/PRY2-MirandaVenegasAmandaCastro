@@ -83,29 +83,33 @@
 
         </style>
 
-        <title>Secretario</title>
+        <title>Menú</title>
 
     </head>
 
     <body>
-        <h2> Gestión Areas </h2>
 
-        <form action="/action_page.php" method="post">
-            <div class="container">
+        <div class="container">
 
-                <label for="fechaIni1"><b>Nombre del área/b></label>
-                <input type="text" placeholder="Nombre area" name="nombre" path="nombre"> Esto se pone?
-                <label for="fechaIni1"><b>Identificación área/b></label>
-                <input type="text" placeholder="identificación area" name="idArea" path="idArea">
-                <button type="submit">Agregar</button>
-                <button type="submit">Eliminar</button>
-                <button type="submit">Actualizar</button>
-                <button type="submit">Consultar</button>
+            <h2> Gestión Areas </h2>
+            
+            <div class="form">
 
-        </form>
+            <form action="gestionAreas" method="post" commandName="patientForm">
 
-    </div>
+                    <label for="fechaIni1"><b>Nombre del área/b></label>
+                    <input type="text" placeholder="Nombre area" name="nombre" path="nombre"> Esto se pone?
+                    <label for="fechaIni1"><b>Identificación área/b></label>
+                    <input type="text" placeholder="Identificación area" name="idArea" path="idArea">
+                    <button type="submit">Agregar</button>
+                    <button type="submit">Eliminar</button>
+                    <button type="submit">Actualizar</button>
+                    <button type="submit">Consultar</button>
 
-</body>
+            </form>
+
+        </div>
+
+    </body>
 
 </html>

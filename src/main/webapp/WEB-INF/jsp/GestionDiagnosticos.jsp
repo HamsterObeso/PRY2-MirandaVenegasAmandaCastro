@@ -73,23 +73,28 @@
         </style>
     </head>
     <body>
-        <h2>Gestión diagnosticos</h2>
+        <div class="container">
 
-        <form action="/action_page.php" method="post">
-            <div class="container">
+            <h2>Gestión diagnosticos</h2>
 
-                <label for="IDdiagnostico"><b>Id Diagnosticos</b></label>
-                <label for="nombreDiagnostico"><b>Nombre Diagnostico</b></label>
-                <button type="eliminarDiagnostico">Eliminar </button>
-                <button type="modificarDiagnostico">Modificar</button>
-                <button type="añadirDiagnostico">Añadir</button>
-                <button type="consultarDiagnostico">Consultar</button>
-                <button type="mostrarDiagnostico">Mostrar</button>
+            <div class="form">
+
+                <form action="GestionDiagnosticos.jsp" method="post" commandName="patientForm">
+
+                    <label for="IDdiagnostico"><b>Id Diagnostico</b></label>
+                    <input type="text" placeholder="Indique la identificación del diagnostico" name="idDiagnostico" path="IdDiagnostico">
+                    <label for="nombreDiagnostico"><b>Nombre Diagnostico</b></label>
+                    <input type="text" placeholder="Indique el nombre del diagnostico " name="nombreDiagnostico" path="nombreDiagnostico">
+                    <button type="eliminarDiagnostico">Eliminar </button>
+                    <button type="modificarDiagnostico">Modificar</button>
+                    <button type="añadirDiagnostico">Añadir</button>
+                    <button type="consultarDiagnostico">Consultar</button>
+                    <button type="mostrarDiagnostico">Mostrar</button>
 
 
             </div>
             <div class="container" style="background-color:#f1f1f1">
             </div>
         </form>
-    </body>
+</body>
 </html>

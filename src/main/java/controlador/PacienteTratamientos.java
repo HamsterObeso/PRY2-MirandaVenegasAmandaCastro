@@ -33,4 +33,5 @@ public class PacienteTratamientos {
     System.out.println(form.getNombre());
     return "tratamientosAsociadosPaciente";
   }
+  
 }
