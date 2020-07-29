@@ -7,109 +7,105 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-  <head>
+    <head>
 
-    <meta charset="utf-8">
+        <meta charset="utf-8">
 
-    <style>
+        <style>
 
-      body {
-      	background-color: rgb(242, 242, 242);
-      }
+            body {
+                background-color: rgb(242, 242, 242);
+            }
 
-      .container {
-      	width: 100%;
-        height: 500px;
-        background-color: #FFFFFF;
-        border-radius: 10px;
-        display: block;
-        box-shadow: 0 5px 10px 0 rgba(32, 11, 11, 0.5)
-      }
+            .container {
+                width: 100%;
+                height: 500px;
+                background-color: #FFFFFF;
+                border-radius: 10px;
+                display: block;
+                box-shadow: 0 5px 10px 0 rgba(32, 11, 11, 0.5)
+            }
 
-      .content {
-        width: 50%;
-        height: 100%;
-        border-radius: 10px;
-      }
+            .content {
+                width: 50%;
+                height: 100%;
+                border-radius: 10px;
+            }
 
-      button {
-        display: block;
-        background: none;
-      	color: inherit;
-      	border: none;
-      	padding: 0;
-      	font: inherit;
-      	cursor: pointer;
-      	outline: inherit;
-        border-radius: 5px;
-        text-align: center;
-        padding: 14px 20px;
-        box-shadow: 0 5px 15px 0 rgba(22,50,30,0.3);
-        background-color: #4CAF50;
-        color: white;
-        width: 20%;
-      }
+            button {
+                display: block;
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
+                font: inherit;
+                cursor: pointer;
+                outline: inherit;
+                border-radius: 5px;
+                text-align: center;
+                padding: 14px 20px;
+                box-shadow: 0 5px 15px 0 rgba(22,50,30,0.3);
+                background-color: #4CAF50;
+                color: white;
+                width: 20%;
+            }
 
-      button:hover {
-        opacity: 0.8;
-      }
+            button:hover {
+                opacity: 0.8;
+            }
 
-      h2 {
-        margin: 10px;
-      }
+            h2 {
+                margin: 10px;
+            }
 
-      label {
-        display: block;
-      }
+            label {
+                display: block;
+            }
 
-      form {
-        margin: 10px;
-      }
+            form {
+                margin: 10px;
+            }
 
-      form > label {
-        margin-top: 10px;
-        margin-left: 10px;
-      }
+            form > label {
+                margin-top: 10px;
+                margin-left: 10px;
+            }
 
-      form > button {
-        margin-top: 20px;
-        margin-left: 10px;
-      }
+            form > button {
+                margin-top: 20px;
+                margin-left: 10px;
+            }
 
-      form > input {
-        margin-left: 10px;
-        margin-top: 5px;
-      }
+            form > input {
+                margin-left: 10px;
+                margin-top: 5px;
+            }
 
-    </style>
+        </style>
 
-    <title>Secretario</title>
+        <title>Secretario</title>
 
-  </head>
+    </head>
 
-  <body>
+    <body>
+        <h2> Gestión Areas </h2>
 
-    <div class="container">
+        <form action="/action_page.php" method="post">
+            <div class="container">
 
-        <h2> Citas registradas </h2>
+                <label for="fechaIni1"><b>Nombre del área/b></label>
+                <input type="text" placeholder="Nombre area" name="nombre" path="nombre"> Esto se pone?
+                <label for="fechaIni1"><b>Identificación área/b></label>
+                <input type="text" placeholder="identificación area" name="idArea" path="idArea">
+                <button type="submit">Agregar</button>
+                <button type="submit">Eliminar</button>
+                <button type="submit">Actualizar</button>
+                <button type="submit">Consultar</button>
 
-        <div class="form">
+        </form>
 
-          <form action="citasRegistradas" method="post" commandName="patientForm">
+    </div>
 
-            <label for="fechaIni1"><b>Nombre del área/b></label>
-            <input type="text" placeholder="Nombre area" name="nombre" path="nombre"> Esto se pone?
-            <label for="fechaIni1"><b>Identificación área/b></label>
-            <input type="text" placeholder="identificación area" name="idArea" path="idArea">
-            <button type="submit">Agregar</button>
-            <button type="submit">Eliminar</button>
-            <button type="submit">Actualizar</button>
-            <button type="submit">Consultar</button>
-
-          </form>
-
-        </div>
-
-  </body>
+</body>
 
 </html>
