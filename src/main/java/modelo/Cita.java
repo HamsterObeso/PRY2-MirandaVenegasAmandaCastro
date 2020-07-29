@@ -1,6 +1,7 @@
 package modelo;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -8,17 +9,19 @@ import java.time.LocalDateTime;
  */
 public class Cita {
   
-    private String especialidad;
-    private LocalDateTime fechaHora;
+    private String especialidad; 
     private String observacion;
     private String estado;
+    
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate fechahora;
     
     public String getEspecialidad() {
         return especialidad;
     }
 
-    public LocalDateTime getFechaHora() {
-        return fechaHora;
+    public LocalDate getFechahora() {
+        return fechahora;
     }
 
     public String getObservacion() {
@@ -33,8 +36,8 @@ public class Cita {
         this.especialidad = especialidad;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {
-        this.fechaHora = fechaHora;
+    public void setFechahora(LocalDate fechaHora) {
+        this.fechahora = fechaHora;
     }
 
     public void setObservacion(String observacion) {
@@ -47,7 +50,7 @@ public class Cita {
 
     @Override
     public String toString() {
-        return "citas{" + "especialidad=" + especialidad + ", fechaHora=" + fechaHora + ", observacion=" + observacion + ", estado=" + estado + '}';
+        return "citas{" + "especialidad=" + especialidad + ", fechaHora=" + fechahora + ", observacion=" + observacion + ", estado=" + estado + '}';
     }
     
 }

@@ -1,5 +1,10 @@
 package contexto;
 
+import conexion.ConexionSQL;
+import java.sql.CallableStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class ContextoUsuario {
   
   private static String usuario;
@@ -24,4 +29,29 @@ public class ContextoUsuario {
     return tipo;
   }
    
+  public static boolean iniciarSesion(String usuario, String password) {
+    try(CallableStatement cstmt = ConexionSQL.getConnection()
+          .prepareCall("{call iniciarSesion(?, ?)}");) {
+      cstmt.setString(1, usuario);
+      cstmt.setString(2, password);       
+      try(ResultSet result = cstmt.executeQuery()) {
+        String tipoUsuario = null;
+        int id = -1;
+        while(result.next()) {         
+          tipoUsuario = result.getString("TipoUsuario");
+          id = result.getInt("IdUsuario");
+        }
+        result.close();
+        if(tipoUsuario == null) {
+          return false;
+        }
+        ContextoUsuario.setCuenta(usuario, tipoUsuario, id);
+        return true;
+      }    
+    } catch(SQLException e) {
+      e.printStackTrace();       
+    }
+    return false;
+  }
+  
 }

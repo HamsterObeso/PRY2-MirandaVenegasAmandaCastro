@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
 <%@page import="fabrica.FabricaOpciones"%>
 <%@page import="contexto.ContextoUsuario"%>
 <%@page import="java.util.ArrayList"%>
@@ -91,23 +93,22 @@
       <div class="content option">
         <h3>¿Que desea realizar?</h3>
         
-        <form action="inicioSesion" method="post" commandName="opcion">        
-            <select name="category">
+        <form:form action="menu" method="post" modelAttribute="seleccion">        
+            <form:select name="category" path="opcion">
                 <% 
                    String tipo = ContextoUsuario.getTipo();
                    ArrayList<String> opciones = FabricaOpciones.getOpciones(tipo);
                    for(int i = 0; i < opciones.size(); i++) {
                     String opcion = opciones.get(i);                
                 %>
-                    <option value="<%= opcion %>"><%= opcion %></option>
+                    <form:option value="<%= opcion %>"><%= opcion %></form:option>
                 <% 
                     } 
                 %>              
-            </select>
-            <button id="action" type="submit" name="button">Realizar operacion</button>       
-        </form>
-        
-       
+            </form:select>
+            <form:button id="action" type="submit" name="button">Realizar operacion</form:button>       
+        </form:form>
+           
         <button id="close" type="button" name="button">Cerrar sesion</button>
       </div>
 

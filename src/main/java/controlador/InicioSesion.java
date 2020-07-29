@@ -1,10 +1,6 @@
 package controlador;
 
-import conexion.ConexionSQL;
 import contexto.ContextoUsuario;
-import java.sql.CallableStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Map;
 import modelo.Cuenta;
 import org.springframework.stereotype.Controller;
@@ -31,13 +27,11 @@ public class InicioSesion {
     @RequestMapping(method = RequestMethod.POST)
     public String validarInicioSesion(@ModelAttribute("userForm") Cuenta cuenta,
         Map<String, Object> model) {
-      if(!cuenta.iniciarSesion()) {
+      if(!ContextoUsuario.iniciarSesion(cuenta.getUsuario(), cuenta.getPassword())) {
         model.put("opacity", 1);
         return "inicioSesion";
       } else {
-        model.put("usuario", ContextoUsuario.getUsuario());
-        model.put("tipo", ContextoUsuario.getTipo());
-        return "menu";
+        return "redirect:/menu";
       }
     }
     

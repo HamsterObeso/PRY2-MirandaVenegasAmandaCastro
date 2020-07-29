@@ -30,7 +30,7 @@ public class SolicitarCita {
         Map<String, Object> model) {
       //solicitarCita(cita.getEspecialidad(), cita.getFechaHora().toString(), cita.getObservacion(),)
       System.out.println(cita.getEspecialidad());
-      System.out.println(cita.getFechaHora());
+      System.out.println(cita.getFechahora());
       System.out.println(cita.getObservacion());
       model.put("usuario", ContextoUsuario.getUsuario());
       model.put("tipo", ContextoUsuario.getTipo());
