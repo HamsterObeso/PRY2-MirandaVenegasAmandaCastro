@@ -1,6 +1,5 @@
 package controlador;
 
-import contexto.ContextoUsuario;
 import java.util.Map;
 import modelo.Cita;
 import org.springframework.stereotype.Controller;

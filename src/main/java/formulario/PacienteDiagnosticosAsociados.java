@@ -47,5 +47,4 @@ public class PacienteDiagnosticosAsociados {
     return "PacienteDiagnosticosAsociados{" + "fecha1=" + fecha1 + ", fecha2=" + fecha2 + ", nivel=" + nivel + ", nombre=" + nombre + '}';
   }
   
-  
 }
