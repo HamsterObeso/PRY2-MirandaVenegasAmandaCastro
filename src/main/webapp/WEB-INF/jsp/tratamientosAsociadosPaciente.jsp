@@ -96,9 +96,9 @@
             <input type="text" placeholder="Indique el primer rango de fecha." name="fecha1" path="fecha1">
             <input type="text" placeholder="Indique el segundo rango de fecha." name="fecha2" path="fecha2">
             <label for="estado"><b>Nivel</b></label>
-            <input type="text" placeholder="Indique el nivel del diagnóstico." name="nivel" path="nivel">
-            <label for="fecha"><b>Nombre del diagnóstico</b></label>
-            <input type="text" placeholder="Indique el nombre del diagnóstico." name="nombre" path="nombre">
+            <input type="text" placeholder="Indique el tipo del tratamiento." name="tipo" path="tipoTratamiento">
+            <label for="fecha"><b>Nombre del tratamiento</b></label>
+            <input type="text" placeholder="Indique el nombre del tratamiento." name="nombre" path="nombre">
             <button type="submit">Realizar filtrado</button>
 
           </form>
