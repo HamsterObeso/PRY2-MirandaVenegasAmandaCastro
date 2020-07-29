@@ -1,8 +1,5 @@
 package modelo;
 
-import java.time.LocalDate;
-import org.springframework.format.annotation.DateTimeFormat;
-
 /**
  *
  * @author Masiel Castro Mora
@@ -12,15 +9,22 @@ public class Cita {
     private String especialidad;
     private String observacion;
     private String estado;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate fechahora;
+    private int idCita;
+    private String fechahora;
+    
+    public int getIdCita() {
+      return idCita;
+    }
+   
+    public void setIdCita(int idCita) {
+      this.idCita = idCita;
+    }  
 
     public String getEspecialidad() {
         return especialidad;
     }
 
-    public LocalDate getFechahora() {
+    public String getFechahora() {
         return fechahora;
     }
 
@@ -32,7 +36,7 @@ public class Cita {
         this.especialidad = especialidad;
     }
 
-    public void setFechahora(LocalDate fechaHora) {
+    public void setFechahora(String fechaHora) {
         this.fechahora = fechaHora;
     }
 
