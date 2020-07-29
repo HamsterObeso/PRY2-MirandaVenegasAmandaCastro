@@ -5,7 +5,7 @@
  */
 package controlador;
 
-import dao.secretarioDAO;
+import dao.areasTrabajoDAO;
 import java.sql.SQLException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Masiel Castro Mora
  */
 @Controller
-@RequestMapping(value = "/citasRegistradas")
-public class citasSistemaControlador {
+@RequestMapping(value = "/GestionAreas")
+public class AgregarArea {
     
-    public void citasSistema(String fecha1, String fecha2, String estado, String especialidad, String nombrePaciente){
+    private void AgregarArea(String nombre){
         try{
-            secretarioDAO.citasRegistradas(fecha1, fecha2, estado, especialidad, nombrePaciente);
+            areasTrabajoDAO.agregarArea(nombre);
         } catch(SQLException e){
-            e.printStackTrace();
+            
         }
     }
     
