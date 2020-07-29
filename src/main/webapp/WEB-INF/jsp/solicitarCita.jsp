@@ -94,7 +94,9 @@
             <label for="especialidad"><b>Especialidad</b></label>
             <input type="text" placeholder="Ingrese la especialidad deseada" name="especialidad" path="especialidad" required>
             <label for="fecha"><b>Fecha de la cita</b></label>
-            <input type="datetime-local" placeholder="Ingrese el día y hora deseados para la cita" name="fecha" path="fechaHora" required>
+            <input type="text" placeholder="Ingrese el día deseado para la cita" name="fecha" path="fecha" required>
+            <label for="hora"><b>Hora de la cita</b></label>
+            <input type="text" placeholder="Ingrese el hora deseado para la cita" name="hora" path="hora" required>
             <label for="observacion"><b>Observación</b></label>
             <input type="text" placeholder="Ingrese alguna observacion" name="observacion" path="observacion">
             <button type="submit">Solicitar Cita</button>

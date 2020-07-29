@@ -20,7 +20,7 @@ public class PacienteCitas {
     public String viewFiltroCitasPaciente(Map<String, Object> model) {
       PacienteCitasAsociadas form = new PacienteCitasAsociadas();
       model.put("citasAsociadasPacForm", form);
-      return "citasAsociadasPacForm";
+      return "citasAsociadasPaciente";
     }
     
     @RequestMapping(method = RequestMethod.POST)  
@@ -31,6 +31,6 @@ public class PacienteCitas {
       System.out.println(form.getFecha2());
       System.out.println(form.getEstado());
       System.out.println(form.getEspecialidad());
-      return "menu";
+      return "citasAsociadasPaciente";
     }
 }
