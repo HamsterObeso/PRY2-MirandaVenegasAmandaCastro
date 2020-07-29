@@ -91,24 +91,22 @@
 
     <div class="container">
 
-        <h2> Solicitar Cita </h2>
+        <h2> Secretario </h2>
 
         <div class="form">
 
-          <form action="solicitarCita" method="post" commandName="patientForm">
+          <form action="hospitalizacionesRegistradas" method="post" commandName="patientForm">
 
-            <label for="fechaIni1"><b>Fecha inicial 1</b></label>
+            <label for="fechaIni1"><b>Primer rango de fechas</b></label>
             <input type="text" placeholder="Fecha inicial 1:" name="fechaIni1" path="fechaIni1">
-            <label for="fechaIni2"><b>Fecha incial 2</b></label>
-            <input type="text" placeholder="Fecha inicial 2: " name="fechaIni2" path="fechaIni2">
-            <label for="fechaFinal1"><b>Fecha final 1</b></label>
             <input type="text" placeholder="Fecha final 1: " name="fechaFinal1" path="fechaFinal1">
-            <label for="fechaFinal2"><b>Fecha final 2</b></label>
+            <label for="fechaIni2"><b>Segundo rango de fechas</b></label>
+            <input type="text" placeholder="Fecha inicial 2: " name="fechaIni2" path="fechaIni2">
             <input type="text" placeholder="Fecha Final 2: " name="fechaFin2" path="fechaFin2">
             <label for="estado"><b>Estado </b></label>
-            <input type="text" placeholder="Estado" name="estado" path="estado">
+            <input type="text" placeholder="Indique el estado" name="estado" path="estado">
             <label for="especialidad"><b>Especialidad</b></label>
-            <input type="text" placeholder="Especialidad " name="especialidad" path="especialdad">
+            <input type="text" placeholder="Nombre de la especialidad " name="especialidad" path="especialdad">
             <label for="nombrePaciente"><b>Nombre paciente</b></label>
             <input type="text" placeholder="Nombre paciente " name="nombrePaciente" path="nombrePaciente">
             <button type="submit">Filtrar</button>
