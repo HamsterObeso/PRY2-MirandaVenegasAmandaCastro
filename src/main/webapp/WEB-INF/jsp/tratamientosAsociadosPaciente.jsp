@@ -90,7 +90,7 @@
 
         <div class="form">
 
-          <form action="tratamientosAsociadosP" method="post" commandName="tratamientosAsociadosPacForm">
+          <form action="tratamientosPaciente" method="post" commandName="tratamientosAsociadosPacForm">
 
             <label for="fecha"><b>Rango de fechas</b></label>
             <input type="text" placeholder="Indique el primer rango de fecha." name="fecha1" path="fecha1">
