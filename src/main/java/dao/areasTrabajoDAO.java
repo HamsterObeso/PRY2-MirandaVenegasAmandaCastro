@@ -45,10 +45,10 @@ public class areasTrabajoDAO {
         entrada.execute(); 
     }
     
-    public static void actualizarCategoria(String idArea,String nombre) throws SQLException{
+    public static void actualizarCategoria(int idArea,String nombre) throws SQLException{
         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call actualizarArea(?,?)}");
-        entrada.setString(1,idArea);
-        entrada.setString(1,nombre);
+        entrada.setInt(1,idArea);
+        entrada.setString(2,nombre);
         entrada.execute(); 
      
     } 
