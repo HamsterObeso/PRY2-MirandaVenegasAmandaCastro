@@ -28,9 +28,10 @@ public class SolicitarCita {
     @RequestMapping(method = RequestMethod.POST)  
     public String validarInicioSesion(@ModelAttribute("patientForm") Cita cita,
         Map<String, Object> model) {
-      //solicitarCita(cita.getEspecialidad(), cita.getFechaHora().toString(), cita.getObservacion(),)
+      //solicitarCita(cita.getEspecialidad(), cita.getFecha(), cita.getHora(), cita.getObservacion(),)
       System.out.println(cita.getEspecialidad());
-      System.out.println(cita.getFechahora());
+      System.out.println(cita.getFecha());
+      System.out.println(cita.getHora()); 
       System.out.println(cita.getObservacion());
       model.put("usuario", ContextoUsuario.getUsuario());
       model.put("tipo", ContextoUsuario.getTipo());
