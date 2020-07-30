@@ -1,6 +1,9 @@
 package controlador;
 
+import dao.CitaDAO;
+import dao.TratamientoDAO;
 import formulario.DocEnfTratamientosAsociadosPaciente;
+import java.sql.SQLException;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,11 +28,13 @@ public class DocEnfTratamientos {
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroTratamientosDE(@ModelAttribute("tratamientosDocEnfForm") DocEnfTratamientosAsociadosPaciente form,
       Map<String, Object> model) {
-    //filtroTratamientosDocEnf(form.getFecha1(), form.getFecha2(), form.getTipoTratamiento(), form.getNombreTratamiento())
-    System.out.println(form.getFecha1());
-    System.out.println(form.getFecha2());
-    System.out.println(form.getTipoTratamiento());
-    System.out.println(form.getNombreTratamiento());
+    try {
+      TratamientoDAO.tratamientosAsociadosDE(form.getFecha1(), form.getFecha2(), form.getTipoTratamiento(), form.getNombreTratamiento(), form.getIdentificacion());
+      model.put("form", "form");
+    } catch(SQLException e){
+      model.put("error", "error");
+      e.printStackTrace();
+    }
     return "tratamientosDocEnf";
   }
 }

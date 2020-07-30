@@ -1,6 +1,10 @@
 package controlador;
 
+import dao.CitaDAO;
+
 import formulario.DocEnfCantidadCitas;
+
+import java.sql.SQLException;
 
 import java.util.Map;
 
@@ -28,11 +32,13 @@ public class DocEnfCantCitas {
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroCantidadCitas(@ModelAttribute("cantidadCitasForm") DocEnfCantidadCitas form,
       Map<String, Object> model) {
-    //filtroCantCitas(form.getFecha1(), form.getFecha2(), form.getEspecialidad(), form.getEstado())
-    System.out.println(form.getFecha1());
-    System.out.println(form.getFecha2());
-    System.out.println(form.getEspecialidad());
-    System.out.println(form.getEstado());
+    try {
+      CitaDAO.cantidadCitas(form.getFecha1(), form.getFecha2(), form.getEspecialidad(), form.getEstado());
+      model.put("cita", "cita");
+    } catch(SQLException e){
+      model.put("error", "error");
+      e.printStackTrace();
+    }
     return "cantidadCitas";
   }
 }

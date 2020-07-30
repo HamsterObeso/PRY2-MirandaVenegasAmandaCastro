@@ -5,7 +5,10 @@
  */
 package controlador;
 
+import dao.DiagnosticoDAO;
+import dao.TratamientoDAO;
 import formulario.DocEnfCantidadTratamientos;
+import java.sql.SQLException;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,10 +34,13 @@ public class DocEnfCantTratamientos {
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroCantidadDiagnosticos(@ModelAttribute("cantidadTratamientosForm") DocEnfCantidadTratamientos form,
       Map<String, Object> model) {
-    //filtroCantTratamientos(form.getTratamiento(), form.getEspecialidad(), form.getIdentificacion())
-    System.out.println(form.getTratamiento());
-    System.out.println(form.getEspecialidad());
-    System.out.println(form.getIdentificacion());
+    try {
+      TratamientoDAO.cantidadTratamientos(form.getTratamiento(), form.getEspecialidad(), form.getIdentificacion());
+      model.put("form", "form");
+    } catch(SQLException e){
+      model.put("error", "error");
+      e.printStackTrace();
+    }
     return "cantidadTratamientos";
   }
 }

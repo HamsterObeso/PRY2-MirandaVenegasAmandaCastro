@@ -7,9 +7,9 @@ package formulario;
 public class DocEnfDiagnosticosAsociadosPaciente {
   private String fecha1;
   private String fecha2;
-  private String estado;
-  private String especialidad;
-  private String nombrePaciente;
+  private String nivel;
+  private String nombre;
+  private String identificacion;
 
   public String getFecha1() {
     return fecha1;
@@ -27,35 +27,34 @@ public class DocEnfDiagnosticosAsociadosPaciente {
     this.fecha2 = fecha2;
   }
 
-  public String getEstado() {
-    return estado;
+  public String getNivel() {
+    return nivel;
   }
 
-  public void setEstado(String estado) {
-    this.estado = estado;
+  public void setNivel(String nivel) {
+    this.nivel = nivel;
   }
 
-  public String getEspecialidad() {
-    return especialidad;
+  public String getNombre() {
+    return nombre;
   }
 
-  public void setEspecialidad(String especialidad) {
-    this.especialidad = especialidad;
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
   }
 
-  public String getNombrePaciente() {
-    return nombrePaciente;
+  public String getIdentificacion() {
+    return identificacion;
   }
 
-  public void setNombrePaciente(String nombrePaciente) {
-    this.nombrePaciente = nombrePaciente;
+  public void setIdentificacion(String identificacion) {
+    this.identificacion = identificacion;
   }
 
   @Override public String toString() {
     return "DocEnfDiagnosticosAsociadosPaciente{" + "fecha1=" + fecha1 + ", fecha2=" + fecha2 +
-      ", estado=" + estado + ", especialidad=" + especialidad + ", nombrePaciente=" +
-      nombrePaciente + '}';
+      ", nivel=" + nivel + ", nombre=" + nombre + ", identificacion=" + identificacion + '}';
   }
-  
+
   
 }

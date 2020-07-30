@@ -9,6 +9,7 @@ public class DocEnfTratamientosAsociadosPaciente {
   private String fecha2;
   private String tipoTratamiento;
   private String nombreTratamiento;
+  private String identificacion;
 
   public String getFecha1() {
     return fecha1;
@@ -40,6 +41,14 @@ public class DocEnfTratamientosAsociadosPaciente {
 
   public void setNombreTratamiento(String nombreTratamiento) {
     this.nombreTratamiento = nombreTratamiento;
+  }
+
+  public String getIdentificacion() {
+    return identificacion;
+  }
+
+  public void setIdentificacion(String identificacion) {
+    this.identificacion = identificacion;
   }
 
   @Override public String toString() {
