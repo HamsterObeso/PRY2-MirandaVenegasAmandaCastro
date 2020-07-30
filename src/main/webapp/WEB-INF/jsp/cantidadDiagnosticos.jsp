@@ -96,7 +96,7 @@
             <input type="text" placeholder="Indique el nivel del diagnóstico." name="nivel" path="nivel">
             <label for="estado"><b>Especialidad</b></label>
             <input type="text" placeholder="Indique la especialidad de la cita del diagnóstico." name="especialidad" path="especialidad">
-            <label for="fecha"><b>Identificación del paciente</b></label>
+            <label for="identificacion"><b>Identificación del paciente</b></label>
             <input type="text" placeholder="Indique la identificación del paciente." name="identificacion" path="identificacion">
             <button type="submit">Realizar filtrado</button>
 

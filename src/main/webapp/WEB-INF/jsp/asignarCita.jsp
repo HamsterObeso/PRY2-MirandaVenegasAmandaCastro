@@ -94,7 +94,7 @@
             <label for="idCita"><b>Identificación cita</b></label>
             <input type="text" placeholder="Ingrese la identificación de la cita" name="idCita" path="idCita" required>
             <label for="idFuncionario"><b>Tipo funcionario</b></label>
-            <input type="text" placeholder="Indique el tipo de funcionario" name="idFuncionario" path="idFuncionario">
+            <input type="text" placeholder="Indique el tipo de funcionario" name="idUsuario" path="idUsuario">
             <button type="submit">Asignar Cita</button>
 
           </form>

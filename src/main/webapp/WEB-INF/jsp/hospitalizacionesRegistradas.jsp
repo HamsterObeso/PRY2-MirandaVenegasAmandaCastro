@@ -95,7 +95,7 @@
 
         <div class="form">
 
-          <form action="hospitalizacionesRegistradas" method="post" commandName="patientForm">
+          <form action="hospitalizacionesRegistradasS" method="post" commandName="hospitalizacionesRegistradasSForm">
 
             <label for="fechaIni1"><b>Primer rango de fechas</b></label>
             <input type="text" placeholder="Fecha inicial 1:" name="fechaIni1" path="fechaIni1">

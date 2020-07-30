@@ -95,16 +95,12 @@
 
         <div class="form">
 
-          <form action="citasRegistradas" method="post" commandName="patientForm">
+          <form action="citasRegistradas" method="post" commandName="citasRegistradasSecreForm">
 
-            <label for="fechaIni1"><b>Fecha inicial 1</b></label>
-            <input type="text" placeholder="Fecha inicial 1:" name="fechaIni1" path="fechaIni1">
-            <label for="fechaIni2"><b>Fecha incial 2</b></label>
-            <input type="text" placeholder="Fecha inicial 2: " name="fechaIni2" path="fechaIni2">
-            <label for="fechaFinal1"><b>Fecha final 1</b></label>
-            <input type="text" placeholder="Fecha final 1: " name="fechaFinal1" path="fechaFinal1">
-            <label for="fechaFinal2"><b>Fecha final 2</b></label>
-            <input type="text" placeholder="Fecha Final 2: " name="fechaFin2" path="fechaFin2">
+            <label for="fecha1"><b>Fecha inicial</b></label>
+            <input type="text" placeholder="Fecha inicial:" name="fecha1" path="fecha1">
+            <label for="fecha2"><b>Fecha final</b></label>
+            <input type="text" placeholder="Fecha final: " name="fecha2" path="fecha2">
             <label for="estado"><b>Estado </b></label>
             <input type="text" placeholder="Estado" name="estado" path="estado">
             <label for="especialidad"><b>Especialidad</b></label>
