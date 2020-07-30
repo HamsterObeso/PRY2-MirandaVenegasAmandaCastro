@@ -86,19 +86,14 @@
 
     <div class="container">
 
-        <h2> Información de Tratamientos || Realizar filtrados </h2>
+        <h2> Información de Hospitalizaciones || Realizar filtrados </h2>
 
         <div class="form">
 
-          <form action="tratamientosPaciente" method="post" commandName="tratamientosAsociadosPacForm">
+          <form action="detalleHospitalizacion" method="post" commandName="detalleHospitalizacionForm">
 
-            <label for="fecha"><b>Rango de fechas</b></label>
-            <input type="text" placeholder="Indique el primer rango de fecha." name="fecha1" path="fecha1">
-            <input type="text" placeholder="Indique el segundo rango de fecha." name="fecha2" path="fecha2">
-            <label for="estado"><b>Tipo de tratamiento</b></label>
-            <input type="text" placeholder="Indique el tipo del tratamiento." name="tipoTratamiento" path="tipoTratamiento">
-            <label for="fecha"><b>Nombre del tratamiento</b></label>
-            <input type="text" placeholder="Indique el nombre del tratamiento." name="nombre" path="nombre">
+            <label for="fecha"><b>Nombre del paciente</b></label>
+            <input type="text" placeholder="Indique el nombre del paciente." name="nombrePaciente" path="nombrePaciente">
             <button type="submit">Realizar filtrado</button>
 
           </form>
@@ -108,3 +103,5 @@
   </body>
 
 </html>
+
+

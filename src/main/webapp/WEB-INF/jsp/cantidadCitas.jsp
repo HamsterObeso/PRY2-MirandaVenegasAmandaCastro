@@ -86,19 +86,19 @@
 
     <div class="container">
 
-        <h2> Información de Tratamientos || Realizar filtrados </h2>
+        <h2> Cantidad de Citas || Realizar filtrados </h2>
 
         <div class="form">
 
-          <form action="tratamientosPaciente" method="post" commandName="tratamientosAsociadosPacForm">
+          <form action="cantidadCitas" method="post" commandName="cantidadCitasForm">
 
             <label for="fecha"><b>Rango de fechas</b></label>
             <input type="text" placeholder="Indique el primer rango de fecha." name="fecha1" path="fecha1">
             <input type="text" placeholder="Indique el segundo rango de fecha." name="fecha2" path="fecha2">
-            <label for="estado"><b>Tipo de tratamiento</b></label>
-            <input type="text" placeholder="Indique el tipo del tratamiento." name="tipoTratamiento" path="tipoTratamiento">
-            <label for="fecha"><b>Nombre del tratamiento</b></label>
-            <input type="text" placeholder="Indique el nombre del tratamiento." name="nombre" path="nombre">
+            <label for="estado"><b>Especialidad</b></label>
+            <input type="text" placeholder="Indique la especialidad de la cita." name="especialidad" path="especialidad">
+            <label for="fecha"><b>Estado de la cita</b></label>
+            <input type="text" placeholder="Indique el estado de la cita." name="estado" path="estado">
             <button type="submit">Realizar filtrado</button>
 
           </form>
