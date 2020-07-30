@@ -22,7 +22,7 @@ public class ConexionSQL {
   public static Connection getConnection() {
     try {
       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-      String dbURL = "jdbc:sqlserver://DESKTOP-EGNA5V0\\BASEDATOS:1433;databaseName=proyecto2;user=sa;password=sa";
+      String dbURL = "jdbc:sqlserver://DESKTOP-FPBHMV2\\MARUTSUKE:1433;databaseName=proyecto2;user=sa;password=sa";
       contact = DriverManager.getConnection(dbURL);
     } catch (SQLException | ClassNotFoundException ex) {
       ex.printStackTrace();
