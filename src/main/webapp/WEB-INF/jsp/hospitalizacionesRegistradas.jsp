@@ -98,15 +98,15 @@
           <form action="hospitalizacionesRegistradasS" method="post" commandName="hospitalizacionesRegistradasSForm">
 
             <label for="fechaIni1"><b>Primer rango de fechas</b></label>
-            <input type="text" placeholder="Fecha inicial 1:" name="fechaIni1" path="fechaIni1">
-            <input type="text" placeholder="Fecha final 1: " name="fechaFinal1" path="fechaFinal1">
+            <input type="text" placeholder="Fecha inicial" name="fechaIni1" path="fechaIni1">
+            <input type="text" placeholder="Fecha final" name="fechaFin1" path="fechaFin1">
             <label for="fechaIni2"><b>Segundo rango de fechas</b></label>
-            <input type="text" placeholder="Fecha inicial 2: " name="fechaIni2" path="fechaIni2">
-            <input type="text" placeholder="Fecha Final 2: " name="fechaFin2" path="fechaFin2">
+            <input type="text" placeholder="Fecha inicial" name="fechaIni2" path="fechaIni2">
+            <input type="text" placeholder="Fecha Final" name="fechaFin2" path="fechaFin2">
             <label for="estado"><b>Estado </b></label>
             <input type="text" placeholder="Indique el estado" name="estado" path="estado">
             <label for="especialidad"><b>Especialidad</b></label>
-            <input type="text" placeholder="Nombre de la especialidad " name="especialidad" path="especialdad">
+            <input type="text" placeholder="Nombre de la especialidad " name="especialidad" path="especialidad">
             <label for="nombrePaciente"><b>Nombre paciente</b></label>
             <input type="text" placeholder="Nombre paciente " name="nombrePaciente" path="nombrePaciente">
             <button type="submit">Filtrar</button>

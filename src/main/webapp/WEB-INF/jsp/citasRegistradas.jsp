@@ -104,7 +104,7 @@
             <label for="estado"><b>Estado </b></label>
             <input type="text" placeholder="Estado" name="estado" path="estado">
             <label for="especialidad"><b>Especialidad</b></label>
-            <input type="text" placeholder="Especialidad " name="especialidad" path="especialdad">
+            <input type="text" placeholder="Especialidad " name="especialidad" path="especialidad">
             <label for="nombrePaciente"><b>Nombre paciente</b></label>
             <input type="text" placeholder="Nombre paciente " name="nombrePaciente" path="nombrePaciente">
             <button type="submit">Filtrar</button>
