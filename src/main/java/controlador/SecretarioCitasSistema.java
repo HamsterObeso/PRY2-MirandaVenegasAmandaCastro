@@ -1,6 +1,8 @@
 package controlador;
 
+import dao.CitaDAO;
 import formulario.SecretarioCitasRegistradas;
+import java.sql.SQLException;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,12 +28,13 @@ public class SecretarioCitasSistema {
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroCitasSistema(@ModelAttribute("citasRegistradasSecreForm") SecretarioCitasRegistradas form,
       Map<String, Object> model) {
-    //filtroCitasSistema(form.getFecha1(), form.getFecha2(), form.getEspecialidad(), form.getEstado(), form.getNombrePaciente())
-    System.out.println(form.getFecha1());
-    System.out.println(form.getFecha2());
-    System.out.println(form.getEspecialidad());
-    System.out.println(form.getEstado());
-    System.out.println(form.getNombrePaciente());
+      try{
+      CitaDAO.citasSistema(form.getFecha1(), form.getFecha2(), form.getEstado(), form.getEspecialidad(), form.getNombrePaciente());
+      model.put("form", "form");
+      } catch(SQLException e){
+          model.put("error", "error");
+          e.printStackTrace();
+      }
     
     return "citasRegistradas";
   }
