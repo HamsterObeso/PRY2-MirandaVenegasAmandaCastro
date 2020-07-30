@@ -95,12 +95,10 @@
             <label for="fecha"><b>Rango de fechas</b></label>
             <input type="text" placeholder="Indique el primer rango de fecha." name="fecha1" path="fecha1">
             <input type="text" placeholder="Indique el segundo rango de fecha." name="fecha2" path="fecha2">
-            <label for="estado"><b>Estado</b></label>
-            <input type="text" placeholder="Indique el estado del diagnostico." name="estado" path="estado">
-            <label for="fecha"><b>Especialidad del diagnostico</b></label>
-            <input type="text" placeholder="Indique la especialidad del diagnostico." name="especialidad" path="especialidad">
-            <label for="fecha"><b>Nombre del paciente</b></label>
-            <input type="text" placeholder="Indique el nombre del paciente." name="nombrePaciente" path="nombrePaciente">
+            <label for="nivel"><b>Nivel</b></label>
+            <input type="text" placeholder="Indique el nivel del diagnostico." name="nivel" path="nivel">
+            <label for="diag"><b>Nombre del diagnóstico</b></label>
+            <input type="text" placeholder="Indique el nombre del diagnóstico." name="nombre" path="nombre">
             <button type="submit">Realizar filtrado</button>
 
           </form>

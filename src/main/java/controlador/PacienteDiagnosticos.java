@@ -1,6 +1,9 @@
 package controlador;
 
+import contexto.ContextoUsuario;
+import dao.DiagnosticoDAO;
 import formulario.PacienteDiagnosticosAsociados;
+import java.sql.SQLException;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,11 +29,13 @@ public class PacienteDiagnosticos {
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroDiagnosticosPaciente(@ModelAttribute("diagnosticosAsociadasPacForm") PacienteDiagnosticosAsociados form,
       Map<String, Object> model) {
-    //filtroDiagnosticos(form.getFecha1(), form.getFecha2(), form.getNivel(), form.getNombre(), ContextoUsuario.getIdUsuario())
-    System.out.println(form.getFecha1());
-    System.out.println(form.getFecha2());
-    System.out.println(form.getNivel());
-    System.out.println(form.getNombre());
+    try {
+      DiagnosticoDAO.diagnosticosAsociadosP(form.getFecha1(), form.getFecha2(), form.getNivel(), form.getNombre(), ContextoUsuario.getIdUsuario());
+      model.put("form", "form");
+    } catch(SQLException e){
+      model.put("error", "error");
+      e.printStackTrace();
+    }
     return "diagnosticosAsociadosPaciente";
   }
 }

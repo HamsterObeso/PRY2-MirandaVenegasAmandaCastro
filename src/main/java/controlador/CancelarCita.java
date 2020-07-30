@@ -14,26 +14,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author Muro
  */
+
 @Controller
-@RequestMapping(value = "/solicitarCita")
-public class SolicitarCita {
+@RequestMapping(value = "/cancelarCitaPaciente")
+public class CancelarCita {
+  
   @RequestMapping(method = RequestMethod.GET)
-  public String viewSolicitarCita(Map<String, Object> model) {
+  public String viewCancelarCitaP(Map<String, Object> model) {
     Cita cita = new Cita();
-    model.put("patientForm", cita);
-    return "solicitarCita";
+    model.put("cancelarCitaPacForm", cita);
+    return "cancelarCitaPaciente";
   }
 
   @RequestMapping(method = RequestMethod.POST)  
-  public String solicitudCita(@ModelAttribute("patientForm") Cita cita,
+  public String cancelarCitaP(@ModelAttribute("cancelarCitaPacForm") Cita cita,
       Map<String, Object> model) {
     try {
-      CitaDAO.anadirCita(cita.getEspecialidad(), cita.getFecha(), cita.getHora(), cita.getObservacion(), ContextoUsuario.getIdUsuario());
+      if(ContextoUsuario.getTipo().equals("Paciente")){
+        CitaDAO.cancelarCitaPaciente(cita.getIdCita(), ContextoUsuario.getIdUsuario());
+      } else {
+        CitaDAO.cancelarCitaFuncionario(cita.getIdCita(), ContextoUsuario.getIdUsuario());
+      }
       model.put("cita", "cita");
     } catch(SQLException e){
       model.put("error", "error");
       e.printStackTrace();
     }
-    return "solicitarCita";
+    return "cancelarCitaPaciente";
   }
 }

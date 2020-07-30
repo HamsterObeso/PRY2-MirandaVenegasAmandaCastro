@@ -1,7 +1,10 @@
 package controlador;
 
+import contexto.ContextoUsuario;
+import dao.CitaDAO;
 import java.util.Map;
 import formulario.PacienteCitasAsociadas;
+import java.sql.SQLException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,20 +20,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PacienteCitas {
   
   @RequestMapping(method = RequestMethod.GET)
-    public String viewFiltroCitasPaciente(Map<String, Object> model) {
-      PacienteCitasAsociadas form = new PacienteCitasAsociadas();
-      model.put("citasAsociadasPacForm", form);
-      return "citasAsociadasPaciente";
+  public String viewFiltroCitasPaciente(Map<String, Object> model) {
+    PacienteCitasAsociadas form = new PacienteCitasAsociadas();
+    model.put("citasAsociadasPacForm", form);
+    return "citasAsociadasPaciente";
+  }
+
+  @RequestMapping(method = RequestMethod.POST)  
+  public String filtroCitasPaciente(@ModelAttribute("citasAsociadasPacForm") PacienteCitasAsociadas form,
+      Map<String, Object> model) {
+    try {
+      CitaDAO.citasAsociadasPaciente(form.getFecha1(), form.getFecha2(), form.getEstado(), form.getEspecialidad(), ContextoUsuario.getIdUsuario());
+      model.put("form", "form");
+    } catch(SQLException e){
+      model.put("error", "error");
+      e.printStackTrace();
     }
-    
-    @RequestMapping(method = RequestMethod.POST)  
-    public String filtroCitasPaciente(@ModelAttribute("citasAsociadasPacForm") PacienteCitasAsociadas form,
-        Map<String, Object> model) {
-      //filtroCitas(form.getFecha1(), form.getFecha2(), form.getEstado(), form.getEspecialidad(), ContextoUsuario.getIdUsuario())
-      System.out.println(form.getFecha1());
-      System.out.println(form.getFecha2());
-      System.out.println(form.getEstado());
-      System.out.println(form.getEspecialidad());
-      return "citasAsociadasPaciente";
-    }
+    return "citasAsociadasPaciente";
+  }
 }
