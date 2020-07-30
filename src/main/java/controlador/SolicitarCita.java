@@ -17,25 +17,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/solicitarCita")
 public class SolicitarCita {
-    
-    @RequestMapping(method = RequestMethod.GET)
-    public String viewSolicitarCita(Map<String, Object> model) {
-      Cita cita = new Cita();
-      model.put("patientForm", cita);
-      return "solicitarCita";
+  @RequestMapping(method = RequestMethod.GET)
+  public String viewSolicitarCita(Map<String, Object> model) {
+    Cita cita = new Cita();
+    model.put("patientForm", cita);
+    return "solicitarCita";
+  }
+
+  @RequestMapping(method = RequestMethod.POST)  
+  public String validarInicioSesion(@ModelAttribute("patientForm") Cita cita,
+      Map<String, Object> model) {
+    try {
+      CitaDAO.anadirCita(cita.getEspecialidad(), cita.getFecha(), cita.getHora(), cita.getObservacion(), ContextoUsuario.getIdUsuario());
+      model.put("cita", "cita");
+    } catch(SQLException e){
+      model.put("error", "error");
+      e.printStackTrace();
     }
-    
-    @RequestMapping(method = RequestMethod.POST)  
-    public String validarInicioSesion(@ModelAttribute("patientForm") Cita cita,
-        Map<String, Object> model) {
-      try {
-        CitaDAO.anadirCita(cita.getEspecialidad(), cita.getFecha(), cita.getHora(), cita.getObservacion(), ContextoUsuario.getIdUsuario());
-        model.put("cita", "cita");
-      } catch(SQLException e){
-        model.put("error", "error");
-        e.printStackTrace();
-      }
-      return "solicitarCita";
-    }
-    
+    return "solicitarCita";
+  }
 }
