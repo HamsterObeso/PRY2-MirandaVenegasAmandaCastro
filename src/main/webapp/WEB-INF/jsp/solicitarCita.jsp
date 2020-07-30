@@ -106,9 +106,10 @@
         </div>
 
         <% if(request.getAttribute("cita") != null) { %>
-            <script>alert("Se agrego la cita");</script>
-        <%  } %>
-        
+            <script>alert("Se agregó la cita.");</script>
+        <%  } else if (request.getAttribute("error") != null) { %>
+            <script>alert("Fallo la vaina");</script>
+        <% } %>
   </body>
 
 </html>
