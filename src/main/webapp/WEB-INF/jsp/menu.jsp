@@ -108,8 +108,11 @@
             </form:select>
             <form:button id="action" type="submit" name="button">Realizar operacion</form:button>       
         </form:form>
-           
-        <button id="close" type="button" name="button">Cerrar sesion</button>
+        
+        <form:form action="inicioSesion" method="get" modelAttribute="seleccion">
+            <form:button id="close" type="submit" name="button">Cerrar sesion</form:button>
+        </form:form>
+        
       </div>
 
     </div>

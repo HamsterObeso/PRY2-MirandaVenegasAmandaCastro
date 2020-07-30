@@ -1,5 +1,6 @@
 package controlador;
 
+import conexion.ConexionSQL;
 import contexto.ContextoUsuario;
 import java.util.Map;
 import modelo.Cuenta;
@@ -21,6 +22,7 @@ public class InicioSesion {
       Cuenta cuenta = new Cuenta();
       model.put("userForm", cuenta);
       model.put("opacity", 0);
+      ConexionSQL.getConnection();
       return "inicioSesion";
     }
     
