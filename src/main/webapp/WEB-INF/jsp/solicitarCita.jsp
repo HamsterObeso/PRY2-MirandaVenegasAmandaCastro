@@ -84,7 +84,7 @@
   <body>
 
     <div class="container">
-
+        
         <h2> Solicitar Cita </h2>
 
         <div class="form">
@@ -96,7 +96,7 @@
             <label for="fecha"><b>Fecha de la cita</b></label>
             <input type="text" placeholder="Ingrese el día deseado para la cita" name="fecha" path="fecha" required>
             <label for="hora"><b>Hora de la cita</b></label>
-            <input type="text" placeholder="Ingrese el hora deseado para la cita" name="hora" path="hora" required>
+            <input type="text" placeholder="Ingrese la hora deseado para la cita" name="hora" path="hora" required>
             <label for="observacion"><b>Observación</b></label>
             <input type="text" placeholder="Ingrese alguna observacion" name="observacion" path="observacion">
             <button type="submit">Solicitar Cita</button>
@@ -105,6 +105,10 @@
 
         </div>
 
+        <% if(request.getAttribute("cita") != null) { %>
+            <script>alert("Se agrego la cita");</script>
+        <%  } %>
+        
   </body>
 
 </html>

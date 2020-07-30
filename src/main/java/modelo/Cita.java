@@ -45,7 +45,7 @@ public class Cita {
       this.especialidad = especialidad;
   }
 
-  public void setFechahora(String fecha) {
+  public void setFecha(String fecha) {
       this.fecha = fecha;
   }
 

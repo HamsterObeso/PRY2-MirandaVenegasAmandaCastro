@@ -28,20 +28,14 @@ public class SolicitarCita {
     @RequestMapping(method = RequestMethod.POST)  
     public String validarInicioSesion(@ModelAttribute("patientForm") Cita cita,
         Map<String, Object> model) {
-      //solicitarCita(cita.getEspecialidad(), cita.getFecha(), cita.getHora(), cita.getObservacion(),)
-      System.out.println(cita.getEspecialidad());
-      System.out.println(cita.getFecha());
-      System.out.println(cita.getHora()); 
-      System.out.println(cita.getObservacion());
-      model.put("usuario", ContextoUsuario.getUsuario());
-      model.put("tipo", ContextoUsuario.getTipo());
-      return "menu";
-    }
+      solicitarCita(cita.getEspecialidad(), cita.getFecha(), cita.getHora(), cita.getObservacion(), ContextoUsuario.getIdUsuario());
+      model.put("cita", "cita");
+      return "solicitarCita";
+    }   
     
-    
-    private void solicitarCita(String pEspecialidad, String pFechaHora, String pObservacion, int idPaciente) {
-      try{
-        CitaDAO.anadirCita(pEspecialidad, pFechaHora, pObservacion, idPaciente);
+    private void solicitarCita(String pEspecialidad, String pFecha, String pHora, String pObservacion, int idPaciente) {
+      try {
+        CitaDAO.anadirCita(pEspecialidad, pFecha, pHora, pObservacion, idPaciente);
       } catch(SQLException e){
         e.printStackTrace();
       }

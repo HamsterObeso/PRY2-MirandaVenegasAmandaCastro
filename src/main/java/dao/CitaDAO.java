@@ -3,8 +3,6 @@ package dao;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
 
-import modelo.Cita;
-
 import conexion.ConexionSQL;
 
 /**
@@ -14,12 +12,13 @@ import conexion.ConexionSQL;
 
 public class CitaDAO {
   
-  public static void anadirCita(String especialidad, String fechaHora, String observacion, int idUsuario)throws SQLException{
-    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call anadirCitas(?, ?, ?, ?)}");
+  public static void anadirCita(String especialidad, String fecha, String hora, String observacion, int idUsuario)throws SQLException{
+    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call anadirCitas(?, ?, ?, ?, ?)}");
     entrada.setString(1, especialidad);
-    entrada.setString(2, fechaHora);
-    entrada.setString(3, observacion);
-    entrada.setInt(4, idUsuario);  
+    entrada.setString(2, fecha);
+    entrada.setString(3, hora);
+    entrada.setString(4, observacion);
+    entrada.setInt(5, idUsuario);
     entrada.execute();
   }
   
