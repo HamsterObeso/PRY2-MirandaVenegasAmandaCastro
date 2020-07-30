@@ -4,6 +4,8 @@
     Author     : Masiel Castro Mora
 --%>
 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
 <!DOCTYPE html>
 <html>
     <head>
@@ -71,30 +73,21 @@
                 }
             }
         </style>
+        <title>Gestion de diagnosticos</title>
     </head>
     <body>
+        
         <div class="container">
 
             <h2>Gestión diagnosticos</h2>
 
-            <div class="form">
-
-                <form action="GestionDiagnosticos.jsp" method="post" commandName="patientForm">
-
-                    <label for="IDdiagnostico"><b>Id Diagnostico</b></label>
-                    <input type="text" placeholder="Indique la identificación del diagnostico" name="idDiagnostico" path="IdDiagnostico">
-                    <label for="nombreDiagnostico"><b>Nombre Diagnostico</b></label>
-                    <input type="text" placeholder="Indique el nombre del diagnostico " name="nombreDiagnostico" path="nombreDiagnostico">
-                    <button type="eliminarDiagnostico">Eliminar </button>
-                    <button type="modificarDiagnostico">Modificar</button>
-                    <button type="añadirDiagnostico">Añadir</button>
-                    <button type="consultarDiagnostico">Consultar</button>
-                    <button type="mostrarDiagnostico">Mostrar</button>
-
-
-            </div>
-            <div class="container" style="background-color:#f1f1f1">
-            </div>
-        </form>
+            <form:form action="gestionDiagnostico" method="post" modelAttribute="diagnostico">
+                <form:input type="submit" name="update" value="Update" path="opcion"/>
+                <form:input type="submit" name="delete" value="Delete" path="opcion"/>
+            </form:form>
+            
+        </div>
+            
+            
 </body>
 </html>
