@@ -5,9 +5,15 @@
  */
 package controlador;
 
+import contexto.ContextoUsuario;
+import dao.CitaDAO;
+import dao.FuncionarioDAO;
+import java.sql.SQLException;
 import java.util.Map;
 import modelo.Cita;
+import modelo.Funcionario;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,5 +31,18 @@ public class AsignarCita {
       model.put("patientForm", cita);
       return "asignarCita";
     }
+    
+    @RequestMapping(method = RequestMethod.POST)  
+    public String asinarCita(@ModelAttribute("patientForm") Cita cita,
+      Map<String, Object> model) {
+    try {
+      CitaDAO.asignarCita(cita.getIdCita(),ContextoUsuario.getIdUsuario());
+      model.put("cita", "cita");
+    } catch(SQLException e){
+      model.put("error", "error");
+      e.printStackTrace();
+    }
+    return "asignarCita";
+  }
     
 }
