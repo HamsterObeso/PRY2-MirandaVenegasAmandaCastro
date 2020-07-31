@@ -2,7 +2,7 @@ package formulario;
 
 /**
  *
- * @author 
+ * @author Miranda Venegas
  */
 public class FormGestionDiagnostico {
   

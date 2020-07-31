@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author pierr
+ * @author Miranda Venegas
  */
-
 @Controller 
 @RequestMapping(value = "/gestionDiagnostico")
 public class GestionDiagnostico {

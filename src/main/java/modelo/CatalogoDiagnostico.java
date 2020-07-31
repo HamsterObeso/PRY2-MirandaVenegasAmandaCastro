@@ -2,7 +2,7 @@ package modelo;
 
 /**
  *
- * @author De quien sea, ya vale verga
+ * @author Miranda Venegas
  */
 public class CatalogoDiagnostico {
   
