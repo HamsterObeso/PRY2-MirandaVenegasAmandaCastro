@@ -1,11 +1,12 @@
 package controlador;
 
-import contexto.ContextoUsuario;
-import dao.CitaDAO;
 import dao.DiagnosticoDAO;
+
 import formulario.DocEnfDiagnosticosAsociadosPaciente;
+
 import java.sql.SQLException;
 import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;

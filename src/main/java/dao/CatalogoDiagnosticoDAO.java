@@ -18,7 +18,7 @@ public class CatalogoDiagnosticoDAO {
           .prepareCall("{call obtenerCatalogoDiagnosticos()}");) {
       try(ResultSet result = cstmt.executeQuery()) {
         ArrayList<CatalogoDiagnostico> resultados = new ArrayList<>();
-        while(result.next()) {         
+        while(result.next()) {
           String nombre = result.getString("Nombre");
           int id = result.getInt("idNombreDiag");
           CatalogoDiagnostico resultado = new CatalogoDiagnostico(nombre, id);
@@ -31,7 +31,7 @@ public class CatalogoDiagnosticoDAO {
       e.printStackTrace();       
     }
     return null; 
-  }
+  } 
   
   public static boolean crearDiagnostico(String nombre) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()

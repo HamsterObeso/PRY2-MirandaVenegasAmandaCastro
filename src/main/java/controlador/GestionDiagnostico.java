@@ -1,11 +1,16 @@
 package controlador;
 
 import dao.CatalogoDiagnosticoDAO;
+
 import formulario.FormGestionDiagnostico;
+
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.Map;
+
 import modelo.CatalogoDiagnostico;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
