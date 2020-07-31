@@ -1,27 +1,27 @@
- package dao;
+package dao;
 
 import conexion.ConexionSQL;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import modelo.CatalogoDiagnostico;
+import modelo.CatalogoTratamiento;
 
 /**
  *
- * @author Miranda Venegas
+ * @author Muro
  */
-public class CatalogoDiagnosticoDAO {
-  
-  public static ArrayList<CatalogoDiagnostico> obtenerDiagnosticos() throws SQLException {
+public class CatalogoTratamientoDAO {
+ public static ArrayList<CatalogoTratamiento> obtenerTratamientos() throws SQLException {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
-          .prepareCall("{call obtenerCatalogoDiagnosticos()}");) {
+          .prepareCall("{call obtenerCatalogoTratamientos()}");) {
       try(ResultSet result = cstmt.executeQuery()) {
-        ArrayList<CatalogoDiagnostico> resultados = new ArrayList<>();
+        ArrayList<CatalogoTratamiento> resultados = new ArrayList<>();
         while(result.next()) {
           String nombre = result.getString("Nombre");
-          int id = result.getInt("idNombreDiag");
-          CatalogoDiagnostico resultado = new CatalogoDiagnostico(nombre, id);
+          String diagnostico = result.getString("Diagnostico");
+          int id = result.getInt("idNombreTratamiento");
+          CatalogoTratamiento resultado = new CatalogoTratamiento(nombre, diagnostico, id);
           resultados.add(resultado);
         }
         result.close();
@@ -33,10 +33,11 @@ public class CatalogoDiagnosticoDAO {
     return null; 
   } 
   
-  public static boolean crearDiagnostico(String nombre) {
+  public static boolean crearTratamiento(String nombre, String diagnostico) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
-          .prepareCall("{call crearCatalogoDiagnostico(?)}");) {
+          .prepareCall("{call crearCatalogoTratamiento(?, ?)}");) {
       cstmt.setString(1, nombre);
+      cstmt.setString(2, diagnostico);
       cstmt.execute();
       return true;
     } catch(SQLException e) {
@@ -45,11 +46,12 @@ public class CatalogoDiagnosticoDAO {
     return false; 
   }
   
-  public static boolean actualizarDiagnostico(int id, String nombre) {
+  public static boolean actualizarTratamiento(int id, String nombre, String diagnostico) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
-          .prepareCall("{call actualizarCatalogoDiagnostico(?, ?)}");) {
+          .prepareCall("{call actualizarCatalogoTratamiento(?, ?, ?)}");) {
       cstmt.setInt(1, id);
       cstmt.setString(2, nombre);
+      cstmt.setString(3, diagnostico);
       cstmt.execute();
       return true;  
     } catch(SQLException e) {
@@ -58,9 +60,9 @@ public class CatalogoDiagnosticoDAO {
     return false; 
   }
   
-  public static boolean eliminarDiagnostico(int id) {
+  public static boolean eliminarTratamiento(int id) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
-          .prepareCall("{call eliminarCatalogoDiagnostico(?)}");) {
+          .prepareCall("{call eliminarCatalogoTratamiento(?)}");) {
       cstmt.setInt(1, id);
       cstmt.execute();
       return true;  

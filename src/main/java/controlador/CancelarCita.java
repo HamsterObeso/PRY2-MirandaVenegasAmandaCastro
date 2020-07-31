@@ -1,9 +1,12 @@
 package controlador;
 
 import contexto.ContextoUsuario;
+import dao.CatalogoDiagnosticoDAO;
 import dao.CitaDAO;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
+import modelo.TablaCancelarCita;
 import modelo.Cita;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,6 +26,7 @@ public class CancelarCita {
   public String viewCancelarCitaP(Map<String, Object> model) {
     Cita cita = new Cita();
     model.put("cancelarCitaPacForm", cita);
+    loadTable(model);
     return "cancelarCitaPaciente";
   }
 
@@ -40,6 +44,16 @@ public class CancelarCita {
       model.put("error", "error");
       e.printStackTrace();
     }
-    return "cancelarCitaPaciente";
+    loadTable(model);
+    return "redirect:/cancelarCitaPaciente";
+  }
+  
+  private void loadTable(Map<String, Object> model) {
+    try {     
+      ArrayList<TablaCancelarCita> resultados = CitaDAO.obtenerCitasCancelarPaciente(ContextoUsuario.getIdUsuario());
+      model.put("resultados", resultados);     
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
   }
 }
