@@ -4,6 +4,8 @@
     Author     : Masiel Castro Mora
 --%>
 
+<%@page import="modelo.CatalogoDiagnostico"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
 <!DOCTYPE html>
@@ -23,44 +25,70 @@
                 box-sizing: border-box;
             }
 
-            button {
-                background-color: #4CAF50;
-                color: white;
-                padding: 14px 20px;
-                margin: 8px 0;
+            .boton {
+                background: none;
+                color: inherit;
                 border: none;
+                padding: 0;
+                font: inherit;
                 cursor: pointer;
-                width: 100%;
-            }
-
-            button:hover {
-                opacity: 0.8;
-            }
-
-            .cancelarbtn {
-                width: auto;
-                padding: 10px 18px;
-                background-color: #f44336;
-            }
-
-            .imgcontainer {
+                outline: inherit;
+                border-radius: 5px;
                 text-align: center;
-                margin: 24px 0 12px 0;
+                padding: 15px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                box-shadow: 0 5px 15px 0 rgba(22,50,30,0.3);
+                color: white;
+                width: 20%;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                margin-left: 10px;
             }
 
-            img.avatar {
-                width: 40%;
-                border-radius: 50%;
-            }
+            .boton:hover {
+                opacity: 0.8;
+            }   
 
+            label {
+                display: block;
+                margin-top: 16px;
+                margin-left: 10px;
+            }
+            
             .container {
-                padding: 16px;
+                width: 100%;
+                height: 100%;
+                background-color: #FFFFFF;
+                border-radius: 10px;
+                box-shadow: 0 5px 10px 0 rgba(32,11,11,0.25);
             }
 
             span.psw {
                 float: right;
                 padding-top: 16px;
             }
+            
+            .verde {
+                background-color: #4CAF50;
+            }
+
+             .rojo {
+               background-color: #C11E2D;
+             }
+             
+             .input {
+                 margin-left: 10px;
+             }
+             
+             table {
+                 margin: 16px;
+                 width: 100%;
+             }
+             
+             table th {
+                text-align:left;
+             }
 
             /* Change styles for span and cancel button on extra small screens */
             @media screen and (max-width: 300px) {
@@ -77,17 +105,54 @@
     </head>
     <body>
         
-        <div class="container">
-
-            <h2>Gestión diagnosticos</h2>
+        <h2>Gestión diagnosticos</h2>
+        
+        <div class="container">         
 
             <form:form action="gestionDiagnostico" method="post" modelAttribute="diagnostico">
-                <form:input type="submit" name="update" value="Update" path="opcion"/>
-                <form:input type="submit" name="delete" value="Delete" path="opcion"/>
+                <label for="id"><b>Id del diagnostico:</b></label>
+                <form:input class="input" type="number" placeholder="Ingrese el Id de la especialidad" min="0" name="id" path="id"/>
+                <label for="nombre"><b>Nombre del diagnostico:</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese el diagnostico deseado" name="nombre" path="nombre"/>              
+                <form:input class="boton verde" type="submit" name="Crear" value="Crear" path="opcion"/>
+                <form:input class="boton verde" type="submit" name="Actualizar" value="Actualizar" path="opcion"/>
+                <form:input class="boton rojo" type="submit" name="Borrar" value="Borrar" path="opcion"/>
             </form:form>
-            
+                     
         </div>
+          
+        <table>
             
+            <tr>
+                
+                <th>Id</th>
+                <th>Nombre</th>
+                
+            </tr>
+            
+            <%
+                ArrayList<CatalogoDiagnostico> diagnosticos = (ArrayList<CatalogoDiagnostico>) request.getAttribute("resultados");
+                if(diagnosticos != null) {
+                    for(CatalogoDiagnostico diagnostico: diagnosticos) {
+                        int id = diagnostico.getId();
+                        String nombre = diagnostico.getNombre();
+            %>
+                        <tr>
+                            <td><%= id%></td>
+                            <td><%= nombre%></td>
+                        </tr>
+            <%
+                    }
+                }
+            %>
+            
+        </table>
+        
+        
+        <% if(request.getAttribute("mensaje") != null) { %>
+                <script>alert(${mensaje});</script>
+        <%  } %>
+       
             
 </body>
 </html>

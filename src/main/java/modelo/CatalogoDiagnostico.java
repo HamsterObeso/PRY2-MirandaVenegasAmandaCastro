@@ -7,7 +7,7 @@ package modelo;
 public class CatalogoDiagnostico {
   
   private String nombre;
-  private int id;
+  private int id = -1;
 
   public CatalogoDiagnostico(String nombre, int id) {
     this.nombre = nombre;
