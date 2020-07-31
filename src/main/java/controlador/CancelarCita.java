@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @Controller
-@RequestMapping(value = "/cancelarCitaPaciente")
+@RequestMapping(value = "/cancelarCita")
 public class CancelarCita {
   
   @RequestMapping(method = RequestMethod.GET)

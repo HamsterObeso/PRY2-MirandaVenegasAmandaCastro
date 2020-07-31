@@ -1,10 +1,15 @@
 package controlador;
 
 import contexto.ContextoUsuario;
+
 import dao.SeguimientoDAO;
+
 import java.sql.SQLException;
+
 import java.util.Map;
+
 import modelo.Seguimiento;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;

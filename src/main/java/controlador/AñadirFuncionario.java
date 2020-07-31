@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
-import contexto.ContextoUsuario;
 import dao.FuncionarioDAO;
+
 import java.sql.SQLException;
 import java.util.Map;
+
 import modelo.Funcionario;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +32,8 @@ public class AñadirFuncionario {
       Map<String, Object> model) {
     try {
       FuncionarioDAO.anadirFuncionario(funcionario.getIdentificacion(), funcionario.getNombre(),
-        funcionario.getTipoFuncionario(), funcionario.getArea());
+        funcionario.getTipoFuncionario(), funcionario.getArea(), funcionario.getUsuario(),
+        funcionario.getContrasena());
       model.put("funcionario", "funcionario");
     } catch(SQLException e){
       model.put("error", "error");

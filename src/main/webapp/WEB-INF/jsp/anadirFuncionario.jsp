@@ -95,12 +95,14 @@
             <input type="text" placeholder="Ingrese su identificacion." name="identificacion" path="identificacion" required>
             <label for="nombre"><b>Nombre completo</b></label>
             <input type="text" placeholder="Ingrese su nombre completo" name="nombre" path="nombre" required>
-            <label for="tipo"><b>Hora de la cita</b></label>
-            <input type="text" placeholder="Ingrese su fecha de nacimiento" name="fechaNacimiento" path="fechaNacimiento" required>
             <label for="tipoFuncionario"><b>Tipo de Funcionario</b></label>
-            <input type="text" placeholder="Ingrese su tipo de sangre" name="tipoFuncionario" path="tipoFuncionario">
+            <input type="text" placeholder="Ingrese su tipo de funcionario" name="tipoFuncionario" path="tipoFuncionario">
             <label for="area"><b>Área de Trabajo</b></label>
             <input type="text" placeholder="Ingrese su área de trabajo" name="area" path="area">
+            <label for="usuario"><b>Usuario</b></label>
+            <input type="text" placeholder="Ingrese su usuario de ingreso" name="usuario" path="usuario">
+            <label for="contrasena"><b>Contraseña</b></label>
+            <input type="text" placeholder="Ingrese su contraseña" name="contrasena" path="contrasena">
             <button type="submit">Añadir Funcionario</button>
 
           </form>
