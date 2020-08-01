@@ -1,11 +1,9 @@
 package controlador;
 
-import static com.google.common.collect.ArrayListMultimap.create;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import contexto.ContextoUsuario;
-import dao.CatalogoDiagnosticoDAO;
 import dao.CitaDAO;
 import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
