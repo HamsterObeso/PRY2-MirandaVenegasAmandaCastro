@@ -16,6 +16,9 @@ public class Paciente {
   public String canton;
   public String telefono;
 
+  public Paciente() {
+  }
+
   public String getCorreo() {
     return correo;
   }

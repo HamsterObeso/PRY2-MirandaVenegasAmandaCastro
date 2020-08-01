@@ -1,10 +1,18 @@
 package controlador;
 
 import contexto.ContextoUsuario;
+
 import dao.DiagnosticoDAO;
+
 import formulario.PacienteDiagnosticosAsociados;
+
 import java.sql.SQLException;
+
+import java.util.ArrayList;
 import java.util.Map;
+
+import modelo.TablaDiagnosticosPaciente;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,4 +46,13 @@ public class PacienteDiagnosticos {
     }
     return "diagnosticosAsociadosPaciente";
   }
+  
+//  private void loadTable(Map<String, Object> model) {
+//    try {     
+//      ArrayList<TablaDiagnosticosPaciente> resultados = DiagnosticoDAO.obtenerDiagnosticos();
+//      model.put("resultados", resultados);     
+//    } catch (SQLException ex) {
+//      ex.printStackTrace();
+//    }
+//  }
 }
