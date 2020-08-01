@@ -89,17 +89,6 @@ public class Paciente {
     this.telefono = telefono;
   }
 
-  public Paciente(String IDpaciente, String nombrePaciente, String fechaNacimiento, String
-    tipoSangre, String nacionalidad, String provincia, String canton, String telefono) {
-    this.IDpaciente = IDpaciente;
-    this.nombrePaciente = nombrePaciente;
-    this.fechaNacimiento = fechaNacimiento;
-    this.tipoSangre = tipoSangre;
-    this.nacionalidad = nacionalidad;
-    this.provincia = provincia;
-    this.canton = canton;
-    this.telefono = telefono;
-  }
 
   @Override public String toString() {
     return "pacientes{" + "IDpaciente=" + IDpaciente + ", nombrePaciente=" + nombrePaciente + 
