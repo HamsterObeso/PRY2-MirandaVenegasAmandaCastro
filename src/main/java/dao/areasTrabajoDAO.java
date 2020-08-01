@@ -1,10 +1,5 @@
 package dao;
 
-/**
- *
- * @author Masiel Castro Mora
- */
-
 import conexion.ConexionSQL;
 
 import java.sql.CallableStatement;
@@ -28,7 +23,7 @@ public class AreasTrabajoDAO {
   
   public static ArrayList<TablaEspecialidad> obtenerAreas() throws SQLException {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
-          .prepareCall("{call cargarBitacora()}");) {
+          .prepareCall("{call cargarAreas()}");) {
       try(ResultSet result = cstmt.executeQuery()) {
         ArrayList<TablaEspecialidad> resultados = new ArrayList<>();
         while(result.next()) {
