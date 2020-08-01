@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@page import="modelo.TablaDiagnosticosPaciente"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
@@ -103,8 +106,53 @@
 
           </form>
 
-        </div>
-
-  </body>
-
+       </div>
+          
+        <table>
+            
+            <tr>
+                
+                <th>Id Diagnostico</th>
+                <th>Cita</th>
+                <th>Diagnostico</th>
+                <th>Nivel</th>
+                <th>Observaciones</th>
+                <th>Fecha Cita</th>
+                
+                
+            </tr>
+            
+            <%
+                ArrayList<TablaDiagnosticosPaciente> diagnosticos = (ArrayList<TablaDiagnosticosPaciente>) request.getAttribute("resultados");
+                if(diagnosticos != null) {
+                    for(TablaDiagnosticosPaciente diagnostico: diagnosticos) {
+                        int id = diagnostico.getId();
+                        int cita = diagnostico.getIdCita();
+                        String diag = diagnostico.getDiagnostico();
+                        String nivel = diagnostico.getNivel();
+                        String observaciones = diagnostico.getObservaciones();
+                        String fecha = diagnostico.getFechaCita();
+            %>
+                        <tr>
+                            <td><%= id%></td>
+                            <td><%= cita%></td>
+                            <td><%= diag%></td>
+                            <td><%= nivel%></td>
+                            <td><%= observaciones%></td>
+                            <td><%= fecha%></td>
+                        </tr>
+            <%
+                    }
+                }
+            %>
+            
+        </table>
+        
+        
+        <% if(request.getAttribute("mensaje") != null) { %>
+                <script>alert(${mensaje});</script>
+        <%  } %>
+       
+            
+</body>
 </html>
