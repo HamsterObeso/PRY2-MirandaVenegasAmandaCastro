@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Map;
 import modelo.TablaBitácora;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,24 +21,9 @@ public class Bitacora {
   
   @RequestMapping(method = RequestMethod.GET)
   public String viewInicioSesion(Map<String, Object> model) {
-    FormGestionDiagnostico form = new FormGestionDiagnostico();
-    model.put("diagnostico", form);
     loadTable(model);
-    return "gestionDiagnostico";
+    return "bitacora";
   }
-  
-//  @RequestMapping(method = RequestMethod.POST)
-//  public String validarInicioSesion(@ModelAttribute("diagnostico") FormGestionDiagnostico form,
-//      Map<String, Object> model) {
-//    switch(form.getOpcion()) {
-//      case "Crear":
-//          return crear(model, form);
-//      case "Actualizar":
-//          return actualizar(model, form);
-//      default:
-//          return eliminar(model, form);
-//    }
-//  }
   
   private void loadTable(Map<String, Object> model) {
     try {     
