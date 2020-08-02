@@ -70,7 +70,7 @@ public class GestionEspecialidad {
       model.put("mensaje", "Se actualizo el área");
     }
     loadTable(model);
-    return "redirect:/especialidades";
+    return "redirect:/gestionEspecialidad";
   }
   
   private String eliminar(Map<String, Object> model, FormGestionEspecialidad form) {
@@ -83,7 +83,7 @@ public class GestionEspecialidad {
       model.put("mensaje", "Se elimino el área");
     }
     loadTable(model);
-    return "redirect:/especialidades";
+    return "redirect:/gestionEspecialidad";
   }
   
   private void loadTable(Map<String, Object> model) {
