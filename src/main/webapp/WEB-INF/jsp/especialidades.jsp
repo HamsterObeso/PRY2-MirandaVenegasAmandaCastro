@@ -103,7 +103,7 @@
         
         <div class="container">         
 
-            <form:form action="gestionEspecialidades" method="post" modelAttribute="especialidad">
+            <form:form action="gestionEspecialidad" method="post" modelAttribute="especialidad">
                 <label for="id"><b>Id de la especialidad:</b></label>
                 <form:input class="input" type="number" placeholder="Ingrese el Id de la especialidad" min="0" name="id" path="id"/>
                 <label for="nombre"><b>Nombre de la especialidad</b></label>

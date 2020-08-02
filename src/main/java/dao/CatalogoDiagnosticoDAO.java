@@ -1,10 +1,10 @@
  package dao;
 
 import conexion.ConexionSQL;
+import generico.Tabla;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import modelo.CatalogoDiagnostico;
 
 /**
@@ -13,20 +13,25 @@ import modelo.CatalogoDiagnostico;
  */
 public class CatalogoDiagnosticoDAO {
   
-  public static ArrayList<CatalogoDiagnostico> obtenerDiagnosticos() throws SQLException {
+  public static Tabla<CatalogoDiagnostico> obtenerDiagnosticos() throws SQLException {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call obtenerCatalogoDiagnosticos()}");) {
       try(ResultSet result = cstmt.executeQuery()) {
-        ArrayList<CatalogoDiagnostico> resultados = new ArrayList<>();
+        Tabla<CatalogoDiagnostico> tabla = new Tabla<>();
         while(result.next()) {
           String nombre = result.getString("Nombre");
           int id = result.getInt("idNombreDiag");
           CatalogoDiagnostico resultado = new CatalogoDiagnostico(nombre, id);
-          resultados.add(resultado);
+          tabla.agregar(resultado);
         }
         result.close();
+
         return resultados;
       }     
+
+        return tabla;
+      }    
+
     } catch(SQLException e) {
       e.printStackTrace();       
     }
