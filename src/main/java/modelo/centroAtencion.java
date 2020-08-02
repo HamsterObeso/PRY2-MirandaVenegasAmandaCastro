@@ -7,13 +7,13 @@ package modelo;
 public class CentroAtencion {
     
     
-    public String id;
+    public int id;
     public String nombre;
     public String lugar;
     public int capacidad;
     public String tipo;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -33,7 +33,7 @@ public class CentroAtencion {
         return tipo;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -111,8 +111,8 @@
             <input type="text" placeholder="Ingrese el lugar del centro" name="lugar" path="lugar" required>
             <label for="capacidad"><b>Capacidad</b></label>
             <input type="number" placeholder="Ingrese la capacidad del centro" min=0 name="capacidad" path="capacidad" required>
-            <label for="tipoCentro"><b>Tipo Centro</b></label>
-            <input type="text" placeholder="Ingrese el tipo de Centro" name="tipoCentro" path="tipoCentro">
+            <label for="tipo"><b>Tipo Centro</b></label>
+            <input type="text" placeholder="Ingrese el tipo de Centro" name="tipo" path="tipo">
             <button type="submit">Agregar Centro</button>
 
           </form>
