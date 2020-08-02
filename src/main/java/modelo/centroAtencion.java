@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 /**
@@ -12,14 +7,14 @@ package modelo;
 public class CentroAtencion {
     
     
-    public String codigoCentro;
+    public String id;
     public String nombre;
     public String lugar;
-    public int capacidadMax;
+    public int capacidad;
     public String tipo;
 
-    public String getCodigoCentro() {
-        return codigoCentro;
+    public String getId() {
+        return id;
     }
 
     public String getNombre() {
@@ -30,16 +25,16 @@ public class CentroAtencion {
         return lugar;
     }
 
-    public int getCapacidadMax() {
-        return capacidadMax;
+    public int getCapacidad() {
+        return capacidad;
     }
 
     public String getTipo() {
         return tipo;
     }
 
-    public void setCodigoCentro(String codigoCentro) {
-        this.codigoCentro = codigoCentro;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setNombre(String nombre) {
@@ -50,27 +45,17 @@ public class CentroAtencion {
         this.lugar = lugar;
     }
 
-    public void setCapacidadMax(int capacidadMax) {
-        this.capacidadMax = capacidadMax;
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
     }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
-    public CentroAtencion(String codigoCentro, String nombre, String lugar, int capacidadMax, String tipo) {
-        this.codigoCentro = codigoCentro;
-        this.nombre = nombre;
-        this.lugar = lugar;
-        this.capacidadMax = capacidadMax;
-        this.tipo = tipo;
-    }
 
-    @Override
-    public String toString() {
-        return "centroAtencion{" + "codigoCentro=" + codigoCentro + ", nombre=" + nombre + ", lugar=" + lugar + ", capacidadMax=" + capacidadMax + ", tipo=" + tipo + '}';
+    @Override public String toString() {
+        return "centroAtencion{" + "codigoCentro=" + id + ", nombre=" + nombre + ", lugar=" +
+          lugar + ", capacidadMax=" + capacidad + ", tipo=" + tipo + '}';
     }
-    
-    
-    
+     
 }

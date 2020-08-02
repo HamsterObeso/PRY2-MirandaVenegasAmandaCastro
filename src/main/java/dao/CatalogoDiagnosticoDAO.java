@@ -25,18 +25,14 @@ public class CatalogoDiagnosticoDAO {
           tabla.agregar(resultado);
         }
         result.close();
-
-        return resultados;
-      }     
-
         return tabla;
       }    
-
     } catch(SQLException e) {
-      e.printStackTrace();       
+    e.printStackTrace();       
     }
-    return null; 
-  } 
+    return null;
+  }
+
   
   public static boolean crearDiagnostico(String nombre) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
