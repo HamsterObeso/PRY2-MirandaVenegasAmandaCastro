@@ -16,7 +16,7 @@ public class PacienteDAO {
     public static Paciente paciente;
     public static ResultSet result;
     
-    public void ingresarProveedor(Paciente paciente) throws SQLException{
+    public void ingresarPaciente(Paciente paciente) throws SQLException{
         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call anadirPaciente(?,?,?,?,?,?,?,?,?)}");
         /*entrada.setString(1,paciente.getID());
         entrada.setString(2,paciente.getUsuario());

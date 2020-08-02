@@ -26,7 +26,7 @@ public class CatalogoDiagnosticoDAO {
         }
         result.close();
         return resultados;
-      }    
+      }     
     } catch(SQLException e) {
       e.printStackTrace();       
     }
