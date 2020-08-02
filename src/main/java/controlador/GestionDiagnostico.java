@@ -3,10 +3,9 @@ package controlador;
 import dao.CatalogoDiagnosticoDAO;
 
 import formulario.FormGestionDiagnostico;
+import generico.Tabla;
 
 import java.sql.SQLException;
-
-import java.util.ArrayList;
 import java.util.Map;
 
 import modelo.CatalogoDiagnostico;
@@ -87,7 +86,7 @@ public class GestionDiagnostico {
   
   private void loadTable(Map<String, Object> model) {
     try {     
-      ArrayList<CatalogoDiagnostico> resultados = CatalogoDiagnosticoDAO.obtenerDiagnosticos();
+      Tabla<CatalogoDiagnostico> resultados = CatalogoDiagnosticoDAO.obtenerDiagnosticos();
       model.put("resultados", resultados);     
     } catch (SQLException ex) {
       ex.printStackTrace();

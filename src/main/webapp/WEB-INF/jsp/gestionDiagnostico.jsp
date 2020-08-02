@@ -4,6 +4,7 @@
     Author     : Masiel Castro Mora
 --%>
 
+<%@page import="generico.Tabla"%>
 <%@page import="modelo.CatalogoDiagnostico"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
@@ -125,29 +126,39 @@
             
             <tr>
                 
-                <th>Id</th>
-                <th>Nombre</th>
+                <%               
+                    Tabla<CatalogoDiagnostico> diagnosticos = (Tabla<CatalogoDiagnostico>) request.getAttribute("resultados");
+                    if(diagnosticos != null) {
+                        for(String columna: diagnosticos.obtenerColumnas()) {    
+                %> 
+                            <th><%= columna %></th>       
+                <%
+                        }
+                    }
+                %>
                 
             </tr>
             
-            <%
-                ArrayList<CatalogoDiagnostico> diagnosticos = (ArrayList<CatalogoDiagnostico>) request.getAttribute("resultados");
+            <%          
                 if(diagnosticos != null) {
-                    for(CatalogoDiagnostico diagnostico: diagnosticos) {
-                        int id = diagnostico.getId();
-                        String nombre = diagnostico.getNombre();
+                    for(int i = 0; i < diagnosticos.obtenerLargo(); i++) {
+                        ArrayList<Object> campos = diagnosticos.obtenerCampos(i);               
             %>
-                        <tr>
-                            <td><%= id%></td>
-                            <td><%= nombre%></td>
+                        <tr>            
+            <%
+                            for(Object campo: campos) {                       
+            %>
+                                <td><%= campo %></td>
+            <%
+                            }   
+            %>
                         </tr>
             <%
                     }
                 }
             %>
-            
+               
         </table>
-        
         
         <% if(request.getAttribute("mensaje") != null) { %>
                 <script>alert(${mensaje});</script>
