@@ -6,17 +6,49 @@ package modelo;
  */
 
 public class Paciente {
-  public String IDpaciente;
-  public String nombrePaciente;
-  public String fechaNacimiento;
-  public String tipoSangre;
-  public String nacionalidad;
-  public String provincia;
-  public String correo;
-  public String canton;
-  public String telefono;
+  private int idPaciente;
+  private String identificacion;
+  private String nombrePaciente;
+  private String fechaNacimiento;
+  private String tipoSangre;
+  private String nacionalidad;
+  private String provincia;
+  private String correo;
+  private String canton;
+  private String opcion;
+  private String usuario;
+  private String contraseña;
 
-  public Paciente() {
+  public String getUsuario() {
+    return usuario;
+  }
+
+  public void setUsuario(String usuario) {
+    this.usuario = usuario;
+  }
+
+  public String getContraseña() {
+    return contraseña;
+  }
+
+  public void setContraseña(String contraseña) {
+    this.contraseña = contraseña;
+  }
+
+  public String getIdentificacion() {
+    return identificacion;
+  }
+
+  public void setIdentificacion(String identificacion) {
+    this.identificacion = identificacion;
+  }
+
+  public String getOpcion() {
+    return opcion;
+  }
+
+  public void setOpcion(String opcion) {
+    this.opcion = opcion;
   }
 
   public String getCorreo() {
@@ -43,8 +75,8 @@ public class Paciente {
     this.canton = canton;
   }
 
-  public String getIDpaciente() {
-    return IDpaciente;
+  public int getIdPaciente() {
+    return idPaciente;
   }
 
   public String getNombrePaciente() {
@@ -63,12 +95,8 @@ public class Paciente {
     return nacionalidad;
   }
 
-  public String getTelefono() {
-    return telefono;
-  }
-
-  public void setIDpaciente(String IDpaciente) {
-    this.IDpaciente = IDpaciente;
+  public void setIdPaciente(int idPaciente) {
+    this.idPaciente = idPaciente;
   }
 
   public void setNombrePaciente(String nombrePaciente) {
@@ -86,17 +114,9 @@ public class Paciente {
   public void setNacionalidad(String nacionalidad) {
     this.nacionalidad = nacionalidad;
   }
-
-
-  public void setTelefono(String telefono) {
-    this.telefono = telefono;
-  }
-
-
   @Override public String toString() {
-    return "pacientes{" + "IDpaciente=" + IDpaciente + ", nombrePaciente=" + nombrePaciente + 
+    return "pacientes{" + "IDpaciente=" + idPaciente + ", nombrePaciente=" + nombrePaciente + 
     ", fechaNacimiento=" + fechaNacimiento + ", tipoSangre=" + tipoSangre + ", nacionalidad=" +
-      nacionalidad + ", provincia=" + provincia + ", canton=" + canton + ", telefono=" +
-      telefono + '}';
+      nacionalidad + ", provincia=" + provincia + ", canton=" + canton + '}';
   }
 }

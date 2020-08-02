@@ -33,7 +33,6 @@ public class CatalogoDiagnosticoDAO {
     return null;
   }
 
-  
   public static boolean crearDiagnostico(String nombre) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call crearCatalogoDiagnostico(?)}");) {
