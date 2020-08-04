@@ -1,4 +1,4 @@
-<%@page import="modelo.Cita"%>
+<%@page import="modelo.TablaCitasDE"%>
 <%@page import="generico.Tabla"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -126,7 +126,7 @@
         <tr>
 
             <%               
-                Tabla<Cita> diagnosticos = (Tabla<Cita>) request.getAttribute("resultados");
+                Tabla<TablaCitasDE> diagnosticos = (Tabla<TablaCitasDE>) request.getAttribute("resultados");
                 if(diagnosticos != null) {
                     for(String columna: diagnosticos.obtenerColumnas()) {    
             %> 

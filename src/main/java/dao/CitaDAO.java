@@ -4,9 +4,12 @@ import java.sql.CallableStatement;
 import java.sql.SQLException;
 
 import conexion.ConexionSQL;
+import generico.Tabla;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import modelo.CatalogoDiagnostico;
 import modelo.TablaCita;
+import modelo.TablaCitasDE;
 
 /**
  *
@@ -117,9 +120,10 @@ public class CitaDAO {
     }
 
     // Funciona para ambos doctor|enfermero y secretario. Mismos parámetros.
-    public static void citasSistema(String f1, String f2, String pEstado, String pEspecialidad,
+    public static Tabla<TablaCitasDE> citasSistema(String f1, String f2, String pEstado, String pEspecialidad,
             String pNombrePaciente) throws SQLException {
-        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call citasSistema(?, ?, ?, ?, ?)}");
+      try(CallableStatement entrada = ConexionSQL.getConnection()
+          .prepareCall("{call citasSistema(?, ?, ?, ?, ?)}");) {
         if (f1.isEmpty() == true) {
             entrada.setNull(1, java.sql.Types.VARCHAR);
         } else {
@@ -145,7 +149,26 @@ public class CitaDAO {
         } else {
             entrada.setString(5, pNombrePaciente);
         }
-        entrada.execute();
+        try(ResultSet result = entrada.executeQuery()) {
+          Tabla<TablaCitasDE> tabla = new Tabla<>();
+          while(result.next()) {
+            int idCita = result.getInt("idCita");
+            String especialidad = result.getString("especialidad");
+            String fecha = result.getString("fecha");
+            String hora = result.getString("hora");
+            String observacion = result.getString("observacion");
+            String estado = result.getString("estado");
+            String nombrePaciente = result.getString("nombrePaciente");
+            TablaCitasDE resultado = new TablaCitasDE(idCita, especialidad, fecha, hora, observacion, estado, nombrePaciente);
+            tabla.agregar(resultado);
+          }
+          result.close();
+          return tabla;
+        }    
+      } catch(SQLException e) {
+        e.printStackTrace();       
+      }
+      return null;
     }
 
     public static void asignarCita(int idCita, int idUsuario) throws SQLException {
