@@ -9,10 +9,12 @@ public class TablaCentrosAtencion {
   private String nombre;
   private int capacidad;
   private String tipoCentro;
+  private String lugar; 
 
-  public TablaCentrosAtencion(int id, String nombre, int capacidad, String tipoCentro) {
+  public TablaCentrosAtencion(int id, String nombre, String lugar, int capacidad, String tipoCentro) {
     this.id = id;
     this.nombre = nombre;
+    this.lugar = lugar;
     this.capacidad = capacidad;
     this.tipoCentro = tipoCentro;
   }
@@ -47,6 +49,14 @@ public class TablaCentrosAtencion {
 
   public void setTipoCentro(String tipoCentro) {
     this.tipoCentro = tipoCentro;
+  }
+
+  public String getLugar() {
+    return lugar;
+  }
+
+  public void setLugar(String lugar) {
+    this.lugar = lugar;
   }
   
 }

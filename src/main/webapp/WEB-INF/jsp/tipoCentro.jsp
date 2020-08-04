@@ -1,7 +1,7 @@
-<%@page import="modelo.TablaEspecialidad"%>
+<%@page import="modelo.TablaTipoCentro"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <!DOCTYPE html>
 <html>
     <head>
@@ -95,24 +95,22 @@
                 }
             }
         </style>
-        <title>Gestión de Áreas o Especialidades</title>
+    <title>Agregar Tipo Centros de Atención</title>
     </head>
     <body>
         
-        <h2>Gestión Áreas o Especialidades</h2>
-        
-        <div class="container">         
+        <h2> Agregar Tipo Centros </h2>
 
-            <form:form action="gestionEspecialidad" method="post" modelAttribute="especialidad">
-                <label for="id"><b>Id de la especialidad:</b></label>
-                <form:input class="input" type="number" placeholder="Ingrese el Id de la especialidad" min="0" name="id" path="id"/>
-                <label for="nombre"><b>Nombre de la especialidad</b></label>
-                <form:input class="input" type="text" placeholder="Ingrese la especialidad deseada" name="nombre" path="nombre"/>              
-                <form:input class="boton verde" type="submit" name="Crear" value="Crear" path="opcion"/>
-                <form:input class="boton verde" type="submit" name="Actualizar" value="Actualizar" path="opcion"/>
-                <form:input class="boton rojo" type="submit" name="Borrar" value="Borrar" path="opcion"/>
-            </form:form>
-                     
+        <div class="form">
+
+          <form action="agregarTipoCentro" method="post" commandName="agregarTipoCentroForm">
+
+            <label for="fecha"><b>Nombre Tipo Centro</b></label>
+            <input type="text" placeholder="Ingrese el nombre del tipo del centro" name="nombre" path="nombre" required>
+            <button type="submit">Añadir Tipo Centro</button>
+
+          </form>
+            
         </div>
           
         <table>
@@ -125,11 +123,11 @@
             </tr>
             
             <%
-                ArrayList<TablaEspecialidad> especialidades = (ArrayList<TablaEspecialidad>) request.getAttribute("resultados");
-                if(especialidades != null) {
-                    for(TablaEspecialidad especialidad: especialidades) {
-                        int id = especialidad.getId();
-                        String nombre = especialidad.getNombre();
+                ArrayList<TablaTipoCentro> tipoCentros = (ArrayList<TablaTipoCentro>) request.getAttribute("resultados");
+                if(tipoCentros != null) {
+                    for(TablaTipoCentro tipoCentro: tipoCentros) {
+                        int id = tipoCentro.getId();
+                        String nombre = tipoCentro.getNombre();
             %>
                         <tr>
                             <td><%= id%></td>

@@ -1,7 +1,7 @@
-<%@page import="modelo.TablaEspecialidad"%>
+<%@page import="modelo.CatalogoTratamiento"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <!DOCTYPE html>
 <html>
     <head>
@@ -95,58 +95,48 @@
                 }
             }
         </style>
-        <title>Gestión de Áreas o Especialidades</title>
+    <title>Añadir Paciente</title>
     </head>
     <body>
         
-        <h2>Gestión Áreas o Especialidades</h2>
+        <h2>Añadir Paciente</h2>
         
         <div class="container">         
 
-            <form:form action="gestionEspecialidad" method="post" modelAttribute="especialidad">
-                <label for="id"><b>Id de la especialidad:</b></label>
-                <form:input class="input" type="number" placeholder="Ingrese el Id de la especialidad" min="0" name="id" path="id"/>
-                <label for="nombre"><b>Nombre de la especialidad</b></label>
-                <form:input class="input" type="text" placeholder="Ingrese la especialidad deseada" name="nombre" path="nombre"/>              
-                <form:input class="boton verde" type="submit" name="Crear" value="Crear" path="opcion"/>
-                <form:input class="boton verde" type="submit" name="Actualizar" value="Actualizar" path="opcion"/>
-                <form:input class="boton rojo" type="submit" name="Borrar" value="Borrar" path="opcion"/>
+            <form:form action="anadirPaciente" method="post" modelAttribute="paciente">
+                <label for="identificacion"><b>Cédula</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese su identificacion" name="identificacion" path="identificacion"/>
+                <label for="fechaNacimiento"><b>Fecha de Nacimiento</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese su fecha de nacimiento" name="fechaNacimiento" path="fechaNacimiento"/>
+                <label for="tipoSangre"><b>Tipo de Sangre</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese su tipo de sangre" name="tipoSangre" path="tipoSangre"/>
+                <label for="nacionalidad"><b>Nacionalidad</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese su nacionalidad" name="nacionalidad" path="nacionalidad"/> 
+                <label for="correo"><b>Correo</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese su correo" name="correo" path="correo"/> 
+                <label for="usuario"><b>Usuario</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese su usuario" name="usuario" path="usuario"/> 
+                <label for="contraseña"><b>Contraseña</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese su contraseña" name="contraseña" path="contraseña"/> 
+                <form:input class="boton verde" type="submit" name="Añadir Paciente" value="Añadir Paciente" path="opcion"/>
             </form:form>
                      
         </div>
-          
-        <table>
-            
-            <tr>
-                
-                <th>Id</th>
-                <th>Nombre</th>
-                
-            </tr>
-            
-            <%
-                ArrayList<TablaEspecialidad> especialidades = (ArrayList<TablaEspecialidad>) request.getAttribute("resultados");
-                if(especialidades != null) {
-                    for(TablaEspecialidad especialidad: especialidades) {
-                        int id = especialidad.getId();
-                        String nombre = especialidad.getNombre();
-            %>
-                        <tr>
-                            <td><%= id%></td>
-                            <td><%= nombre%></td>
-                        </tr>
-            <%
-                    }
-                }
-            %>
-            
-        </table>
         
+        <div class="container"> 
+            
+            <form:form action="anadirTelefono" method="post" modelAttribute="telefono">
+                <label for="identificacion"><b>Identificacion:</b></label>
+                <form:input class="input" type="text" placeholder="Indique su idenficacion" name="identificacion" path="identificacion"/>
+                <label for="telefono"><b>Telefono</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese el telefono" name="telefono" path="telefono"/>
+                <form:input class="boton verde" type="submit" name="Añadir Teléfono" value="Añadir Teléfono" path="opcion"/>
+            </form:form>
+                
+        </div>
         
         <% if(request.getAttribute("mensaje") != null) { %>
                 <script>alert(${mensaje});</script>
         <%  } %>
-       
-            
 </body>
 </html>

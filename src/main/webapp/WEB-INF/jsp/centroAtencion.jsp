@@ -1,7 +1,7 @@
-<%@page import="modelo.TablaEspecialidad"%>
+<%@page import="modelo.TablaCentrosAtencion"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <!DOCTYPE html>
 <html>
     <head>
@@ -95,23 +95,27 @@
                 }
             }
         </style>
-        <title>Gestión de Áreas o Especialidades</title>
+    <title>Agregar Centros</title>
     </head>
     <body>
         
-        <h2>Gestión Áreas o Especialidades</h2>
-        
-        <div class="container">         
+        <h2> Agregar Centros </h2>
 
-            <form:form action="gestionEspecialidad" method="post" modelAttribute="especialidad">
-                <label for="id"><b>Id de la especialidad:</b></label>
-                <form:input class="input" type="number" placeholder="Ingrese el Id de la especialidad" min="0" name="id" path="id"/>
-                <label for="nombre"><b>Nombre de la especialidad</b></label>
-                <form:input class="input" type="text" placeholder="Ingrese la especialidad deseada" name="nombre" path="nombre"/>              
-                <form:input class="boton verde" type="submit" name="Crear" value="Crear" path="opcion"/>
-                <form:input class="boton verde" type="submit" name="Actualizar" value="Actualizar" path="opcion"/>
-                <form:input class="boton rojo" type="submit" name="Borrar" value="Borrar" path="opcion"/>
-            </form:form>
+        <div class="form">
+
+          <form action="agregarCentro" method="post" commandName="agregarCentroForm">
+
+            <label for="nombre"><b>Nombre</b></label>
+            <input type="text" placeholder="Ingrese el nombre del centro" name="nombre" path="nombre" required>
+            <label for="lugar"><b>Lugar</b></label>
+            <input type="text" placeholder="Ingrese el lugar del centro" name="lugar" path="lugar" required>
+            <label for="capacidad"><b>Capacidad</b></label>
+            <input type="number" placeholder="Ingrese la capacidad del centro" min=0 name="capacidad" path="capacidad" required>
+            <label for="tipo"><b>Tipo Centro</b></label>
+            <input type="text" placeholder="Ingrese el tipo de Centro" name="tipo" path="tipo">
+            <button type="submit">Agregar Centro</button>
+
+          </form>
                      
         </div>
           
@@ -121,19 +125,28 @@
                 
                 <th>Id</th>
                 <th>Nombre</th>
+                <th>Lugar</th>
+                <th>Capacidad</th>
+                <th>Tipo de Centro</th>
                 
             </tr>
             
             <%
-                ArrayList<TablaEspecialidad> especialidades = (ArrayList<TablaEspecialidad>) request.getAttribute("resultados");
-                if(especialidades != null) {
-                    for(TablaEspecialidad especialidad: especialidades) {
-                        int id = especialidad.getId();
-                        String nombre = especialidad.getNombre();
+                ArrayList<TablaCentrosAtencion> centros = (ArrayList<TablaCentrosAtencion>) request.getAttribute("resultados");
+                if(centros != null) {
+                    for(TablaCentrosAtencion centro: centros) {
+                        int id = centro.getId();
+                        String nombre = centro.getNombre();
+                        String lugar = centro.getLugar();
+                        int capacidad = centro.getCapacidad();
+                        String tipoCentro = centro.getTipoCentro();
             %>
                         <tr>
                             <td><%= id%></td>
                             <td><%= nombre%></td>
+                            <td><%= lugar%></td>
+                            <td><%= capacidad%></td>
+                            <td><%= tipoCentro%></td>
                         </tr>
             <%
                     }

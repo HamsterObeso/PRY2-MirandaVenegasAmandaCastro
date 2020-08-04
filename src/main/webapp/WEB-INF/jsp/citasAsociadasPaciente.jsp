@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@page import="modelo.TablaCita"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
@@ -104,6 +107,50 @@
           </form>
 
         </div>
+        
+        <table>
+            
+            <tr>
+                
+                <th>Id</th>
+                <th>Especialidad</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Observacion</th>
+                <th>Estado</th>
+                
+            </tr>
+            
+            <%
+                ArrayList<TablaCita> citasPaciente = (ArrayList<TablaCita>) request.getAttribute("resultados");
+                if(citasPaciente != null) {
+                    for(TablaCita cita: citasPaciente) {
+                        int id = cita.getIdCita();
+                        String especialidad = cita.getEspecialidad();
+                        String fecha = cita.getFecha();
+                        String hora = cita.getHora();
+                        String observacion = cita.getObservacion();
+                        String estado = cita.getEstado();
+            %>
+                        <tr>
+                            <td><%= id%></td>
+                            <td><%= especialidad%></td>
+                            <td><%= fecha%></td>
+                            <td><%= hora%></td>
+                            <td><%= observacion%></td>
+                            <td><%= estado%></td>
+                        </tr>
+            <%
+                    }
+                }
+            %>
+            
+        </table>
+        
+        
+        <% if(request.getAttribute("mensaje") != null) { %>
+                <script>alert(${mensaje});</script>
+        <%  } %>
 
   </body>
 

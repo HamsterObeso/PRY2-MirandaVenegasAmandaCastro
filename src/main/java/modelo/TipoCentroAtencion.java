@@ -4,14 +4,9 @@ package modelo;
  *
  * @author Muro
  */
-public class TablaTipoCentro {
-  private int id = -1;
+public class TipoCentroAtencion {
+  private int id;
   private String nombre;
-
-  public TablaTipoCentro(int id, String nombre) {
-    this.id = id;
-    this.nombre = nombre;
-  }
 
   public int getId() {
     return id;

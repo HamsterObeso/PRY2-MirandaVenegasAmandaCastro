@@ -4,7 +4,7 @@ package modelo;
  *
  * @author Muro
  */
-public class TablaCancelarCita {
+public class TablaCita {
   private int idCita = -1;
   private String especialidad;
   private String fecha;
@@ -12,7 +12,7 @@ public class TablaCancelarCita {
   private String observacion;
   private String estado;
 
-  public TablaCancelarCita(int idCita, String especialidad, String fecha, String hora, String observacion, String estado) {
+  public TablaCita(int idCita, String especialidad, String fecha, String hora, String observacion, String estado) {
     this.idCita = idCita;
     this.especialidad = especialidad;
     this.fecha = fecha;

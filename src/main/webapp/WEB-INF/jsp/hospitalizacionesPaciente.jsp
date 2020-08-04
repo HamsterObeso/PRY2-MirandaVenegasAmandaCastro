@@ -1,7 +1,7 @@
-<%@page import="modelo.TablaCita"%>
+<%@page import="modelo.TablaHospitalizacionesPaciente"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> <!DOCTYPE html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
@@ -79,61 +79,49 @@
         width: 20%
       }
 
-    </style>
+      </style>
 
-    <title>Menu Principal</title>
+    <title>Hospitalizaciones del Paciente</title>
 
   </head>
-
-  <body>
-
-    <div class="container">
-
-        <h2> Cancelar Cita </h2>
-
-        <div class="form">
-
-          <form action="cancelarCitaPaciente" method="post" commandName="cancelarCitaPacForm">
-
-            <label for="cancelar"><b>Cita a cancelar</b></label>
-            <input type="number" placeholder="Ingrese el ID de la cita que desea cancelar" name="idCita" path="idCita" required>
-            <button type="submit">Cancelar Cita</button>
-
-          </form>
-
-        </div>
-          
-        <table>
+  
+  <h2> Hospitalizaciones del Paciente </h2>
+  
+  <table>
             
             <tr>
                 
-                <th>Id</th>
+                <th>Id Hospitalizacion</th>
+                <th>Identificacion</th>
+                <th>Nombre Paciente</th>
+                <th>Diagnostico</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Final</th>
                 <th>Especialidad</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Observacion</th>
-                <th>Estado</th>
+                
                 
             </tr>
             
             <%
-                ArrayList<TablaCita> citasCancelarP = (ArrayList<TablaCita>) request.getAttribute("resultados");
-                if(citasCancelarP != null) {
-                    for(TablaCita cita: citasCancelarP) {
-                        int id = cita.getIdCita();
-                        String especialidad = cita.getEspecialidad();
-                        String fecha = cita.getFecha();
-                        String hora = cita.getHora();
-                        String observacion = cita.getObservacion();
-                        String estado = cita.getEstado();
+                ArrayList<TablaHospitalizacionesPaciente> hospitalizaciones = (ArrayList<TablaHospitalizacionesPaciente>) request.getAttribute("resultados");
+                if(hospitalizaciones != null) {
+                    for(TablaHospitalizacionesPaciente hospitalizacion: hospitalizaciones) {
+                        int id = hospitalizacion.getId();
+                        String identificacion = hospitalizacion.getIdentificacion();
+                        String nombrePaciente = hospitalizacion.getNombre();
+                        String diagnostico = hospitalizacion.getDiagnostico();
+                        String fechaIni = hospitalizacion.getFechaIni();
+                        String fechaFin = hospitalizacion.getFechaFin();
+                        String especialidad = hospitalizacion.getEspecialidad();
             %>
                         <tr>
                             <td><%= id%></td>
+                            <td><%= identificacion%></td>
+                            <td><%= nombrePaciente%></td>
+                            <td><%= diagnostico%></td>
+                            <td><%= fechaIni%></td>
+                            <td><%= fechaFin%></td>
                             <td><%= especialidad%></td>
-                            <td><%= fecha%></td>
-                            <td><%= hora%></td>
-                            <td><%= observacion%></td>
-                            <td><%= estado%></td>
                         </tr>
             <%
                     }
@@ -146,7 +134,7 @@
         <% if(request.getAttribute("mensaje") != null) { %>
                 <script>alert(${mensaje});</script>
         <%  } %>
-        
-    </body>
-    
+       
+            
+</body>
 </html>
