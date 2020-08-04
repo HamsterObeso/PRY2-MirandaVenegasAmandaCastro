@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@page import="modelo.TablaTratamientosPaciente"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
@@ -104,7 +107,52 @@
           </form>
 
         </div>
-
-  </body>
-
+        
+        <table>
+            
+            <tr>
+                
+                <th>Id Tratamiento</th>
+                <th>Nombre</th>
+                <th>Dosis Recomendada</th>
+                <th>Tipo Tratamiento</th>
+                <th>Fecha Cita</th>
+                <th>Nombre Diagnostico</th>
+                
+                
+            </tr>
+            
+            <%
+                ArrayList<TablaTratamientosPaciente> tratamientos = (ArrayList<TablaTratamientosPaciente>) request.getAttribute("resultados");
+                if(tratamientos != null) {
+                    for(TablaTratamientosPaciente tratamiento: tratamientos) {
+                        int id = tratamiento.getId();
+                        String nombre = tratamiento.getNombre();
+                        String dosis = tratamiento.getDosis();
+                        String tipoTratamiento = tratamiento.getTipoMedicamento();
+                        String fecha = tratamiento.getFechaCita();
+                        String nombreDiag = tratamiento.getDiagnostico();
+            %>
+                        <tr>
+                            <td><%= id%></td>
+                            <td><%= nombre%></td>
+                            <td><%= dosis%></td>
+                            <td><%= tipoTratamiento%></td>
+                            <td><%= fecha%></td>
+                            <td><%= nombreDiag%></td>
+                        </tr>
+            <%
+                    }
+                }
+            %>
+            
+        </table>
+        
+        
+        <% if(request.getAttribute("mensaje") != null) { %>
+                <script>alert(${mensaje});</script>
+        <%  } %>
+       
+            
+</body>
 </html>

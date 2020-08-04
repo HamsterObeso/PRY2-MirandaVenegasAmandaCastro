@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import conexion.ConexionSQL;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import modelo.TablaCancelarCita;
+import modelo.TablaCita;
 
 /**
  *
@@ -14,12 +14,12 @@ import modelo.TablaCancelarCita;
  */
 public class CitaDAO {
 
-    public static ArrayList<TablaCancelarCita> obtenerCitasCancelarPaciente(int idUsuario) throws SQLException {
+    public static ArrayList<TablaCita> obtenerCitasCancelarPaciente(int idUsuario) throws SQLException {
         try (CallableStatement cstmt = ConexionSQL.getConnection()
                 .prepareCall("{call obtenerCatalogoDiagnosticos(?)}");) {
             cstmt.setInt(1, idUsuario);
             try (ResultSet result = cstmt.executeQuery()) {
-                ArrayList<TablaCancelarCita> resultados = new ArrayList<>();
+                ArrayList<TablaCita> resultados = new ArrayList<>();
                 while (result.next()) {
                     int id = result.getInt("IDcita");
                     String especialidad = result.getString("especialidad");
@@ -27,7 +27,7 @@ public class CitaDAO {
                     String hora = result.getString("hora");
                     String observacion = result.getString("observacion");
                     String estado = result.getString("estado");
-                    TablaCancelarCita resultado = new TablaCancelarCita(id, especialidad, fecha, hora, observacion, estado);
+                    TablaCita resultado = new TablaCita(id, especialidad, fecha, hora, observacion, estado);
                     resultados.add(resultado);
                 }
                 result.close();

@@ -9,7 +9,7 @@ import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
-import modelo.TablaCancelarCita;
+import modelo.TablaCita;
 import modelo.Cita;
 import modelo.Paciente;
 import org.springframework.stereotype.Controller;
@@ -39,7 +39,7 @@ public class CancelarCita {
 
     private void loadTable(Map<String, Object> model) {
         try {
-            ArrayList<TablaCancelarCita> resultados = CitaDAO.obtenerCitasCancelarPaciente(ContextoUsuario.getIdUsuario());
+            ArrayList<TablaCita> resultados = CitaDAO.obtenerCitasCancelarPaciente(ContextoUsuario.getIdUsuario());
             model.put("resultados", resultados);
         } catch (SQLException ex) {
             ex.printStackTrace();
