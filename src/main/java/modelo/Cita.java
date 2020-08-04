@@ -6,12 +6,12 @@ package modelo;
  */
 public class Cita {
 
-    private String especialidad;
-    private String observacion;
-    private String estado;
-    private int idCita;
-    private String fecha;
-    private String hora;
+  private String especialidad;
+  private String observacion;
+  private String estado;
+  private int idCita;
+  private String fecha;
+  private String hora;
 
   public String getHora() {
     return hora;
@@ -66,4 +66,5 @@ public class Cita {
       return "citas{" + "especialidad=" + especialidad + ", fecha=" + fecha + ", hora=" + hora 
         + "observacion=" + observacion + ", estado=" + estado + '}';
   }
+  
 }

@@ -12,12 +12,11 @@ import modelo.TablaCancelarCita;
  *
  * @author Muro
  */
-
 public class CitaDAO {
   
   public static ArrayList<TablaCancelarCita> obtenerCitasCancelarPaciente(int idUsuario) throws SQLException {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
-          .prepareCall("{call obtenerCatalogoDiagnosticos(?)}");) {
+          .prepareCall("{call obtenerCitasCancelar(?)}");) {
       cstmt.setInt(1, idUsuario);
       try(ResultSet result = cstmt.executeQuery()) {
         ArrayList<TablaCancelarCita> resultados = new ArrayList<>();
@@ -52,7 +51,7 @@ public class CitaDAO {
     entrada.execute();
   }
   
-  public static void cancelarCitaPaciente(int idCita, int idUsuario) throws SQLException{
+  public static void cancelarCitaPaciente(int idCita, int idUsuario) throws SQLException {
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall
   ("{call cancelarCitaPaciente(?, ?)}");
     entrada.setInt(1, idCita);
@@ -94,7 +93,7 @@ public class CitaDAO {
   }
   
   public static void cantidadCitas(String f1, String f2, String pEspecialidad, String pEstado) 
-    throws SQLException{
+    throws SQLException {
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall
   ("{call cantidadCitas(?, ?, ?, ?)}");
     if(f1.isEmpty() == true) {

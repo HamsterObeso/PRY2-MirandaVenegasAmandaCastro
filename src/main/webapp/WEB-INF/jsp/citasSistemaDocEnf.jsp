@@ -1,3 +1,6 @@
+<%@page import="modelo.Cita"%>
+<%@page import="generico.Tabla"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -76,9 +79,18 @@
         width: 20%
       }
 
+      table {
+        margin: 16px;
+        width: 100%;
+      }
+
+      table th {
+        text-align:left;
+      }
+      
     </style>
 
-    <title>Menu Principal</title>
+    <title>Citas en sistema</title>
 
   </head>
 
@@ -106,6 +118,46 @@
           </form>
 
         </div>
+    
+    </div>
+        
+    <table>
+
+        <tr>
+
+            <%               
+                Tabla<Cita> diagnosticos = (Tabla<Cita>) request.getAttribute("resultados");
+                if(diagnosticos != null) {
+                    for(String columna: diagnosticos.obtenerColumnas()) {    
+            %> 
+                        <th><%= columna %></th>       
+            <%
+                    }
+                }
+            %>
+
+        </tr>
+
+        <%          
+            if(diagnosticos != null) {
+                for(int i = 0; i < diagnosticos.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = diagnosticos.obtenerCampos(i);               
+        %>
+                    <tr>            
+        <%
+                        for(Object campo: campos) {                       
+        %>
+                            <td><%= campo %></td>
+        <%
+                        }   
+        %>
+                    </tr>
+        <%
+                }
+            }
+        %>
+
+    </table>
 
   </body>
 
