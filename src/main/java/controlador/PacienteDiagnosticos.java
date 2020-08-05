@@ -5,12 +5,11 @@ import contexto.ContextoUsuario;
 import dao.DiagnosticoDAO;
 
 import formulario.PacienteDiagnosticosAsociados;
+import generico.Tabla;
 
 import java.sql.SQLException;
 
-import java.util.ArrayList;
 import java.util.Map;
-
 import modelo.TablaDiagnosticosPaciente;
 
 import org.springframework.stereotype.Controller;
@@ -31,28 +30,24 @@ public class PacienteDiagnosticos {
   public String viewFiltroDiagnosticosPaciente(Map<String, Object> model) {
     PacienteDiagnosticosAsociados form = new PacienteDiagnosticosAsociados();
     model.put("diagnosticosAsociadasPacForm", form);
+    loadTable("", "", "", "", ContextoUsuario.getIdUsuario(), model);
     return "diagnosticosAsociadosPaciente";
   }
     
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroDiagnosticosPaciente(@ModelAttribute("diagnosticosAsociadasPacForm") PacienteDiagnosticosAsociados form,
       Map<String, Object> model) {
-    try {
-      DiagnosticoDAO.diagnosticosAsociadosP(form.getFecha1(), form.getFecha2(), form.getNivel(), form.getNombre(), ContextoUsuario.getIdUsuario());
-      model.put("form", "form");
-    } catch(SQLException e){
-      model.put("error", "error");
-      e.printStackTrace();
-    }
+    loadTable(form.getFecha1(), form.getFecha2(), form.getNivel(), form.getNombre(), ContextoUsuario.getIdUsuario(), model);
     return "diagnosticosAsociadosPaciente";
   }
   
-//  private void loadTable(Map<String, Object> model) {
-//    try {     
-//      ArrayList<TablaDiagnosticosPaciente> resultados = DiagnosticoDAO.obtenerDiagnosticos();
-//      model.put("resultados", resultados);     
-//    } catch (SQLException ex) {
-//      ex.printStackTrace();
-//    }
-//  }
+  private void loadTable(String f1, String f2, String pNivel, 
+      String pNombre, int pUsuario, Map<String, Object> model) {
+    try {
+      Tabla<TablaDiagnosticosPaciente> resultado = DiagnosticoDAO.diagnosticosAsociadosP(f1, f2, pNivel, pNombre, pUsuario);
+      model.put("resultados", resultado);
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
+  }
 }

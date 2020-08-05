@@ -5,7 +5,7 @@ package formulario;
  * @author Muro
  */
 public class DocEnfDetalleHospitalizacion {
-  private String nombrePaciente;
+  private String nombrePaciente = "";
 
   public String getNombrePaciente() {
     return nombrePaciente;

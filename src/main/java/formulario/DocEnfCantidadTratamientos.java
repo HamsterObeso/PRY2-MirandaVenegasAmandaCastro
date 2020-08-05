@@ -5,9 +5,9 @@ package formulario;
  * @author Muro
  */
 public class DocEnfCantidadTratamientos {
-  private String tratamiento;
-  private String especialidad;
-  private String identificacion;
+  private String tratamiento = "";
+  private String especialidad = "";
+  private String identificacion = "";
 
   public String getTratamiento() {
     return tratamiento;

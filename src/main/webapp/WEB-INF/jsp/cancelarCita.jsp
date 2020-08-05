@@ -1,4 +1,5 @@
 <%@page import="modelo.TablaCita"%>
+<%@page import="generico.Tabla"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> <!DOCTYPE html>
@@ -104,49 +105,41 @@
         </div>
           
         <table>
-            
-            <tr>
-                
-                <th>Id</th>
-                <th>Especialidad</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Observacion</th>
-                <th>Estado</th>
-                
-            </tr>
-            
-            <%
-                ArrayList<TablaCita> citasCancelarP = (ArrayList<TablaCita>) request.getAttribute("resultados");
-                if(citasCancelarP != null) {
-                    for(TablaCita cita: citasCancelarP) {
-                        int id = cita.getIdCita();
-                        String especialidad = cita.getEspecialidad();
-                        String fecha = cita.getFecha();
-                        String hora = cita.getHora();
-                        String observacion = cita.getObservacion();
-                        String estado = cita.getEstado();
-            %>
-                        <tr>
-                            <td><%= id%></td>
-                            <td><%= especialidad%></td>
-                            <td><%= fecha%></td>
-                            <td><%= hora%></td>
-                            <td><%= observacion%></td>
-                            <td><%= estado%></td>
-                        </tr>
+
+        <tr>
+
+            <%               
+                Tabla<TablaCita> citas = (Tabla<TablaCita>) request.getAttribute("resultados");
+                if(citas != null) {
+                    for(String columna: citas.obtenerColumnas()) {    
+            %> 
+                        <th><%= columna %></th>       
             <%
                     }
                 }
             %>
-            
-        </table>
-        
-        
-        <% if(request.getAttribute("mensaje") != null) { %>
-                <script>alert(${mensaje});</script>
-        <%  } %>
-        
-    </body>
-    
-</html>
+
+        </tr>
+
+        <%          
+            if(citas != null) {
+                for(int i = 0; i < citas.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = citas.obtenerCampos(i);               
+        %>
+                    <tr>            
+        <%
+                        for(Object campo: campos) {                       
+        %>
+                            <td><%= campo %></td>
+        <%
+                        }   
+        %>
+                    </tr>
+        <%
+                }
+            }
+        %>
+
+    </table>
+
+  </body>

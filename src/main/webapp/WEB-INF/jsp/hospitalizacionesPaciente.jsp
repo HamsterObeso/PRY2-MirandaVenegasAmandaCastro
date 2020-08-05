@@ -1,7 +1,7 @@
 <%@page import="modelo.TablaHospitalizacionesPaciente"%>
+<%@page import="generico.Tabla"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
@@ -88,53 +88,44 @@
   <h2> Hospitalizaciones del Paciente </h2>
   
   <table>
-            
-            <tr>
-                
-                <th>Id Hospitalizacion</th>
-                <th>Identificacion</th>
-                <th>Nombre Paciente</th>
-                <th>Diagnostico</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Final</th>
-                <th>Especialidad</th>
-                
-                
-            </tr>
-            
-            <%
-                ArrayList<TablaHospitalizacionesPaciente> hospitalizaciones = (ArrayList<TablaHospitalizacionesPaciente>) request.getAttribute("resultados");
+
+        <tr>
+
+            <%               
+                Tabla<TablaHospitalizacionesPaciente> hospitalizaciones = (Tabla<TablaHospitalizacionesPaciente>) request.getAttribute("resultados");
                 if(hospitalizaciones != null) {
-                    for(TablaHospitalizacionesPaciente hospitalizacion: hospitalizaciones) {
-                        int id = hospitalizacion.getId();
-                        String identificacion = hospitalizacion.getIdentificacion();
-                        String nombrePaciente = hospitalizacion.getNombre();
-                        String diagnostico = hospitalizacion.getDiagnostico();
-                        String fechaIni = hospitalizacion.getFechaIni();
-                        String fechaFin = hospitalizacion.getFechaFin();
-                        String especialidad = hospitalizacion.getEspecialidad();
-            %>
-                        <tr>
-                            <td><%= id%></td>
-                            <td><%= identificacion%></td>
-                            <td><%= nombrePaciente%></td>
-                            <td><%= diagnostico%></td>
-                            <td><%= fechaIni%></td>
-                            <td><%= fechaFin%></td>
-                            <td><%= especialidad%></td>
-                        </tr>
+                    for(String columna: hospitalizaciones.obtenerColumnas()) {    
+            %> 
+                        <th><%= columna %></th>       
             <%
                     }
                 }
             %>
-            
-        </table>
-        
-        
-        <% if(request.getAttribute("mensaje") != null) { %>
-                <script>alert(${mensaje});</script>
-        <%  } %>
-       
-            
-</body>
+
+        </tr>
+
+        <%          
+            if(hospitalizaciones != null) {
+                for(int i = 0; i < hospitalizaciones.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = hospitalizaciones.obtenerCampos(i);               
+        %>
+                    <tr>            
+        <%
+                        for(Object campo: campos) {                       
+        %>
+                            <td><%= campo %></td>
+        <%
+                        }   
+        %>
+                    </tr>
+        <%
+                }
+            }
+        %>
+
+    </table>
+
+  </body>
+
 </html>
+

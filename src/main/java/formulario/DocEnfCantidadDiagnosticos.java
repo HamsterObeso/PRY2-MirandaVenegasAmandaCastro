@@ -5,10 +5,10 @@ package formulario;
  * @author Muro
  */
 public class DocEnfCantidadDiagnosticos {
-  private String nivel;
-  private String especialidad;
-  private String identificacion;
-
+  private String nivel = "";
+  private String especialidad = "";
+  private String identificacion = "";
+  
   public String getNivel() {
     return nivel;
   }
