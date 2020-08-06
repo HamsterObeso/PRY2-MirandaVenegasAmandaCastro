@@ -163,10 +163,10 @@ public class CitaDAO {
       Tabla<TablaCantidadCitas> tabla = new Tabla<>();
       while(result.next()) {
         int cant = result.getInt("CantidadCitas");
-        String especialidad = result.getString("especialidad");
-        String fecha = result.getString("fecha");
-        String estado = result.getString("estado");
-        TablaCantidadCitas resultado = new TablaCantidadCitas(cant, especialidad, fecha, estado);
+        String especialidad = result.getString("Especialidad");
+        String fecha = result.getString("Fecha");
+        String estado = result.getString("Estado");
+        TablaCantidadCitas resultado = new TablaCantidadCitas(cant, fecha, especialidad, estado);
         tabla.agregar(resultado);
       }
       result.close();

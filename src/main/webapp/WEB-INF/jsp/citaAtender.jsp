@@ -1,7 +1,8 @@
-<%@page import="modelo.TablaHospitalizaciones"%>
+<%@page import="modelo.TablaCita"%>
 <%@page import="generico.Tabla"%>
 <%@page import="java.util.ArrayList"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
@@ -76,43 +77,41 @@
       form > input {
         margin-left: 10px;
         margin-top: 5px;
+        width: 20%
       }
 
     </style>
 
-    <title>Menu Principal</title>
+    <title> Atender Cita </title>
 
   </head>
 
   <body>
 
     <div class="container">
-        
-        <h2> Realizar Seguimiento </h2>
+
+        <h2> Atender Cita </h2>
 
         <div class="form">
 
-          <form action="realizarSeguimiento" method="post" commandName="realizarSeguimientoForm">
-              
-            <label for="hospitalizacion"><b>ID Hospitalización</b></label>
-            <input type="number" placeholder="Ingrese el ID de la hospitalización." name="idHospitalizacion" path="idHospitalizacion" required>
-            <label for="observacion"><b>Observación sobre el seguimiento</b></label>
-            <input type="text" placeholder="Ingrese la observación :)" name="observacion" path="observacion" required>
-            <label for="tratamiento"><b>Nombre del tratamiento</b></label>
-            <input type="text" placeholder="Ingrese el nombre del tratamiento asociado" name="tratamientoAsociado" path="tratamientoAsociado" required>
-            <button type="submit">Realizar Seguimiento</button>
+          <form action="atenderCita" method="post" commandName="atenderCitaForm">
+
+            <label for="cita"><b>Cita a atender</b></label>
+            <input type="number" placeholder="Ingrese el ID de la cita que desea atender" name="idCita" path="idCita" required>
+            <button type="submit">Atender cita</button>
 
           </form>
 
         </div>
-<table>
+          
+        <table>
 
         <tr>
 
             <%               
-                Tabla<TablaHospitalizaciones> hospitalizaciones = (Tabla<TablaHospitalizaciones>) request.getAttribute("resultados");
-                if(hospitalizaciones != null) {
-                    for(String columna: hospitalizaciones.obtenerColumnas()) {    
+                Tabla<TablaCita> citas = (Tabla<TablaCita>) request.getAttribute("resultados");
+                if(citas != null) {
+                    for(String columna: citas.obtenerColumnas()) {    
             %> 
                         <th><%= columna %></th>       
             <%
@@ -123,9 +122,9 @@
         </tr>
 
         <%          
-            if(hospitalizaciones != null) {
-                for(int i = 0; i < hospitalizaciones.obtenerLargo(); i++) {
-                    ArrayList<Object> campos = hospitalizaciones.obtenerCampos(i);               
+            if(citas != null) {
+                for(int i = 0; i < citas.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = citas.obtenerCampos(i);               
         %>
                     <tr>            
         <%

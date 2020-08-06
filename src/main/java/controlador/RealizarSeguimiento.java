@@ -1,14 +1,17 @@
 package controlador;
 
 import contexto.ContextoUsuario;
+import dao.HospitalizacionDAO;
 
 import dao.SeguimientoDAO;
+import generico.Tabla;
 
 import java.sql.SQLException;
 
 import java.util.Map;
 
 import modelo.Seguimiento;
+import modelo.TablaHospitalizaciones;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,6 +29,7 @@ public class RealizarSeguimiento {
   public String viewRealizarSeguimiento(Map<String, Object> model) {
     Seguimiento seguimiento = new Seguimiento();
     model.put("realizarSeguimientoForm", seguimiento);
+    loadTable(model);
     return "seguimiento";
   }
 
@@ -40,5 +44,14 @@ public class RealizarSeguimiento {
       e.printStackTrace();
     }
     return "seguimiento";
+  }
+  
+  private void loadTable(Map<String, Object> model) {
+    try {
+      Tabla<TablaHospitalizaciones> resultado = HospitalizacionDAO.obtenerHospitalizaciones();
+      model.put("resultados", resultado);
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
   }
 }

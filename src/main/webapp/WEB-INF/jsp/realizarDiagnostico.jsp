@@ -1,7 +1,8 @@
-<%@page import="modelo.TablaHospitalizaciones"%>
+<%@page import="modelo.TablaCita"%>
 <%@page import="generico.Tabla"%>
 <%@page import="java.util.ArrayList"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
@@ -76,43 +77,47 @@
       form > input {
         margin-left: 10px;
         margin-top: 5px;
+        width: 20%
       }
 
     </style>
 
-    <title>Menu Principal</title>
+    <title>Realizar Diagnostico</title>
 
   </head>
 
   <body>
 
     <div class="container">
-        
-        <h2> Realizar Seguimiento </h2>
+
+        <h2> Realizar Diagnostico </h2>
 
         <div class="form">
 
-          <form action="realizarSeguimiento" method="post" commandName="realizarSeguimientoForm">
-              
-            <label for="hospitalizacion"><b>ID Hospitalización</b></label>
-            <input type="number" placeholder="Ingrese el ID de la hospitalización." name="idHospitalizacion" path="idHospitalizacion" required>
-            <label for="observacion"><b>Observación sobre el seguimiento</b></label>
-            <input type="text" placeholder="Ingrese la observación :)" name="observacion" path="observacion" required>
-            <label for="tratamiento"><b>Nombre del tratamiento</b></label>
-            <input type="text" placeholder="Ingrese el nombre del tratamiento asociado" name="tratamientoAsociado" path="tratamientoAsociado" required>
-            <button type="submit">Realizar Seguimiento</button>
-
-          </form>
+            <form:form action="realizarDiagnostico" method="post" modelAttribute="realizarDiagnosticoF">
+                <label for="id"><b>Id del diagnostico:</b></label>
+                <form:input class="input" type="number" placeholder="Ingrese el Id de la especialidad" min="0" name="id" path="id"/>
+                <label for="nombre"><b>Nombre del diagnostico:</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese el diagnostico deseado" name="nombre" path="nombre"/>
+                <label for="nivel"><b>Nivel</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese el nivel del diagnostico" name="nivel" path="nivel"/>    
+                <label for="observaciones"><b>Observaciones</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese las observaciones" name="observaciones" path="observaciones"/>    
+                <form:input class="boton verde" type="submit" name="Diagnosticar" value="Diagnosticar" path="opcion"/>
+                <form:input class="boton verde" type="submit" name="Atender" value="Atender" path="opcion"/>
+                <form:input class="boton rojo" type="submit" name="Tratar" value="Tratar" path="opcion"/>
+            </form:form>
 
         </div>
-<table>
+          
+        <table>
 
         <tr>
 
             <%               
-                Tabla<TablaHospitalizaciones> hospitalizaciones = (Tabla<TablaHospitalizaciones>) request.getAttribute("resultados");
-                if(hospitalizaciones != null) {
-                    for(String columna: hospitalizaciones.obtenerColumnas()) {    
+                Tabla<TablaCita> citas = (Tabla<TablaCita>) request.getAttribute("resultados");
+                if(citas != null) {
+                    for(String columna: citas.obtenerColumnas()) {    
             %> 
                         <th><%= columna %></th>       
             <%
@@ -123,9 +128,9 @@
         </tr>
 
         <%          
-            if(hospitalizaciones != null) {
-                for(int i = 0; i < hospitalizaciones.obtenerLargo(); i++) {
-                    ArrayList<Object> campos = hospitalizaciones.obtenerCampos(i);               
+            if(citas != null) {
+                for(int i = 0; i < citas.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = citas.obtenerCampos(i);               
         %>
                     <tr>            
         <%

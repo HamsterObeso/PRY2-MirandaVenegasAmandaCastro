@@ -10,12 +10,40 @@ import java.sql.SQLException;
 
 import modelo.TablaHospitalizacionesPaciente;
 import modelo.TablaDetalleHospitalizacion;
+import modelo.TablaHospitalizaciones;
 
 /**
  *
  * @author Muro
  */
 public class HospitalizacionDAO {
+  
+  public static Tabla<TablaHospitalizaciones> obtenerHospitalizaciones() throws SQLException {
+    try (CallableStatement cstmt = ConexionSQL.getConnection()
+          .prepareCall("{call mostrarHospitalizaciones()}");) {
+      try (ResultSet result = cstmt.executeQuery()) {
+        Tabla<TablaHospitalizaciones> resultados = new Tabla<>();
+        while (result.next()) {
+          int id = result.getInt("idHospitalizacion");
+          String centro = result.getString("Centro");
+          String identificacion = result.getString("identificacionCliente");
+          String nombrePaciente = result.getString("NombrePaciente");
+          String diagnostico = result.getString("NombreDiagnostico");
+          String fechaInicio = result.getString("FechaInicio");
+          String fechaFinal = result.getString("FechaFinal");
+          String especialidad = result.getString("Especialidad");
+          String funcionario = result.getString("Funcionario");
+          TablaHospitalizaciones resultado = new TablaHospitalizaciones(id, centro, identificacion, nombrePaciente, diagnostico, fechaInicio, fechaFinal, especialidad, funcionario);
+          resultados.agregar(resultado);
+          }
+        result.close();
+        return resultados;
+      }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return null;
+  }
   
   public static Tabla<TablaHospitalizacionesPaciente> obtenerHospitalizacionesPaciente(int idUsuario) throws SQLException {
     try (CallableStatement cstmt = ConexionSQL.getConnection()

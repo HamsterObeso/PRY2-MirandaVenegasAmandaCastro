@@ -1,7 +1,5 @@
 package controlador;
 
-import contexto.ContextoUsuario;
-
 import dao.TipoCentroDAO;
 
 import java.sql.SQLException;
