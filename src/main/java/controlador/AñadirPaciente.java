@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AñadirPaciente {
   
-  @RequestMapping(method = RequestMethod.GET)
+  @RequestMapping(value = "/anadirPaciente", method = RequestMethod.GET)
   public String viewAnadirPaciente(Map<String, Object> model) {
     Paciente pac = new Paciente();
     Telefono tel = new Telefono();
@@ -26,7 +26,7 @@ public class AñadirPaciente {
     return "anadirPaciente";
   }
   
-  @RequestMapping(value="/anadirPaciente",method = RequestMethod.POST)
+  @RequestMapping(value="/anadirPaciente", method = RequestMethod.POST)
   public String anadirPaciente(@ModelAttribute("paciente") Paciente form,
       Map<String, Object> model) {
     String identificacion = form.getIdentificacion();
@@ -51,7 +51,7 @@ public class AñadirPaciente {
     return "anadirPaciente";
   }
   
-  @RequestMapping(value="/anadirTelefono",method = RequestMethod.POST)
+  @RequestMapping(value="/anadirTelefono", method = RequestMethod.POST)
   public String anadirTelefono(@ModelAttribute("telefono") Telefono tel,
       Map<String, Object> model) {
     String identificacion = tel.getIdentificacion();

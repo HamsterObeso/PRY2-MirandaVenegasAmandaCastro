@@ -5,6 +5,7 @@ package modelo;
  * @author Muro
  */
 public class TablaCitasDE {
+  
   private int id = -1;
   private String especialidad;
   private String fecha;

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author Muro
  */
-
 @Controller
 @RequestMapping(value = "/citasSistemaDocEnf")
 public class DocEnfCitas{

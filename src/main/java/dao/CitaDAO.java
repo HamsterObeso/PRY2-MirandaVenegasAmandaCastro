@@ -7,7 +7,6 @@ import conexion.ConexionSQL;
 import generico.Tabla;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import modelo.CatalogoDiagnostico;
 import modelo.TablaCita;
 import modelo.TablaCitasDE;
 
