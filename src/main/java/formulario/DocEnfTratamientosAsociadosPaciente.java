@@ -5,11 +5,11 @@ package formulario;
  * @author Muro
  */
 public class DocEnfTratamientosAsociadosPaciente {
-  private String fecha1;
-  private String fecha2;
-  private String tipoTratamiento;
-  private String nombreTratamiento;
-  private String identificacion;
+  private String fecha1 = "";
+  private String fecha2 = "";
+  private String tipoTratamiento = "";
+  private String nombreTratamiento = "";
+  private String identificacion = "";
 
   public String getFecha1() {
     return fecha1;

@@ -5,10 +5,10 @@ package formulario;
  * @author Muro
  */
 public class PacienteCitasAsociadas {
-  private String fecha1;
-  private String fecha2; 
-  private String estado;
-  private String especialidad;
+  private String fecha1 = "";
+  private String fecha2 = "";
+  private String estado = "";
+  private String especialidad = "";
 
   public String getFecha1() {
     return fecha1;

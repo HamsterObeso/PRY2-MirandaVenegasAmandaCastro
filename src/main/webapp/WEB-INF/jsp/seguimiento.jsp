@@ -1,3 +1,6 @@
+<%@page import="modelo.TablaHospitalizaciones"%>
+<%@page import="generico.Tabla"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -102,12 +105,42 @@
           </form>
 
         </div>
+<table>
 
-        <% if(request.getAttribute("seguimiento") != null) { %>
-            <script>alert("Se agregó el seguimiento.");</script>
-        <%  } else if (request.getAttribute("error") != null) { %>
-            <script>alert("Fallo la vaina");</script>
-        <% } %>
+        <tr>
+
+            <%               
+                Tabla<TablaHospitalizaciones> hospitalizaciones = (Tabla<TablaHospitalizaciones>) request.getAttribute("resultados");
+                if(hospitalizaciones != null) {
+                    for(String columna: hospitalizaciones.obtenerColumnas()) {    
+            %> 
+                        <th><%= columna %></th>       
+            <%
+                    }
+                }
+            %>
+
+        </tr>
+
+        <%          
+            if(hospitalizaciones != null) {
+                for(int i = 0; i < hospitalizaciones.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = hospitalizaciones.obtenerCampos(i);               
+        %>
+                    <tr>            
+        <%
+                        for(Object campo: campos) {                       
+        %>
+                            <td><%= campo %></td>
+        <%
+                        }   
+        %>
+                    </tr>
+        <%
+                }
+            }
+        %>
+
+    </table>
+
   </body>
-
-</html>

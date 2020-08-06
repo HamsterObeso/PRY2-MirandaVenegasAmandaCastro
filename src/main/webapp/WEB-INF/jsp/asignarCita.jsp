@@ -1,3 +1,6 @@
+<%@page import="modelo.TablaCita"%>
+<%@page import="generico.Tabla"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -100,7 +103,46 @@
           </form>
 
         </div>
+        
+        <table>
+
+        <tr>
+
+            <%               
+                Tabla<TablaCita> citas = (Tabla<TablaCita>) request.getAttribute("resultados");
+                if(citas != null) {
+                    for(String columna: citas.obtenerColumnas()) {    
+            %> 
+                        <th><%= columna %></th>       
+            <%
+                    }
+                }
+            %>
+
+        </tr>
+
+        <%          
+            if(citas != null) {
+                for(int i = 0; i < citas.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = citas.obtenerCampos(i);               
+        %>
+                    <tr>            
+        <%
+                        for(Object campo: campos) {                       
+        %>
+                            <td><%= campo %></td>
+        <%
+                        }   
+        %>
+                    </tr>
+        <%
+                }
+            }
+        %>
+
+    </table>
 
   </body>
 
 </html>
+

@@ -1,7 +1,6 @@
 <%@page import="modelo.TablaDiagnosticosPaciente"%>
+<%@page import="generico.Tabla"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
@@ -109,50 +108,44 @@
        </div>
           
         <table>
-            
-            <tr>
-                
-                <th>Id Diagnostico</th>
-                <th>Cita</th>
-                <th>Diagnostico</th>
-                <th>Nivel</th>
-                <th>Observaciones</th>
-                <th>Fecha Cita</th>
-                
-                
-            </tr>
-            
-            <%
-                ArrayList<TablaDiagnosticosPaciente> diagnosticos = (ArrayList<TablaDiagnosticosPaciente>) request.getAttribute("resultados");
+
+        <tr>
+
+            <%               
+                Tabla<TablaDiagnosticosPaciente> diagnosticos = (Tabla<TablaDiagnosticosPaciente>) request.getAttribute("resultados");
                 if(diagnosticos != null) {
-                    for(TablaDiagnosticosPaciente diagnostico: diagnosticos) {
-                        int id = diagnostico.getId();
-                        int cita = diagnostico.getIdCita();
-                        String diag = diagnostico.getDiagnostico();
-                        String nivel = diagnostico.getNivel();
-                        String observaciones = diagnostico.getObservaciones();
-                        String fecha = diagnostico.getFechaCita();
-            %>
-                        <tr>
-                            <td><%= id%></td>
-                            <td><%= cita%></td>
-                            <td><%= diag%></td>
-                            <td><%= nivel%></td>
-                            <td><%= observaciones%></td>
-                            <td><%= fecha%></td>
-                        </tr>
+                    for(String columna: diagnosticos.obtenerColumnas()) {    
+            %> 
+                        <th><%= columna %></th>       
             <%
                     }
                 }
             %>
-            
-        </table>
-        
-        
-        <% if(request.getAttribute("mensaje") != null) { %>
-                <script>alert(${mensaje});</script>
-        <%  } %>
-       
-            
-</body>
+
+        </tr>
+
+        <%          
+            if(diagnosticos != null) {
+                for(int i = 0; i < diagnosticos.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = diagnosticos.obtenerCampos(i);               
+        %>
+                    <tr>            
+        <%
+                        for(Object campo: campos) {                       
+        %>
+                            <td><%= campo %></td>
+        <%
+                        }   
+        %>
+                    </tr>
+        <%
+                }
+            }
+        %>
+
+    </table>
+
+  </body>
+
 </html>
+

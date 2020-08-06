@@ -1,3 +1,6 @@
+<%@page import="modelo.TablaTratamientosDE"%>
+<%@page import="generico.Tabla"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -104,6 +107,44 @@
           </form>
 
         </div>
+        
+        <table>
+
+        <tr>
+
+            <%               
+                Tabla<TablaTratamientosDE> tratamientos = (Tabla<TablaTratamientosDE>) request.getAttribute("resultados");
+                if(tratamientos != null) {
+                    for(String columna: tratamientos.obtenerColumnas()) {    
+            %> 
+                        <th><%= columna %></th>       
+            <%
+                    }
+                }
+            %>
+
+        </tr>
+
+        <%          
+            if(tratamientos != null) {
+                for(int i = 0; i < tratamientos.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = tratamientos.obtenerCampos(i);               
+        %>
+                    <tr>            
+        <%
+                        for(Object campo: campos) {                       
+        %>
+                            <td><%= campo %></td>
+        <%
+                        }   
+        %>
+                    </tr>
+        <%
+                }
+            }
+        %>
+
+    </table>
 
   </body>
 

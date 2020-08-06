@@ -5,10 +5,10 @@ package formulario;
  * @author Muro
  */
 public class DocEnfCantidadCitas {
-  private String fecha1;
-  private String fecha2;
-  private String especialidad;
-  private String estado;
+  private String fecha1 = "";
+  private String fecha2 = "";
+  private String especialidad = "";
+  private String estado = "";
 
   public String getFecha1() {
     return fecha1;

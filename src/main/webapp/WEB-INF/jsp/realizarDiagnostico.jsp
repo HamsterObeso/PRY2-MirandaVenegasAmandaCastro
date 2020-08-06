@@ -1,7 +1,8 @@
-<%@page import="modelo.TablaDiagnosticosDE"%>
+<%@page import="modelo.TablaCita"%>
 <%@page import="generico.Tabla"%>
 <%@page import="java.util.ArrayList"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
@@ -81,7 +82,7 @@
 
     </style>
 
-    <title>Menu Principal</title>
+    <title>Realizar Diagnostico</title>
 
   </head>
 
@@ -89,33 +90,34 @@
 
     <div class="container">
 
-        <h2> Información de Diagnosticos || Realizar filtrados </h2>
+        <h2> Realizar Diagnostico </h2>
 
         <div class="form">
 
-          <form action="diagnosticosDocEnf" method="post" commandName="diagnosticosDocEnfForm">
-
-            <label for="fecha"><b>Rango de fechas</b></label>
-            <input type="text" placeholder="Indique el primer rango de fecha." name="fecha1" path="fecha1">
-            <input type="text" placeholder="Indique el segundo rango de fecha." name="fecha2" path="fecha2">
-            <label for="nivel"><b>Nivel</b></label>
-            <input type="text" placeholder="Indique el nivel del diagnostico." name="nivel" path="nivel">
-            <label for="diag"><b>Nombre del diagnóstico</b></label>
-            <input type="text" placeholder="Indique el nombre del diagnóstico." name="nombre" path="nombre">
-            <button type="submit">Realizar filtrado</button>
-
-          </form>
+            <form:form action="realizarDiagnostico" method="post" modelAttribute="realizarDiagnosticoF">
+                <label for="id"><b>Id del diagnostico:</b></label>
+                <form:input class="input" type="number" placeholder="Ingrese el Id de la especialidad" min="0" name="id" path="id"/>
+                <label for="nombre"><b>Nombre del diagnostico:</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese el diagnostico deseado" name="nombre" path="nombre"/>
+                <label for="nivel"><b>Nivel</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese el nivel del diagnostico" name="nivel" path="nivel"/>    
+                <label for="observaciones"><b>Observaciones</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese las observaciones" name="observaciones" path="observaciones"/>    
+                <form:input class="boton verde" type="submit" name="Diagnosticar" value="Diagnosticar" path="opcion"/>
+                <form:input class="boton verde" type="submit" name="Atender" value="Atender" path="opcion"/>
+                <form:input class="boton rojo" type="submit" name="Tratar" value="Tratar" path="opcion"/>
+            </form:form>
 
         </div>
-
+          
         <table>
 
         <tr>
 
             <%               
-                Tabla<TablaDiagnosticosDE> diagnosticos = (Tabla<TablaDiagnosticosDE>) request.getAttribute("resultados");
-                if(diagnosticos != null) {
-                    for(String columna: diagnosticos.obtenerColumnas()) {    
+                Tabla<TablaCita> citas = (Tabla<TablaCita>) request.getAttribute("resultados");
+                if(citas != null) {
+                    for(String columna: citas.obtenerColumnas()) {    
             %> 
                         <th><%= columna %></th>       
             <%
@@ -126,9 +128,9 @@
         </tr>
 
         <%          
-            if(diagnosticos != null) {
-                for(int i = 0; i < diagnosticos.obtenerLargo(); i++) {
-                    ArrayList<Object> campos = diagnosticos.obtenerCampos(i);               
+            if(citas != null) {
+                for(int i = 0; i < citas.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = citas.obtenerCampos(i);               
         %>
                     <tr>            
         <%
@@ -147,6 +149,3 @@
     </table>
 
   </body>
-
-</html>
-
