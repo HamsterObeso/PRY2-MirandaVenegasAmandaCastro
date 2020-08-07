@@ -1,4 +1,4 @@
-<%@page import="modelo.TablaCita"%>
+<%@page import="modelo.TablaDiagnostico"%>
 <%@page import="generico.Tabla"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
@@ -115,9 +115,9 @@
         <tr>
 
             <%               
-                Tabla<TablaCita> citas = (Tabla<TablaCita>) request.getAttribute("resultados");
-                if(citas != null) {
-                    for(String columna: citas.obtenerColumnas()) {    
+                Tabla<TablaDiagnostico> diagnostico = (Tabla<TablaDiagnostico>) request.getAttribute("resultados");
+                if(diagnostico != null) {
+                    for(String columna: diagnostico.obtenerColumnas()) {    
             %> 
                         <th><%= columna %></th>       
             <%
@@ -128,9 +128,9 @@
         </tr>
 
         <%          
-            if(citas != null) {
-                for(int i = 0; i < citas.obtenerLargo(); i++) {
-                    ArrayList<Object> campos = citas.obtenerCampos(i);               
+            if(diagnostico != null) {
+                for(int i = 0; i < diagnostico.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = diagnostico.obtenerCampos(i);               
         %>
                     <tr>            
         <%
