@@ -1,4 +1,4 @@
- package dao;
+package dao;
 
 import conexion.ConexionSQL;
 import generico.Tabla;
@@ -28,7 +28,7 @@ public class CatalogoDiagnosticoDAO {
         return tabla;
       }    
     } catch(SQLException e) {
-    e.printStackTrace();       
+      e.printStackTrace();       
     }
     return null;
   }
