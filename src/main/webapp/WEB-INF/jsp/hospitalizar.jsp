@@ -1,4 +1,4 @@
-<%@page import="modelo.TablaCita"%>
+<%@page import="modelo.TablaPacientesAtendidos"%>
 <%@page import="generico.Tabla"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
@@ -82,7 +82,7 @@
 
     </style>
 
-    <title>Realizar Diagnostico</title>
+    <title>Hospitalizar</title>
 
   </head>
 
@@ -94,18 +94,18 @@
 
         <div class="form">
 
-            <form:form action="realizarDiagnostico" method="post" modelAttribute="realizarDiagnosticoF">
-                <label for="id"><b>Id del diagnostico:</b></label>
-                <form:input class="input" type="number" placeholder="Ingrese el Id de la especialidad" min="0" name="id" path="id"/>
-                <label for="nombre"><b>Nombre del diagnostico:</b></label>
-                <form:input class="input" type="text" placeholder="Ingrese el diagnostico deseado" name="nombre" path="nombre"/>
-                <label for="nivel"><b>Nivel</b></label>
-                <form:input class="input" type="text" placeholder="Ingrese el nivel del diagnostico" name="nivel" path="nivel"/>    
-                <label for="observaciones"><b>Observaciones</b></label>
-                <form:input class="input" type="text" placeholder="Ingrese las observaciones" name="observaciones" path="observaciones"/>    
+            <form:form action="hospitalizar" method="post" modelAttribute="hospitalizarF">
+                <label for="nombre"><b>Nombre del paciente</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese el nombre del paciente" name="nombre" path="nombre"/>
+                <label for="identificacion"><b>Identificacion</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese la identificación del paciente" name="identificacion" path="identificacion"/>    
+                <label for="centro"><b>Centro donde será internado</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese el centro" name="centro" path="centro"/> 
+                <label for="especialidad"><b>Especialidad</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese la especialidad en la que será internado" name="especialidad" path="especialidad"/>
+                <label for="diagnostico"><b>Diagnostico</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese la especialidad en la que será internado" name="diagnostico" path="diagnostico"/> 
                 <form:input class="boton verde" type="submit" name="Diagnosticar" value="Diagnosticar" path="opcion"/>
-                <form:input class="boton verde" type="submit" name="Atender" value="Atender" path="opcion"/>
-                <form:input class="boton rojo" type="submit" name="Tratar" value="Tratar" path="opcion"/>
             </form:form>
 
         </div>
@@ -115,9 +115,9 @@
         <tr>
 
             <%               
-                Tabla<TablaCita> cita = (Tabla<TablaCita>) request.getAttribute("resultados");
-                if(cita != null) {
-                    for(String columna: cita.obtenerColumnas()) {    
+                Tabla<TablaPacientesAtendidos> pacientes = (Tabla<TablaPacientesAtendidos>) request.getAttribute("resultados");
+                if(pacientes != null) {
+                    for(String columna: pacientes.obtenerColumnas()) {    
             %> 
                         <th><%= columna %></th>       
             <%
@@ -128,9 +128,9 @@
         </tr>
 
         <%          
-            if(cita != null) {
-                for(int i = 0; i < cita.obtenerLargo(); i++) {
-                    ArrayList<Object> campos = cita.obtenerCampos(i);               
+            if(pacientes != null) {
+                for(int i = 0; i < pacientes.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = pacientes.obtenerCampos(i);               
         %>
                     <tr>            
         <%
