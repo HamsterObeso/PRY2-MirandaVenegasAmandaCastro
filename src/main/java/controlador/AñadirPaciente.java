@@ -1,5 +1,6 @@
 package controlador;
 
+import conector.ConectorTSE;
 import dao.PacienteDAO;
 import modelo.Paciente;
 import java.util.Map;
@@ -36,17 +37,18 @@ public class AñadirPaciente {
     String correo = form.getCorreo();
     String usuario = form.getUsuario();
     String contraseña = form.getContraseña();
-    //-------------TSE
-    String nombre = form.getNombrePaciente();
-    String provincia = form.getProvincia();
-    String canton = form.getCanton();
+    String[] resultado = ConectorTSE.obtenerInformacion(identificacion);
     if(identificacion == null) {
       model.put("mensaje", "Debe ingresar su identificacion");
     }
     else {
-      PacienteDAO.AgregarPaciente(identificacion, nombre, fechaNacimiento, tipoSangre, nacionalidad,
-        provincia, canton, correo, usuario, contraseña);
-      model.put("mensaje", "Se agregó el nuevo paciente.");
+      if (resultado[0].equals("404")){
+        model.put("mensaje", "Revise el número de identificacion");
+      } else {
+        PacienteDAO.AgregarPaciente(identificacion, resultado[1], fechaNacimiento, tipoSangre, nacionalidad,
+        resultado[2], resultado[3], correo, usuario, contraseña);
+        model.put("mensaje", "Se agregó el nuevo paciente.");
+      }
     }
     return "anadirPaciente";
   }

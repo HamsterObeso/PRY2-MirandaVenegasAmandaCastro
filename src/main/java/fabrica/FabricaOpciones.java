@@ -39,6 +39,12 @@ public class FabricaOpciones {
     opciones.add("Cantidad de diagnosticos");
     opciones.add("Cantidad de tratamientos");
     opciones.add("Detalle de hospitalizacion de un paciente");
+    opciones.add("Añadir centros de atencion");
+    opciones.add("Añadir tipos de centros de atencion");
+    opciones.add("Gestionar areas o especialidades");
+    opciones.add("Gestionar catalogo de diagnosticos");
+    opciones.add("Gestionar catalogo de tratamientos");
+    opciones.add("Ver bitacora");
     return opciones;
   }
   
@@ -52,6 +58,12 @@ public class FabricaOpciones {
     opciones.add("Cantidad de diagnosticos");
     opciones.add("Cantidad de tratamientos");
     opciones.add("Detalle de hospitalizacion de un paciente");
+    opciones.add("Añadir centros de atencion");
+    opciones.add("Añadir tipos de centros de atencion");
+    opciones.add("Gestionar areas o especialidades");
+    opciones.add("Gestionar catalogo de diagnosticos");
+    opciones.add("Gestionar catalogo de tratamientos");
+    opciones.add("Ver bitacora");
     return opciones;
   }
   
@@ -61,6 +73,12 @@ public class FabricaOpciones {
     opciones.add("Asignar cita a paciente");
     opciones.add("Citas registradas en el sistema");
     opciones.add("Hospitalizaciones registradas");
+    opciones.add("Añadir centros de atencion");
+    opciones.add("Añadir tipos de centros de atencion");
+    opciones.add("Gestionar areas o especialidades");
+    opciones.add("Gestionar catalogo de diagnosticos");
+    opciones.add("Gestionar catalogo de tratamientos");
+    opciones.add("Ver bitacora");
     return opciones;
   }
   

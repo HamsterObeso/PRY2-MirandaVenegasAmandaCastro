@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import conexion.Email;
+
 
 /**
  *
@@ -64,7 +66,6 @@ public class CancelarCita {
         CitaDAO.cancelarCitaFuncionario(cita.getIdCita(), ContextoUsuario.getIdUsuario());
       }
       model.put("cita", "cita");
-
       Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
       String num;
       Message message = Message.creator(new PhoneNumber(CitaDAO.telefonoPaciente(ContextoUsuario.getIdUsuario())),
