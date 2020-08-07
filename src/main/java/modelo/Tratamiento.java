@@ -10,13 +10,6 @@ public class Tratamiento {
   private String tipo;
   private int idDiagnostico;
 
-  public Tratamiento(String nombreTratamiento, String dosis, String tipo, int idDiagnostico) {
-    this.nombreTratamiento = nombreTratamiento;
-    this.dosis = dosis;
-    this.tipo = tipo;
-    this.idDiagnostico = idDiagnostico;
-  }
-
   public String getNombreTratamiento() {
     return nombreTratamiento;
   }

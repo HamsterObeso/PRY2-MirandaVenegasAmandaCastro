@@ -135,7 +135,7 @@ public class Email {
    */
   private boolean sendEmailAux() throws MessagingException {
     MimeMessage message = new MimeMessage(session);
-    message.setFrom(email);
+//    message.setFrom(email);
     message.setSubject(subject);
     message.setRecipients(Message.RecipientType.TO, createAddresses());
     Multipart multipart = new MimeMultipart();
