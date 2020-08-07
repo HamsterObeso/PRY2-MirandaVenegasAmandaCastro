@@ -20,6 +20,10 @@ public class Tabla<E> {
     columnas = new ArrayList<>();
   }
   
+  public ArrayList<E> obtenerElementos() {
+    return elementos;
+  }
+  
   public ArrayList<String> obtenerColumnas() {    
     return columnas;
   }

@@ -10,9 +10,15 @@ import java.util.Map;
 
 import contexto.ContextoCita;
 import contexto.ContextoDiagnostico;
+import dao.CatalogoDiagnosticoDAO;
 
 import dao.CitaDAO;
 import dao.DiagnosticoDAO;
+
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.CatalogoDiagnostico;
 
 import modelo.TablaDiagnostico;
 
@@ -26,7 +32,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author Muro
  */
-
 @Controller
 @RequestMapping(value = "/realizarDiagnostico")
 public class RealizarDiagnostico {
@@ -35,8 +40,9 @@ public class RealizarDiagnostico {
   public String viewRealizarDiagnostico(Map<String, Object> model) {
     FormDiagnostico form = new FormDiagnostico();
     model.put("realizarDiagnosticoF", form);
+    model.put("diagnosticos", obtenerNombreCatalogoDiagnostico());
     loadTable(model);
-    return "gestionDiagnostico";
+    return "realizarDiagnostico";
   }
   
   @RequestMapping(method = RequestMethod.POST)
@@ -94,4 +100,20 @@ public class RealizarDiagnostico {
       ex.printStackTrace();
     }
   }
+  
+  private ArrayList<String> obtenerNombreCatalogoDiagnostico() {
+    try {
+      Tabla<CatalogoDiagnostico> resultado = CatalogoDiagnosticoDAO.obtenerDiagnosticos();
+      ArrayList<CatalogoDiagnostico> elementos = resultado.obtenerElementos();
+      ArrayList<String> diagnosticos = new ArrayList<>();
+      for(CatalogoDiagnostico elemento: elementos) {
+        diagnosticos.add(elemento.getNombre());
+      }
+      return diagnosticos;
+    } catch (Exception ex) {
+      Logger.getLogger(RealizarDiagnostico.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return null;
+  }
+  
 }

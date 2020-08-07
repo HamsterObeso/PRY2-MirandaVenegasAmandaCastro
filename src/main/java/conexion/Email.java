@@ -23,28 +23,28 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 /**
- * 
- * @author Amanda Castro, Miranda Venegas 
+ *
+ * @author Amanda Castro, Miranda Venegas
  * @version 1.0
  *
  */
 public class Email {
-  
+
   private final String email = "mvenegasc22@gmail.com";
   private final String password = "cafeteraCarisima99thehell";
-  
+
   private Properties properties;
-  
+
   private Session session;
-  
+
   private ArrayList<String> recipients;
   private String subject;
-  
+
   private ArrayList<File> files;
-  
+
   private String body;
   private boolean isHtml;
-  
+
   /**
    * Constructor de la clase
    */
@@ -63,47 +63,47 @@ public class Email {
       }
     });
   }
-  
+
   /**
    * Coloca el titulo del correo
-   * 
+   *
    * @param subject Titulo del correo
    */
   public void setSubject(String subject) {
     this.subject = subject;
   }
-  
+
   /**
    * A�ade un destinatario
-   * 
+   *
    * @param email Destinatario
    */
   public void addRecipient(String email) {
     recipients.add(email);
   }
-  
+
   /**
    * A�ade un archivo al correo
-   * 
+   *
    * @param file Archivo a a�adir
    */
   public void addFile(File file) {
     files.add(file);
   }
-  
+
   /**
    * A�ade un archivo al correo
-   * 
+   *
    * @param path Ruta del archivo
    */
   public void addFile(String path) {
     File file = new File(path);
     files.add(file);
   }
-  
+
   /**
    * A�ade un seccion del cuerpo al correo
-   * 
+   *
    * @param body Contenido a agregar
    * @param isHtml Verdadero si el contenido es html, falso en caso contrario
    */
@@ -111,25 +111,25 @@ public class Email {
     this.body = body;
     this.isHtml = isHtml;
   }
-  
+
   /**
    * Envia el email creado
-   * 
+   *
    * @return result Verdadero si el correo se envio exitosamente, falso en caso contrario
    */
   public boolean sendEmail() {
     try {
       return sendEmailAux();
-    } 
+    }
     catch (MessagingException e) {
         e.printStackTrace();
       return false;
     }
   }
-  
+
   /**
    * Procesa la informacion dada al correo y realiza el envio
-   * 
+   *
    * @return result Verdadero si el correo se envio exitosamente, falso si cae en la excepcion
    * @throws MessagingException Error al enviar el mensaje
    */
@@ -149,10 +149,10 @@ public class Email {
     Transport.send(message);
     return true;
   }
-  
+
   /**
    * Retorna el cuerpo del correo
-   * 
+   *
    * @return part Cuerpo del correo
    * @throws MessagingException Fallo en el formato del cuerpo
    */
@@ -166,10 +166,10 @@ public class Email {
     }
     return part;
   }
-  
+
   /**
    * Retorna los archivo del correo
-   * 
+   *
    * @param multipart Multiparte en la cual a�adir los archivos
    * @return multipart Multiparte con los archivos a�adidos
    * @throws MessagingException Error al a�adir los archivos al multiparte
@@ -187,10 +187,10 @@ public class Email {
     }
     return multipart;
   }
-  
+
   /**
    * Genera una direccion para cada destinatario
-   * 
+   *
    * @return addresses Direcciones creadas
    * @throws AddressException Fallo en el formato de los correos
    */
@@ -201,5 +201,5 @@ public class Email {
     }
     return addresses;
   }
-  
+
 }

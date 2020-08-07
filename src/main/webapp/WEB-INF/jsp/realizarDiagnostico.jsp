@@ -93,12 +93,23 @@
         <h2> Realizar Diagnostico </h2>
 
         <div class="form">
-
+            
             <form:form action="realizarDiagnostico" method="post" modelAttribute="realizarDiagnosticoF">
                 <label for="id"><b>Id del diagnostico:</b></label>
                 <form:input class="input" type="number" placeholder="Ingrese el Id de la especialidad" min="0" name="id" path="id"/>
-                <label for="nombre"><b>Nombre del diagnostico:</b></label>
-                <form:input class="input" type="text" placeholder="Ingrese el diagnostico deseado" name="nombre" path="nombre"/>
+                <form:select name="category" path="nombre">
+                    <% 
+                        ArrayList<String> opciones = (ArrayList<String>) request.getAttribute("diagnosticos");
+                        if(opciones != null) {
+                            for(int i = 0; i < opciones.size(); i++) {
+                                String opcion = opciones.get(i);                
+                    %>
+                                <form:option value="<%= opcion %>"><%= opcion %></form:option>
+                    <% 
+                            } 
+                        }
+                    %>              
+                </form:select>
                 <label for="nivel"><b>Nivel</b></label>
                 <form:input class="input" type="text" placeholder="Ingrese el nivel del diagnostico" name="nivel" path="nivel"/>    
                 <label for="observaciones"><b>Observaciones</b></label>
