@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package formulario;
 
 /**
@@ -10,13 +5,13 @@ package formulario;
  * @author Muro
  */
 public class SecretarioHospitalizacionesRegistradas {
-    private String fechaIni1;
-    private String fechaFin1;
-    private String fechaIni2;
-    private String fechaFin2;
-    private String estado;
-    private String especialidad;
-    private String nombrePaciente;
+    private String fechaIni1 = "";
+    private String fechaFin1 = "";
+    private String fechaIni2 = "";
+    private String fechaFin2 = "";
+    private String estado = "";
+    private String especialidad = "";
+    private String nombrePaciente = "";
 
     public void setFechaIni1(String fechaIni1) {
         this.fechaIni1 = fechaIni1;

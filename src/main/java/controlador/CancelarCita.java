@@ -67,7 +67,6 @@ public class CancelarCita {
       }
       model.put("cita", "cita");
       Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-      String num;
       Message message = Message.creator(new PhoneNumber(CitaDAO.telefonoPaciente(ContextoUsuario.getIdUsuario())),
               new PhoneNumber("+17206369419"), "Estimado paciente su cita fue cancelada").create();
     } catch (SQLException e) {
