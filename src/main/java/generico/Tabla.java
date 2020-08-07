@@ -28,10 +28,6 @@ public class Tabla<E> {
     return columnas;
   }
   
-  public ArrayList<E> obtenerElementos() {
-    return elementos;
-  }
-  
   public int obtenerLargo() {
     return elementos.size();
   }

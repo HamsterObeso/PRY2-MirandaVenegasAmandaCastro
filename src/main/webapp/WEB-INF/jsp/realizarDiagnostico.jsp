@@ -79,6 +79,10 @@
         margin-top: 5px;
         width: 20%
       }
+      
+      #id {
+        margin-left: 10px;
+      }
 
     </style>
 
@@ -96,8 +100,9 @@
             
             <form:form action="realizarDiagnostico" method="post" modelAttribute="realizarDiagnosticoF">
                 <label for="id"><b>Id del diagnostico:</b></label>
-                <form:input class="input" type="number" placeholder="Ingrese el Id de la especialidad" min="0" name="id" path="id"/>
-                <form:select name="category" path="nombre">
+                <form:input class="input" type="number" placeholder="Ingrese el id del diagnóstico." min="0" name="idDiagnostico" path="idDiagnostico"/>
+                <label for="category"><b>Nombre del diagnóstico</b></label>
+                <form:select style="margin-left: 10px;" id="nombrecito" name="category" path="nombreDiagnostico">
                     <% 
                         ArrayList<String> opciones = (ArrayList<String>) request.getAttribute("diagnosticos");
                         if(opciones != null) {
