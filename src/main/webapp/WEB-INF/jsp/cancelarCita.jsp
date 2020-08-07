@@ -94,7 +94,7 @@
 
         <div class="form">
 
-          <form action="cancelarCitaPaciente" method="post" commandName="cancelarCitaPacForm">
+          <form action="cancelarCita" method="post" commandName="cancelarCitaPacForm">
 
             <label for="cancelar"><b>Cita a cancelar</b></label>
             <input type="number" placeholder="Ingrese el ID de la cita que desea cancelar" name="idCita" path="idCita" required>

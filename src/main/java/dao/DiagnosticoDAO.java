@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 import modelo.TablaDiagnosticosPaciente;
 import modelo.TablaCantidadDiagnosticos;
+import modelo.TablaDiagnostico;
 import modelo.TablaDiagnosticosDE;
 
 /**
@@ -17,6 +18,40 @@ import modelo.TablaDiagnosticosDE;
  * @author Muro
  */
 public class DiagnosticoDAO {
+  
+  public static void anadirDiagnostico(String nombreDiagnostico, String nivel, String observaciones,
+    int idCita) throws SQLException {
+    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call registrarDiagnosticos(?, ?, ?, ?)}");
+    entrada.setInt(1, idCita);
+    entrada.setString(2, nivel);
+    entrada.setString(3, observaciones);
+    entrada.setString(4, nombreDiagnostico);
+    entrada.execute();
+  }
+  
+  public static Tabla<TablaDiagnostico> obtenerDiagnosticos(int idCita) throws SQLException {
+    try (CallableStatement cstmt = ConexionSQL.getConnection()
+          .prepareCall("{call cargarDiagnosticos(?)}");) {
+      cstmt.setInt(1, idCita);
+      try (ResultSet result = cstmt.executeQuery()) {
+        Tabla<TablaDiagnostico> resultados = new Tabla<>();
+        while (result.next()) {
+            int id = result.getInt("idDiagnostico");
+            String diagnostico = result.getString("Diagnostico");
+            String nivel = result.getString("Nivel");
+            String observaciones = result.getString("Observaciones");
+            int cita = result.getInt("idCita");
+            TablaDiagnostico resultado = new TablaDiagnostico(id, cita, diagnostico, nivel, observaciones);
+            resultados.agregar(resultado);
+          }
+        result.close();
+        return resultados;
+      }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return null;
+  }
   
   public static Tabla<TablaDiagnosticosPaciente> diagnosticosAsociadosP(String f1, String f2, String pNivel, String pNombre, int idUsuario) throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call diagnosticosP(?, ?, ?, ?, ?)}");

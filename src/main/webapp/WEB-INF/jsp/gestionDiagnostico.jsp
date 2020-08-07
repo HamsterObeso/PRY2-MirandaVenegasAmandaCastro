@@ -1,9 +1,3 @@
-<%-- 
-    Document   : GestionDiagnosticos
-    Created on : 28/07/2020, 08:17:52 PM
-    Author     : Masiel Castro Mora
---%>
-
 <%@page import="generico.Tabla"%>
 <%@page import="modelo.CatalogoDiagnostico"%>
 <%@page import="java.util.ArrayList"%>

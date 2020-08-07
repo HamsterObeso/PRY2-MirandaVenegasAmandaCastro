@@ -42,7 +42,7 @@ public class CancelarCita {
     Cita cita = new Cita();
     model.put("cancelarCitaPacForm", cita);
     loadTable(model);
-    return "redirect:/cancelarCitaPaciente";
+    return "cancelarCita";
   }
 
   private void loadTable(Map<String, Object> model) {
@@ -73,7 +73,7 @@ public class CancelarCita {
       model.put("error", "error");
       e.printStackTrace();
     }
-    return "cancelarCitaPaciente";
+    return "cancelarCita";
   }
 
 }

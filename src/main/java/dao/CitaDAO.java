@@ -8,7 +8,7 @@ import conexion.ConexionSQL;
 import generico.Tabla;
 
 import java.sql.ResultSet;
-import java.util.ArrayList;
+
 import modelo.TablaCita;
 import modelo.TablaCitasDE;
 import modelo.TablaCantidadCitas;
@@ -18,11 +18,16 @@ import modelo.TablaCantidadCitas;
  * @author Muro
  */
 public class CitaDAO {
-
-  public static Tabla<TablaCita> obtenerCitasCancelarPaciente(int idUsuario) throws SQLException {
+  
+  public static void atenderCita(int idCita) throws SQLException {
+    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call atenderCita(?)}");
+    entrada.setInt(1, idCita);
+    entrada.execute();
+  }
+  
+  public static Tabla<TablaCita> obtenerCitasAtender() throws SQLException {
     try (CallableStatement cstmt = ConexionSQL.getConnection()
-          .prepareCall("{call obtenerCitasCancelarPaciente(?)}");) {
-      cstmt.setInt(1, idUsuario);
+          .prepareCall("{call cargarCitasAtender()}");) {
       try (ResultSet result = cstmt.executeQuery()) {
         Tabla<TablaCita> resultados = new Tabla<>();
         while (result.next()) {
@@ -40,6 +45,31 @@ public class CitaDAO {
       }
     } catch (SQLException e) {
         e.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static Tabla<TablaCita> obtenerCitasCancelarPaciente(int idUsuario) throws SQLException {
+    try (CallableStatement cstmt = ConexionSQL.getConnection()
+          .prepareCall("{call obtenerCitasCancelarPaciente(?)}");) {
+      cstmt.setInt(1, idUsuario);
+      try (ResultSet result = cstmt.executeQuery()) {
+        Tabla<TablaCita> resultados = new Tabla<>();
+        while (result.next()) {
+          int id = result.getInt("IDcita");
+          String especialidad = result.getString("especialidad");
+          String fecha = result.getString("fecha");
+          String hora = result.getString("hora");
+          String observacion = result.getString("observacion");
+          String estado = result.getString("estado");
+          TablaCita resultado = new TablaCita(id, especialidad, fecha, hora, observacion, estado);
+          resultados.agregar(resultado);
+          }
+        result.close();
+        return resultados;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
     return null;
   }

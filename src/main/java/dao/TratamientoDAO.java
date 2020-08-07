@@ -18,6 +18,16 @@ import modelo.TablaCantidadTratamientos;
  */
 public class TratamientoDAO {
   
+  public static void anadirTratamiento(String nombre, String dosis, String tipo, int idDiagnostico)
+    throws SQLException {
+    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call registrarTratamientos(?, ?, ?, ?)}");
+    entrada.setString(1, nombre);
+    entrada.setString(2, dosis);
+    entrada.setString(3, tipo);
+    entrada.setInt(4, idDiagnostico);
+    entrada.execute();
+  }
+  
   public static Tabla<TablaTratamientosPaciente> tratamientosAsociadosP(String f1, String f2, String pTipo, String pNombre, int idUsuario) throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call tratamientosP(?, ?, ?, ?, ?)}");
     if(f1.isEmpty() == true) {
