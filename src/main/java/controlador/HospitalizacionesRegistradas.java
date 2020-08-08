@@ -1,12 +1,17 @@
 package controlador;
 
+import dao.DiagnosticoDAO;
 import dao.HospitalizacionDAO;
+import formulario.DocEnfDetalleHospitalizacion;
 
 import formulario.SecretarioHospitalizacionesRegistradas;
+import generico.Tabla;
 
 import java.sql.SQLException;
 
 import java.util.Map;
+import modelo.TablaDiagnosticosDE;
+import modelo.TablaHospitalizaciones;
 
 import org.springframework.stereotype.Controller;
 
@@ -24,22 +29,26 @@ public class HospitalizacionesRegistradas {
 
   @RequestMapping(method = RequestMethod.GET)
   public String viewFiltroHospitalizacionesRegistradas(Map<String, Object> model) {
-    SecretarioHospitalizacionesRegistradas form = new SecretarioHospitalizacionesRegistradas();
+    DocEnfDetalleHospitalizacion form = new DocEnfDetalleHospitalizacion();
     model.put("hospitalizacionesRegistradasSForm", form);
+    loadTable(form.getNombrePaciente(),"","","","","","",model);
     return "hospitalizacionesRegistradasS";
   }
 
   @RequestMapping(method = RequestMethod.POST)
   public String filtroHospitalizaciones(@ModelAttribute("hospitalizacionesRegistradasSForm") SecretarioHospitalizacionesRegistradas form,
       Map<String, Object> model) {
-    try {
-      HospitalizacionDAO.hospitalizacionesRegistradas(form.getFechaIni1(),form.getFechaFin1(), form.getFechaIni2(), form.getFechaFin2(), form.getEspecialidad(),form.getEstado(), form.getNombrePaciente());
-      model.put("form", "form");
-    } catch (SQLException e) {
-      model.put("error", "error");
-      e.printStackTrace();
-    }
+    loadTable(form.getFechaIni1(),form.getFechaIni2(),form.getFechaFin1(),form.getFechaFin2(),form.getEstado(),form.getEspecialidad(),form.getNombrePaciente(), model);
     return "hospitalizacionesRegistradasS";
   }
 
+  private void loadTable(String fechaIni1, String fechaIni2, String fechaFin1, String fechaFin2, 
+      String estado,String especialidad, String nombrePaciente, Map<String, Object> model) {
+    try {
+      Tabla<TablaHospitalizaciones> resultado = HospitalizacionDAO.hospitalizacionesRegistradas(fechaIni1, fechaIni2, fechaFin1, fechaFin2, estado,especialidad,nombrePaciente);
+      model.put("resultados", resultado);
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
+  }
 }
