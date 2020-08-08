@@ -9,6 +9,7 @@ import contexto.ContextoUsuario;
 import dao.CitaDAO;
 import dao.HospitalizacionDAO;
 import formulario.SecretarioCitasRegistradas;
+import formulario.SecretarioHospitalizacionesRegistradas;
 import java.sql.SQLException;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
@@ -26,22 +27,22 @@ public class HospitalizacionesRegistradas {
 
     @RequestMapping(method = RequestMethod.GET)
     public String viewFiltroHospitalizacionesRegistradas(Map<String, Object> model) {
-        SecretarioCitasRegistradas form = new SecretarioCitasRegistradas();
+        SecretarioHospitalizacionesRegistradas form = new SecretarioHospitalizacionesRegistradas();
         model.put("hospitalizacionesRegistradasSForm", form);
         return "hospitalizacionesRegistradasS";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String filtroCitasSistema(@ModelAttribute("hospitalizacionesRegistradasSForm") SecretarioCitasRegistradas form,
+    public String filtroHospitalizaciones(@ModelAttribute("hospitalizacionesRegistradasSForm") SecretarioHospitalizacionesRegistradas form,
             Map<String, Object> model) {
         try {
-            HospitalizacionDAO.hospitalizacionesRegistradas(form.getFecha1(),form.getFecha2(), form.getFecha1(), form.getFecha2(), form.getEstado(),form.getEspecialidad(), form.getNombrePaciente());
+            HospitalizacionDAO.hospitalizacionesRegistradas(form.getFechaIni1(),form.getFechaFin1(), form.getFechaIni2(), form.getFechaFin2(), form.getEspecialidad(),form.getEstado(), form.getNombrePaciente());
             model.put("form", "form");
         } catch (SQLException e) {
             model.put("error", "error");
             e.printStackTrace();
         }
-        return "citasRegistradas";
+        return "hospitalizacionesRegistradasS";
     }
 
 }
