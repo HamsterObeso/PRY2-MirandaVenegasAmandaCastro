@@ -9,12 +9,14 @@ public class TablaBitácora {
   private String fecha;
   private String usuario;
   private int idCita;
+  private String accion;
 
-  public TablaBitácora(int id, String fecha, String usuario, int idCita) {
+  public TablaBitácora(int id, String fecha, String usuario, int idCita, String accion) {
     this.id = id;
     this.fecha = fecha;
     this.usuario = usuario;
     this.idCita = idCita;
+    this.accion = accion;
   }
 
   public int getId() {
@@ -47,6 +49,14 @@ public class TablaBitácora {
 
   public void setIdCita(int idCita) {
     this.idCita = idCita;
+  }
+
+  public String getAccion() {
+    return accion;
+  }
+
+  public void setAccion(String accion) {
+    this.accion = accion;
   }
   
 }

@@ -109,6 +109,7 @@
                 <th>Fecha</th>
                 <th>Usuario</th>
                 <th>Cita</th>
+                <th>Accion</th>
                 
             </tr>
             
@@ -120,12 +121,14 @@
                         String fecha = bitacora.getFecha();
                         String usuario = bitacora.getUsuario();
                         int cita = bitacora.getIdCita();
+                        String accion = bitacora.getAccion();
             %>
                         <tr>
                             <td><%= id%></td>
                             <td><%= fecha%></td>
                             <td><%= usuario%></td>
                             <td><%= cita%></td>
+                            <td><%= accion%></td>
                         </tr>
             <%
                     }

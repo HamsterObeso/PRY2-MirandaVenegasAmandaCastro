@@ -24,10 +24,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller 
 @RequestMapping(value = "/hospitalizacionPaciente")
 public class HospitalizacionPaciente {
+  
   @RequestMapping(method = RequestMethod.GET)
   public String viewInicioSesion(Map<String, Object> model) {
     loadTable(model);
-    return "bitacora";
+    return "hospitalizacionesPaciente";
   }
   
   private void loadTable(Map<String, Object> model) {
