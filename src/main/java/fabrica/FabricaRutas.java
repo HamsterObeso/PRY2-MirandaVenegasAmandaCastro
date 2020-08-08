@@ -13,48 +13,51 @@ public class FabricaRutas {
       case "Cancelar cita":
         return "cancelarCita";
       case "Citas asociadas al paciente":
-        return "solicitarCita";
+        return "citasPaciente";
       case "Diagnosticos asociados al paciente":
-        return "solicitarCita";
+        return "diagnosticosPaciente";
       case "Tratamientos asociados al paciente":
-        return "solicitarCita";
+        return "tratamientosPaciente";
       case "Hospitalizaciones registradas al paciente":
-        return "solicitarCita";
+        return "hospitalizaciones";
       case "Cancelar cita de paciente":
-        return "solicitarCita";
+        return "cancelarCita";
       case "Asignar cita a paciente":
-        return "solicitarCita";
+        return "asignarCita";
       case "Atender cita":
-        return "solicitarCita";
+        return "atenderCita";
       case "Citas registradas en el sistema":
-        return "solicitarCita";
+        return "citasSistemaDocEnf";
       case "Diagnosticos asociados a un paciente":
-        return "solicitarCita";
+        return "diagnosticosDocEnf";
+      case "Tratamientos asociados a un paciente":
+        return "tratamientosDocEnf";
       case "Cantidad de citas registradas en el sistema":
-        return "solicitarCita";
+        return "cantidadCitas";
       case "Cantidad de diagnosticos":
-        return "solicitarCita";
+        return "cantidadDiagnosticos";
       case "Cantidad de tratamientos":
-        return "solicitarCita";
+        return "cantidadTratamientos";
       case "Detalle de hospitalizacion de un paciente":
-        return "solicitarCita";
+        return "detalleHospitalizacion";
       case "Añadir centros de atencion":
-        return "solicitarCita";
+        return "agregarCentro";
       case "Añadir tipos de centros de atencion":
-        return "solicitarCita";
+        return "agregarTipoCentro";
       case "Gestionar areas o especialidades":
-        return "solicitarCita";
+        return "gestionEspecialidad";
       case "Gestionar catalogo de diagnosticos":
-        return "solicitarCita";
+        return "gestionDiagnostico";
       case "Gestionar catalogo de tratamientos":
-        return "solicitarCita";
+        return "gestionTratamiento";
       case "Ver bitacora":
-        return "solicitarCita";
+        return "cargarBitacora";
       case "Citas registradas en el sistema E":
         return "solicitarCita";
       case "Hospitalizaciones registradas":
         return "solicitarCita";
-        
+      case "Hospitalizar":
+        return "hospitalizar";
       default:
         return "menu";
     }

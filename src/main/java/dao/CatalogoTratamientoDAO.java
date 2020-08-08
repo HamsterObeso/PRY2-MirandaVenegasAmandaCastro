@@ -21,9 +21,9 @@ public class CatalogoTratamientoDAO {
       try(ResultSet result = cstmt.executeQuery()) {
         Tabla<CatalogoTratamiento> resultados = new Tabla<>();
         while(result.next()) {
-          String nombre = result.getString("Nombre");
+          String nombre = result.getString("Tratamiento");
           String diagnostico = result.getString("Diagnostico");
-          int id = result.getInt("idNombreTratamiento");
+          int id = result.getInt("idCatalogoTratamiento");
           CatalogoTratamiento resultado = new CatalogoTratamiento(nombre, diagnostico, id);
           resultados.agregar(resultado);
         }

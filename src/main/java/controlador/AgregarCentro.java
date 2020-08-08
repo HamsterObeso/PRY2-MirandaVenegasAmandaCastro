@@ -1,7 +1,6 @@
 package controlador;
 
 import dao.CentroDAO;
-import dao.TipoCentroDAO;
 
 import java.sql.SQLException;
 

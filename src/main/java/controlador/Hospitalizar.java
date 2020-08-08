@@ -44,7 +44,7 @@ public class Hospitalizar {
     } catch(SQLException e){
       
     }
-    return "hospitalizar";
+    return "redirect:/hospitalizar";
   }
   
   private void loadTable(Map<String, Object> model) {

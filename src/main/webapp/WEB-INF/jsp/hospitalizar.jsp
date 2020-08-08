@@ -105,7 +105,7 @@
                 <form:input class="input" type="text" placeholder="Ingrese la especialidad en la que será internado" name="especialidad" path="especialidad"/>
                 <label for="diagnostico"><b>Diagnostico</b></label>
                 <form:input class="input" type="text" placeholder="Ingrese la especialidad en la que será internado" name="diagnostico" path="diagnostico"/> 
-                <form:input class="boton verde" type="submit" name="Diagnosticar" value="Diagnosticar" path="opcion"/>
+                <form:button type="submit">Hospitalizar</form:button> 
             </form:form>
 
         </div>

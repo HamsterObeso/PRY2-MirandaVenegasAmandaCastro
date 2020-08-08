@@ -9,6 +9,7 @@ import com.twilio.type.PhoneNumber;
 import contexto.ContextoUsuario;
 
 import dao.CitaDAO;
+import dao.PacienteDAO;
 
 import generico.Tabla;
 
@@ -67,13 +68,34 @@ public class CancelarCita {
       }
       model.put("cita", "cita");
       Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-      Message message = Message.creator(new PhoneNumber(CitaDAO.telefonoPaciente(ContextoUsuario.getIdUsuario())),
+      Message message = Message.creator(new PhoneNumber(PacienteDAO.telefonoPaciente(ContextoUsuario.getIdUsuario())),
               new PhoneNumber("+17206369419"), "Estimado paciente su cita fue cancelada").create();
+      String correo = PacienteDAO.obtenerCorreo(ContextoUsuario.getIdUsuario());
+      mandarCorreo(correo);
     } catch (SQLException e) {
       model.put("error", "error");
       e.printStackTrace();
     }
     return "cancelarCita";
   }
+  
+  /**
+  * Se crea el objeto email deacuerdo a la información requerida
+  * @param correo
+  */
+     
+  public void mandarCorreo (String correo){
+    Email email = new Email();
 
+    email.addRecipient(correo);
+    email.setSubject("Informe de cancelación de cita.");
+    email.addBody("Estimado paciente, se le informa por este medio que su cita ha sido "
+      + "cancelada.",false);
+
+    if(email.sendEmail()){
+        System.out.println("Correo enviado con éxito.");
+    }else{
+        System.out.println("Error al enviar el correo.");
+    }
+  }
 }

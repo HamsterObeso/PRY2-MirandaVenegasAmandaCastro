@@ -10,6 +10,8 @@ import java.util.Map;
 
 import contexto.ContextoCita;
 import contexto.ContextoDiagnostico;
+import contexto.ContextoUsuario;
+
 import dao.CatalogoDiagnosticoDAO;
 
 import dao.CitaDAO;
@@ -79,7 +81,7 @@ public class RealizarDiagnostico {
   
   private String atender(Map<String, Object> model, FormDiagnostico form) {
     try {
-      CitaDAO.atenderCita(ContextoCita.getIdCita());
+      CitaDAO.atenderCita(ContextoCita.getIdCita(), ContextoUsuario.getIdUsuario());
       return "redirect:/menu";
     } catch(SQLException e){
       model.put("mensaje", "Ha ocurrido un error al atender la cita.");

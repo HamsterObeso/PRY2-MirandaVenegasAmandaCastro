@@ -6,13 +6,15 @@ package modelo;
  */
 public class TablaCantidadCitas {
   private int cantidadCitas;
-  private String fecha;
+  private String fechaInicial;
+  private String fechaFinal;
   private String especialidad;
   private String estado;
 
-  public TablaCantidadCitas(int cantidadCitas, String fecha, String especialidad, String estado) {
+  public TablaCantidadCitas(int cantidadCitas, String fechaInicial, String fechaFinal, String especialidad, String estado) {
     this.cantidadCitas = cantidadCitas;
-    this.fecha = fecha;
+    this.fechaInicial = fechaInicial;
+    this.fechaFinal = fechaFinal;
     this.especialidad = especialidad;
     this.estado = estado;
   }
@@ -25,12 +27,20 @@ public class TablaCantidadCitas {
     this.cantidadCitas = cantidadCitas;
   }
 
-  public String getFecha() {
-    return fecha;
+  public String getFechaInicial() {
+    return fechaInicial;
   }
 
-  public void setFecha(String fecha) {
-    this.fecha = fecha;
+  public void setFechaInicial(String fechaInicial) {
+    this.fechaInicial = fechaInicial;
+  }
+
+  public String getFechaFinal() {
+    return fechaFinal;
+  }
+
+  public void setFechaFinal(String fechaFinal) {
+    this.fechaFinal = fechaFinal;
   }
 
   public String getEspecialidad() {

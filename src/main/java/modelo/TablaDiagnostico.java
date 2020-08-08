@@ -12,6 +12,7 @@ public class TablaDiagnostico {
   private String observaciones;
 
   public TablaDiagnostico(int id, int idCita, String nombreDiagnostico, String nivel, String observaciones) {
+    this.id = id;
     this.idCita = idCita;
     this.nombreDiagnostico = nombreDiagnostico;
     this.nivel = nivel;

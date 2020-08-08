@@ -97,11 +97,11 @@
             <form:form action="realizarTratamiento" method="post" modelAttribute="realizarTratamientoF">
                 <label for="nombreTratamiento"><b>Nombre del Tratamiento</b></label>
                 <form:input class="input" type="text" placeholder="Ingrese el tratamiento deseado" name="nombreTratamiento" path="nombreTratamiento"/>
-                <label for="tipo"><b>Nivel</b></label>
+                <label for="tipo"><b>Tipo</b></label>
                 <form:input class="input" type="text" placeholder="Ingrese el tipo de tratamiento" name="tipo" path="tipo"/>    
-                <label for="dosis"><b>Observaciones</b></label>
+                <label for="dosis"><b>Dosis</b></label>
                 <form:input class="input" type="text" placeholder="Ingrese la dosis recomendada" name="dosis" path="dosis"/>    
-                <form:input class="boton verde" type="submit" name="Tratar" value="Tratar" path="opcion"/>
+                <form:button type="submit">Realizar Tratamiento</form:button>  
             </form:form>
 
         </div>

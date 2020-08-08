@@ -45,6 +45,7 @@ public class FabricaOpciones {
     opciones.add("Gestionar catalogo de diagnosticos");
     opciones.add("Gestionar catalogo de tratamientos");
     opciones.add("Ver bitacora");
+    opciones.add("Hospitalizar");
     return opciones;
   }
   
@@ -64,6 +65,7 @@ public class FabricaOpciones {
     opciones.add("Gestionar catalogo de diagnosticos");
     opciones.add("Gestionar catalogo de tratamientos");
     opciones.add("Ver bitacora");
+    opciones.add("Hospitalizar");
     return opciones;
   }
   

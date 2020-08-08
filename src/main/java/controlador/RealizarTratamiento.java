@@ -37,7 +37,7 @@ public class RealizarTratamiento {
     return "realizarTratamiento";
   }
   
-   @RequestMapping(method = RequestMethod.POST)  
+  @RequestMapping(method = RequestMethod.POST)  
   public String tratamiento(@ModelAttribute("realizarTratamientoF") 
     Tratamiento form, Map<String, Object> model) {
     try {
@@ -47,7 +47,7 @@ public class RealizarTratamiento {
       model.put("mensaje", "Ha ocurrido un error al agregar el tratamiento.");
     }
     loadTable(model);
-    return "realizarTratamiento";
+    return "redirect:/realizarTratamiento";
   }
   
   private void loadTable(Map<String, Object> model) {

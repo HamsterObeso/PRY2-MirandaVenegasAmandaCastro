@@ -13,6 +13,8 @@ import modelo.TablaPacientesAtendidos;
  * @author Muro
  */
 public class PacienteDAO {
+  public static String correoPaciente;
+  public static String numeroPaciente;
   
   public static Tabla<TablaPacientesAtendidos> obtenerPacientesAtentidos() throws SQLException {
     try (CallableStatement cstmt = ConexionSQL.getConnection()
@@ -71,4 +73,36 @@ public class PacienteDAO {
     }
     return false; 
   }
+  
+  public static String telefonoPaciente(int idUsuario) throws SQLException {
+    try (CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{? = call obtenerTelefono(?)}")) {
+      entrada.registerOutParameter(1, java.sql.Types.VARCHAR);
+      entrada.setInt(2, idUsuario);
+      try (ResultSet result = entrada.executeQuery()) {
+        while (result.next()) {
+          String num = result.getString("TelefonoPaciente");
+          numeroPaciente = num;
+        }
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
+      return numeroPaciente;
+    }
+  }
+  
+  public static String obtenerCorreo(int idUsuario) throws SQLException{
+    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{? = call obtenerCorreo(?)}");
+    entrada.registerOutParameter(1, java.sql.Types.VARCHAR);
+    entrada.setInt(2, idUsuario);
+    try (ResultSet result = entrada.executeQuery()) {
+      while (result.next()) {
+        String correo = result.getString("CorreoPaciente");
+        correoPaciente = correo;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return correoPaciente;
+  }
+  
 }

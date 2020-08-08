@@ -19,9 +19,10 @@ import modelo.TablaCantidadCitas;
  */
 public class CitaDAO {
   
-  public static void atenderCita(int idCita) throws SQLException {
-    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call atenderCita(?)}");
+  public static void atenderCita(int idCita , int idDiagnostico) throws SQLException {
+    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call atenderCita(?, ?)}");
     entrada.setInt(1, idCita);
+    entrada.setInt(2, idDiagnostico);
     entrada.execute();
   }
   
@@ -191,14 +192,12 @@ public class CitaDAO {
     }
     try(ResultSet result = entrada.executeQuery()) {
       Tabla<TablaCantidadCitas> tabla = new Tabla<>();
+      int total = 0;
       while(result.next()) {
-        int cant = result.getInt("CantidadCitas");
-        String especialidad = result.getString("Especialidad");
-        String fecha = result.getString("Fecha");
-        String estado = result.getString("Estado");
-        TablaCantidadCitas resultado = new TablaCantidadCitas(cant, fecha, especialidad, estado);
-        tabla.agregar(resultado);
+        total ++;
       }
+      TablaCantidadCitas resultado = new TablaCantidadCitas(total, clamp(f1), clamp(f2), clamp(pEspecialidad), clamp(pEstado));
+      tabla.agregar(resultado);
       result.close();
       return tabla;
     } catch(SQLException e) {
@@ -206,7 +205,15 @@ public class CitaDAO {
     }
     return null;
   }
-
+  
+  public static String clamp(String valor){
+    if(valor.isEmpty()){
+      return "Sin indicar";
+    } else {
+      return valor;
+    }
+  }
+  
   // Funciona para ambos doctor|enfermero y secretario. Mismos parámetros.
   public static Tabla<TablaCitasDE> citasSistema(String f1, String f2, String pEstado, String pEspecialidad,
           String pNombrePaciente) throws SQLException {
@@ -264,21 +271,6 @@ public class CitaDAO {
       entrada.setInt(1, idCita);
       entrada.setInt(2, idUsuario);
       entrada.execute();
-  }
-
-  public static String telefonoPaciente(int idUsuario) throws SQLException {
-    try (CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call obtenerTelefono(?)}")) {
-      entrada.setInt(1, idUsuario);
-      try (ResultSet result = entrada.executeQuery()) {
-        while (result.next()) {
-          String num = result.getString("tel");
-          return num;
-        }
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
-      return null;
-    }
   }
 
 }
