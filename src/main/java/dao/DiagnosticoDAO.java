@@ -7,6 +7,7 @@ import generico.Tabla;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import modelo.TablaCantidadCitas;
 
 import modelo.TablaDiagnosticosPaciente;
 import modelo.TablaCantidadDiagnosticos;
@@ -110,20 +111,26 @@ public class DiagnosticoDAO {
     }
     try(ResultSet result = entrada.executeQuery()) {
       Tabla<TablaCantidadDiagnosticos> tabla = new Tabla<>();
+      int total = 0;
       while(result.next()) {
-        int cantidad = result.getInt("CantidadDiagnosticos");
-        String nivel = result.getString("nivel");
-        String especialidad = result.getString("Especialidad");
-        String paciente = result.getString("Paciente");
-        TablaCantidadDiagnosticos resultado = new TablaCantidadDiagnosticos(cantidad, nivel, especialidad, paciente);
-        tabla.agregar(resultado);
+        total ++;
       }
+      TablaCantidadDiagnosticos resultado = new TablaCantidadDiagnosticos(total, clamp(pNivel), clamp(pEspecialidad), clamp(pPaciente));
+      tabla.agregar(resultado);
       result.close();
       return tabla;
     } catch(SQLException e) {
-      e.printStackTrace();       
+      e.printStackTrace();
     }
     return null;
+  }
+  
+  public static String clamp(String valor){
+    if(valor.isEmpty()){
+      return "Sin indicar";
+    } else {
+      return valor;
+    }
   }
   
   public static Tabla<TablaDiagnosticosDE> diagnosticosAsociadosDE(String f1, String f2, String pNivel, String pNombre, String pIdentificacion) throws SQLException{

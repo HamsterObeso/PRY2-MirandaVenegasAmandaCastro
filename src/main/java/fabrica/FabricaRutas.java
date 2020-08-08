@@ -19,7 +19,7 @@ public class FabricaRutas {
       case "Tratamientos asociados al paciente":
         return "tratamientosPaciente";
       case "Hospitalizaciones registradas al paciente":
-        return "hospitalizaciones";
+        return "hospitalizacionPaciente";
       case "Cancelar cita de paciente":
         return "cancelarCita";
       case "Asignar cita a paciente":
@@ -58,6 +58,8 @@ public class FabricaRutas {
         return "solicitarCita";
       case "Hospitalizar":
         return "hospitalizar";
+      case "Realizar seguimiento":
+        return "realizarSeguimiento";
       default:
         return "menu";
     }

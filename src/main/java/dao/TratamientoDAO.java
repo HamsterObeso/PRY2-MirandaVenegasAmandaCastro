@@ -7,6 +7,7 @@ import generico.Tabla;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import modelo.TablaCantidadDiagnosticos;
 
 import modelo.TablaTratamientosPaciente;
 import modelo.TablaTratamientosDE;
@@ -84,22 +85,28 @@ public class TratamientoDAO {
       entrada.setString(3, pPaciente);
     }
     try(ResultSet result = entrada.executeQuery()) {
-        Tabla<TablaCantidadTratamientos> tabla = new Tabla<>();
+      Tabla<TablaCantidadTratamientos> tabla = new Tabla<>();
+      int total = 0;
       while(result.next()) {
-        int cantidadTratamientos = result.getInt("CantidadTratamientos");
-        String tipoTratamiento = result.getString("tipoTratamiento");
-        String especialidad = result.getString("Especialidad");
-        String paciente = result.getString("Paciente");
-        TablaCantidadTratamientos resultado = new TablaCantidadTratamientos(cantidadTratamientos, tipoTratamiento, especialidad, paciente);
-        tabla.agregar(resultado);
+        total ++;
       }
+      TablaCantidadTratamientos resultado = new TablaCantidadTratamientos(total, clamp(pTipo), clamp(pEspecialidad), clamp(pPaciente));
+      tabla.agregar(resultado);
       result.close();
       return tabla;
-      } catch(SQLException e) {
-      e.printStackTrace();       
+    } catch(SQLException e) {
+      e.printStackTrace();
     }
     return null;
+  }
+  
+  public static String clamp(String valor){
+    if(valor.isEmpty()){
+      return "Sin indicar";
+    } else {
+      return valor;
     }
+  }
   
   public static Tabla<TablaTratamientosDE> tratamientosAsociadosDE(String f1, String f2, String pTipo, String pNombre, String pIdentificacion) throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call tratamientosDE(?, ?, ?, ?, ?)}");
