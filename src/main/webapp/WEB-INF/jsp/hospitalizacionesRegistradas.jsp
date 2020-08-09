@@ -98,9 +98,9 @@
 
             <label for="fechaIni1"><b>Primer rango de fechas</b></label>
             <input type="text" placeholder="Fecha inicial" name="fechaIni1" path="fechaIni1">
-            <input type="text" placeholder="Fecha final" name="fechaFin1" path="fechaFin1">
+            <input type="text" placeholder="Fecha final" name="fechaIni2" path="fechaIni2">
             <label for="fechaIni2"><b>Segundo rango de fechas</b></label>
-            <input type="text" placeholder="Fecha inicial" name="fechaIni2" path="fechaIni2">
+            <input type="text" placeholder="Fecha inicial" name="fechaFin1" path="fechaFin1">
             <input type="text" placeholder="Fecha Final" name="fechaFin2" path="fechaFin2">
             <label for="estado"><b>Estado </b></label>
             <input type="text" placeholder="Indique el estado" name="estado" path="estado">

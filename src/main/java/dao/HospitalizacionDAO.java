@@ -120,8 +120,8 @@ public class HospitalizacionDAO {
       return null;
   }
 
-  public static Tabla<TablaHospitalizaciones> hospitalizacionesRegistradas(String fechaIni1, String fechaFin1,
-      String fechaIni2, String fechaFin2, String estado, String especialidad, String nombrePaciente)
+  public static Tabla<TablaHospitalizaciones> hospitalizacionesRegistradas(String fechaIni1, String fechaIni2,
+      String fechaFin1, String fechaFin2, String estado, String especialidad, String nombrePaciente)
       throws SQLException {
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call hospitalizacionesRegistradas(?, ?, ?, ?, ?, ?, ?)}");
     if (fechaIni1.isEmpty() == true) {

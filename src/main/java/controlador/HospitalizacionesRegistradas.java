@@ -38,16 +38,16 @@ public class HospitalizacionesRegistradas {
   public String filtroHospitalizaciones(@ModelAttribute("hospitalizacionesRegistradasSForm") 
     SecretarioHospitalizacionesRegistradas form,
       Map<String, Object> model) {
-    loadTable(form.getFechaIni1(), form.getFechaFin1(), form.getFechaIni2(), form.getFechaFin2(), 
+    loadTable(form.getFechaIni1(), form.getFechaIni2(), form.getFechaFin1(), form.getFechaFin2(),
       form.getEstado(), form.getEspecialidad(), form.getNombrePaciente(), model);
     return "hospitalizacionesRegistradas";
   }
 
-  private void loadTable(String fechaIni1, String fechaFin1, String fechaIni2, String fechaFin2, 
-      String estado,String especialidad, String nombrePaciente, Map<String, Object> model) {
+  private void loadTable(String fechaIni1, String fechaIni2, String fechaFin1, String fechaFin2,
+    String estado, String especialidad, String nombrePaciente, Map<String, Object> model) {
     try {
       Tabla<TablaHospitalizaciones> resultado = HospitalizacionDAO.hospitalizacionesRegistradas
-  (fechaIni1, fechaFin1, fechaIni2, fechaFin2, estado, especialidad, nombrePaciente);
+      (fechaIni1, fechaIni2, fechaFin1, fechaFin2, estado, especialidad, nombrePaciente);
       model.put("resultados", resultado);
     } catch (SQLException ex) {
       ex.printStackTrace();
