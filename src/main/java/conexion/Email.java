@@ -31,7 +31,7 @@ import javax.mail.internet.MimeMultipart;
 public class Email {
 
   private final String email = "mvenegasc22@gmail.com";
-  private final String password = "cafeteraCarisima99thehell";
+  private final String password = "doslitrosdejetporfa2299";
 
   private Properties properties;
 

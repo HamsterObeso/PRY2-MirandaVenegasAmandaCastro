@@ -30,14 +30,14 @@ public class DocEnfDiagnosticos {
   public String viewFiltroDiagnosticosDE(Map<String, Object> model) {
     DocEnfDiagnosticosAsociadosPaciente form = new DocEnfDiagnosticosAsociadosPaciente();
     model.put("diagnosticosDocEnfForm", form);
-    loadTable(form.getIdentificacion(), "", "", "", "", model);
+    loadTable("", "", "", "", "", model);
     return "diagnosticosDocEnf";
   }
     
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroDiagnosticosDE(@ModelAttribute("diagnosticosDocEnfForm") DocEnfDiagnosticosAsociadosPaciente form,
       Map<String, Object> model) {
-    loadTable(form.getFecha1(), form.getFecha2(), form.getNivel(), form.getNombre(), form.getIdentificacion(), model);
+    loadTable(form.getIdentificacion(), form.getFecha1(), form.getFecha2(), form.getNivel(), form.getNombre(), model);
     return "diagnosticosDocEnf";
   }
   

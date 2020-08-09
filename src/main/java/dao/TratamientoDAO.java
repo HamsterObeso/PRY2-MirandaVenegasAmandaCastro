@@ -53,7 +53,7 @@ public class TratamientoDAO {
         Tabla<TablaTratamientosPaciente> tabla = new Tabla<>();
       while(result.next()) {
         int idTratamiento = result.getInt("idTratamiento");
-        String tratamiento = result.getString("Tratamiento");
+        String tratamiento = result.getString(2);
         String dosisRecomendada = result.getString("dosisRecomendada");
         String tipoTratamiento = result.getString("tipoTratamiento");
         String fecha = result.getString("Fecha");
@@ -135,9 +135,9 @@ public class TratamientoDAO {
         int idTratamiento = result.getInt("idTratamiento");
         String fecha = result.getString("fecha");
         String nombreTratamiento = result.getString("Especialidad");
-        String dosis = result.getString("Paciente");
-        String tipo = result.getString("Paciente");
-        int idDiagnostico = result.getInt("idTratamiento");
+        String dosis = result.getString("DosisRecomendada");
+        String tipo = result.getString("TipoTratamiento");
+        int idDiagnostico = result.getInt("idDiagnostico");
         TablaTratamientosDE resultado = new TablaTratamientosDE(idTratamiento, nombrePaciente,
           fecha, nombreTratamiento, dosis, tipo, idDiagnostico);
         tabla.agregar(resultado);

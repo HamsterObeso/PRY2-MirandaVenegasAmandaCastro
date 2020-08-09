@@ -52,10 +52,8 @@ public class FabricaRutas {
         return "gestionTratamiento";
       case "Ver bitacora":
         return "cargarBitacora";
-      case "Citas registradas en el sistema E":
-        return "solicitarCita";
       case "Hospitalizaciones registradas":
-        return "solicitarCita";
+        return "hospitalizacionesRegistradas";
       case "Hospitalizar":
         return "hospitalizar";
       case "Realizar seguimiento":

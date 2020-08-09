@@ -1,16 +1,15 @@
 package controlador;
 
-import dao.DiagnosticoDAO;
 import dao.HospitalizacionDAO;
-import formulario.DocEnfDetalleHospitalizacion;
 
 import formulario.SecretarioHospitalizacionesRegistradas;
+
 import generico.Tabla;
 
 import java.sql.SQLException;
 
 import java.util.Map;
-import modelo.TablaDiagnosticosDE;
+
 import modelo.TablaHospitalizaciones;
 
 import org.springframework.stereotype.Controller;
@@ -29,23 +28,26 @@ public class HospitalizacionesRegistradas {
 
   @RequestMapping(method = RequestMethod.GET)
   public String viewFiltroHospitalizacionesRegistradas(Map<String, Object> model) {
-    DocEnfDetalleHospitalizacion form = new DocEnfDetalleHospitalizacion();
+    SecretarioHospitalizacionesRegistradas form = new SecretarioHospitalizacionesRegistradas();
     model.put("hospitalizacionesRegistradasSForm", form);
-    loadTable(form.getNombrePaciente(),"","","","","","",model);
-    return "hospitalizacionesRegistradasS";
+    loadTable("", "", "", "", "", "", "", model);
+    return "hospitalizacionesRegistradas";
   }
 
   @RequestMapping(method = RequestMethod.POST)
-  public String filtroHospitalizaciones(@ModelAttribute("hospitalizacionesRegistradasSForm") SecretarioHospitalizacionesRegistradas form,
+  public String filtroHospitalizaciones(@ModelAttribute("hospitalizacionesRegistradasSForm") 
+    SecretarioHospitalizacionesRegistradas form,
       Map<String, Object> model) {
-    loadTable(form.getFechaIni1(),form.getFechaIni2(),form.getFechaFin1(),form.getFechaFin2(),form.getEstado(),form.getEspecialidad(),form.getNombrePaciente(), model);
-    return "hospitalizacionesRegistradasS";
+    loadTable(form.getFechaIni1(), form.getFechaFin1(), form.getFechaIni2(), form.getFechaFin2(), 
+      form.getEstado(), form.getEspecialidad(), form.getNombrePaciente(), model);
+    return "hospitalizacionesRegistradas";
   }
 
-  private void loadTable(String fechaIni1, String fechaIni2, String fechaFin1, String fechaFin2, 
+  private void loadTable(String fechaIni1, String fechaFin1, String fechaIni2, String fechaFin2, 
       String estado,String especialidad, String nombrePaciente, Map<String, Object> model) {
     try {
-      Tabla<TablaHospitalizaciones> resultado = HospitalizacionDAO.hospitalizacionesRegistradas(fechaIni1, fechaIni2, fechaFin1, fechaFin2, estado,especialidad,nombrePaciente);
+      Tabla<TablaHospitalizaciones> resultado = HospitalizacionDAO.hospitalizacionesRegistradas
+  (fechaIni1, fechaFin1, fechaIni2, fechaFin2, estado, especialidad, nombrePaciente);
       model.put("resultados", resultado);
     } catch (SQLException ex) {
       ex.printStackTrace();

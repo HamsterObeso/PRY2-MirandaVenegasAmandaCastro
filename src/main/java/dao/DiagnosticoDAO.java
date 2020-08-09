@@ -147,8 +147,12 @@ public class DiagnosticoDAO {
       entrada.setNull(3, java.sql.Types.VARCHAR);
     } else {
       entrada.setString(3, pNivel);
+    } if(pNombre.isEmpty() == true) {
+      entrada.setNull(4, java.sql.Types.VARCHAR);
+    } else {
+      entrada.setString(4, pNombre);
     }
-    entrada.setString(4, pIdentificacion);
+    entrada.setString(5, pIdentificacion);
     try(ResultSet result = entrada.executeQuery()) {
       Tabla<TablaDiagnosticosDE> tabla = new Tabla<>();
       while(result.next()) {

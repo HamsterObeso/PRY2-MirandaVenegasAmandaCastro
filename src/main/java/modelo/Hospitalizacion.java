@@ -10,6 +10,15 @@ public class Hospitalizacion {
   private String centro;
   private String especialidad;
   private String diagnostico;
+  private String fecha;
+
+  public String getFecha() {
+    return fecha;
+  }
+
+  public void setFecha(String fecha) {
+    this.fecha = fecha;
+  }
 
   public String getNombre() {
     return nombre;

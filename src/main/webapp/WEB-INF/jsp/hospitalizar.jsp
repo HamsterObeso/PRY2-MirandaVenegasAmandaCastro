@@ -104,7 +104,9 @@
                 <label for="especialidad"><b>Especialidad</b></label>
                 <form:input class="input" type="text" placeholder="Ingrese la especialidad en la que será internado" name="especialidad" path="especialidad"/>
                 <label for="diagnostico"><b>Diagnostico</b></label>
-                <form:input class="input" type="text" placeholder="Ingrese la especialidad en la que será internado" name="diagnostico" path="diagnostico"/> 
+                <form:input class="input" type="text" placeholder="Ingrese la especialidad en la que será internado" name="diagnostico" path="diagnostico"/>
+                <label for="fecha"><b>Fecha</b></label>
+                <form:input class="input" type="text" placeholder="Ingrese la fecha de finalizacion de la hospitalizacion" name="fecha" path="fecha"/> 
                 <form:button type="submit">Hospitalizar</form:button> 
             </form:form>
 

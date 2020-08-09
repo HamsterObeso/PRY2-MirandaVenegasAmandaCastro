@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.SQLException;
 
 import conexion.ConexionSQL;
+import static dao.PacienteDAO.numeroPaciente;
 
 import generico.Tabla;
 
@@ -18,6 +19,9 @@ import modelo.TablaCantidadCitas;
  * @author Muro
  */
 public class CitaDAO {
+  
+  private static String correo;
+  private static String telefono;
   
   public static void atenderCita(int idCita , int idDiagnostico) throws SQLException {
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call atenderCita(?, ?)}");
@@ -74,10 +78,34 @@ public class CitaDAO {
     }
     return null;
   }
+  
+  public static Tabla<TablaCita> obtenerCitasCancelar() throws SQLException {
+    try (CallableStatement cstmt = ConexionSQL.getConnection()
+          .prepareCall("{call obtenerCitasCancelar()}");) {
+      try (ResultSet result = cstmt.executeQuery()) {
+        Tabla<TablaCita> resultados = new Tabla<>();
+        while (result.next()) {
+          int id = result.getInt("IDcita");
+          String especialidad = result.getString("especialidad");
+          String fecha = result.getString("fecha");
+          String hora = result.getString("hora");
+          String observacion = result.getString("observacion");
+          String estado = result.getString("estado");
+          TablaCita resultado = new TablaCita(id, especialidad, fecha, hora, observacion, estado);
+          resultados.agregar(resultado);
+          }
+        result.close();
+        return resultados;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 
   public static Tabla<TablaCita> obtenerCitasAsignar() throws SQLException {
     try (CallableStatement cstmt = ConexionSQL.getConnection()
-          .prepareCall("{call cargarCitasAsignar(?)}");) {
+          .prepareCall("{call cargarCitasAsignar()}");) {
       try (ResultSet result = cstmt.executeQuery()) {
         Tabla<TablaCita> resultados = new Tabla<>();
         while (result.next()) {
@@ -272,5 +300,36 @@ public class CitaDAO {
       entrada.setInt(2, idUsuario);
       entrada.execute();
   }
-
+  
+  public static String obtenerCorreoFuncionario(int idCita) throws SQLException{
+    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{? = call obtenerCorreoFuncionario(?)}");
+    entrada.registerOutParameter(1, java.sql.Types.VARCHAR);
+    entrada.setInt(2, idCita);
+    try (ResultSet result = entrada.executeQuery()) {
+      while (result.next()) {
+        String correito = result.getString("CorreoPaciente");
+        correo = correito;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return correo;
+  }
+  
+  public static String telefonoPacienteFuncionario(int idCita) throws SQLException {
+    try (CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{? = call obtenerTelefonoFuncionario(?)}")) {
+      entrada.registerOutParameter(1, java.sql.Types.VARCHAR);
+      entrada.setInt(2, idCita);
+      try (ResultSet result = entrada.executeQuery()) {
+        while (result.next()) {
+          String num = result.getString("TelefonoPaciente");
+          telefono = num;
+        }
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
+      return telefono;
+    }
+  }
+  
 }

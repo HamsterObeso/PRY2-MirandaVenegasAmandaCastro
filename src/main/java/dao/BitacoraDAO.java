@@ -22,7 +22,8 @@ public class BitacoraDAO {
           String fecha = result.getString("Fecha");
           String usuario = result.getString("Usuario");
           int cita = result.getInt("Cita");
-          TablaBitácora resultado = new TablaBitácora(bitacora, fecha, usuario, cita);
+          String accion = result.getString("Accion");
+          TablaBitácora resultado = new TablaBitácora(bitacora, fecha, usuario, cita, accion);
           resultados.add(resultado);
         }
         result.close();

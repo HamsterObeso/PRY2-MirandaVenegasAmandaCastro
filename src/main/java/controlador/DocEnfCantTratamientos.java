@@ -41,10 +41,10 @@ public class DocEnfCantTratamientos {
     return "cantidadTratamientos";
   }
   
-  private void loadTable(String pTipo, String pEspecialidad, String pEstado,
+  private void loadTable(String pTipo, String pEspecialidad, String pPaciente,
     Map<String, Object> model) {
     try {
-      Tabla<TablaCantidadTratamientos> resultado = TratamientoDAO.cantidadTratamientos(pTipo, pEstado, pEspecialidad);
+      Tabla<TablaCantidadTratamientos> resultado = TratamientoDAO.cantidadTratamientos(pTipo, pEspecialidad, pPaciente);
       model.put("resultados", resultado);
     } catch (SQLException ex) {
       ex.printStackTrace();

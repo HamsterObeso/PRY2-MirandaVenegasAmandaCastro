@@ -94,7 +94,8 @@
         <div class="form">
 
           <form action="tratamientosDocEnf" method="post" commandName="tratamientosDocEnfForm">
-
+            <label for="identificacion"><b>Identificacion del paciente</b></label>
+            <input type="text" placeholder="Indique el nombre del paciente." name="identificacion" path="identificacion">
             <label for="fecha"><b>Rango de fechas</b></label>
             <input type="text" placeholder="Indique el primer rango de fecha." name="fecha1" path="fecha1">
             <input type="text" placeholder="Indique el segundo rango de fecha." name="fecha2" path="fecha2">

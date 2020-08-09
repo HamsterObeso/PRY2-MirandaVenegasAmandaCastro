@@ -1,10 +1,5 @@
-<%-- 
-    Document   : inicio
-    Created on : 6 ago. 2020, 11:07:19
-    Author     : Miranda Venegas
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +7,16 @@
         <title>Inicio</title>
     </head>
     <body>
-        <h1>OLI KHE ONDA</h1>
+        <h2>Bienvenido :)</h2>
+        
+        <div class="container">         
+
+            <form:form action="inicio" method="post" modelAttribute="inicioF">
+                <form:input class="boton verde" type="submit" name="Iniciar Sesion" value="Iniciar Sesion" path="opcion"/>
+                <form:input class="boton verde" type="submit" name="Registrar Paciente" value="Registrar Paciente" path="opcion"/>
+                <form:input class="boton rojo" type="submit" name="Registrar Funcionario" value="Registrar Funcionario" path="opcion"/>
+            </form:form>
+                     
+        </div>
     </body>
 </html>

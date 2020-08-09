@@ -29,7 +29,7 @@ public class DocEnfTratamientos {
   public String viewFiltroCantidadCitas(Map<String, Object> model) {
     DocEnfTratamientosAsociadosPaciente form = new DocEnfTratamientosAsociadosPaciente();
     model.put("tratamientosDocEnfForm", form);
-    loadTable("", "", "", "", form.getIdentificacion(), model);
+    loadTable("", "", "", "", "", model);
     return "tratamientosDocEnf";
   }
     

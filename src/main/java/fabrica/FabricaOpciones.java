@@ -35,6 +35,7 @@ public class FabricaOpciones {
     opciones.add("Atender cita");
     opciones.add("Citas registradas en el sistema");
     opciones.add("Diagnosticos asociados a un paciente");
+    opciones.add("Tratamientos asociados a un paciente");
     opciones.add("Cantidad de citas registradas en el sistema");
     opciones.add("Cantidad de diagnosticos");
     opciones.add("Cantidad de tratamientos");

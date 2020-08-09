@@ -43,7 +43,7 @@ public class RealizarSeguimiento {
       model.put("error", "error");
       e.printStackTrace();
     }
-    return "seguimiento";
+    return "redirect:/realizarSeguimiento";
   }
   
   private void loadTable(Map<String, Object> model) {

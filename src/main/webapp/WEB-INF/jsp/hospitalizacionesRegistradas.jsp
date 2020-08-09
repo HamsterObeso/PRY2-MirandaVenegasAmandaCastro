@@ -1,9 +1,8 @@
-<%-- 
-    Document   : hospitalizacionesRegistradas
-    Created on : 28/07/2020, 03:59:30 PM
-    Author     : Masiel Castro Mora
---%>
-
+<%@page import="modelo.TablaHospitalizaciones"%>
+<%@page import="generico.Tabla"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -91,11 +90,11 @@
 
     <div class="container">
 
-        <h2> Secretario </h2>
+        <h2> Hospitalizaciones Registradas </h2>
 
         <div class="form">
 
-          <form action="hospitalizacionesRegistradasS" method="post" commandName="hospitalizacionesRegistradasSForm">
+          <form action="hospitalizacionesRegistradas" method="post" commandName="hospitalizacionesRegistradasSForm">
 
             <label for="fechaIni1"><b>Primer rango de fechas</b></label>
             <input type="text" placeholder="Fecha inicial" name="fechaIni1" path="fechaIni1">
@@ -114,7 +113,45 @@
           </form>
 
         </div>
+        
+        <table>
 
+        <tr>
+
+            <%               
+                Tabla<TablaHospitalizaciones> hospitalizaciones = (Tabla<TablaHospitalizaciones>) request.getAttribute("resultados");
+                if(hospitalizaciones != null) {
+                    for(String columna: hospitalizaciones.obtenerColumnas()) {    
+            %> 
+                        <th><%= columna %></th>       
+            <%
+                    }
+                }
+            %>
+
+        </tr>
+
+        <%          
+            if(hospitalizaciones != null) {
+                for(int i = 0; i < hospitalizaciones.obtenerLargo(); i++) {
+                    ArrayList<Object> campos = hospitalizaciones.obtenerCampos(i);               
+        %>
+                    <tr>            
+        <%
+                        for(Object campo: campos) {                       
+        %>
+                            <td><%= campo %></td>
+        <%
+                        }   
+        %>
+                    </tr>
+        <%
+                }
+            }
+        %>
+
+    </table>
+        
   </body>
 
 </html>

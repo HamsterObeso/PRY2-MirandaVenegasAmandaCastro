@@ -40,7 +40,7 @@ public class Hospitalizar {
   public String hospitalizacion (@ModelAttribute("hospitalizarF") Hospitalizacion form,
       Map<String, Object> model) {
     try {
-      HospitalizacionDAO.anadirHospitalizacion(form.getNombre(), form.getIdentificacion(), form.getCentro(), form.getEspecialidad(), form.getDiagnostico(), ContextoUsuario.getIdUsuario());
+      HospitalizacionDAO.anadirHospitalizacion(form.getNombre(), form.getIdentificacion(), form.getCentro(), form.getEspecialidad(), form.getDiagnostico(), form.getFecha(), ContextoUsuario.getIdUsuario());
     } catch(SQLException e){
       
     }

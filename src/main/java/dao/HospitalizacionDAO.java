@@ -19,15 +19,16 @@ import modelo.TablaHospitalizaciones;
 public class HospitalizacionDAO {
 
   public static void anadirHospitalizacion(String nombre, String identificacion,
-      String centro, String especialidad, String diagnostico, int funcionario)
+      String centro, String especialidad, String diagnostico, String fecha,  int funcionario)
       throws SQLException {
-    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call internarPaciente(?, ?, ?, ?, ?, ?)}");
+    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call internarPaciente(?, ?, ?, ?, ?, ?, ?)}");
     entrada.setString(1, centro);
     entrada.setString(2, identificacion);
     entrada.setString(3, nombre);
     entrada.setString(4, diagnostico);
     entrada.setString(5, especialidad);
-    entrada.setInt(6, funcionario);
+    entrada.setString(6, fecha);
+    entrada.setInt(7, funcionario);
     entrada.execute();
   }
 
@@ -39,9 +40,9 @@ public class HospitalizacionDAO {
         while (result.next()) {
           int id = result.getInt("idHospitalizacion");
           String centro = result.getString("Centro");
-          String identificacion = result.getString("identificacionCliente");
-          String nombrePaciente = result.getString("NombrePaciente");
-          String diagnostico = result.getString("NombreDiagnostico");
+          String identificacion = result.getString("Identificacion");
+          String nombrePaciente = result.getString("Nombre");
+          String diagnostico = result.getString("Diagnostico");
           String fechaInicio = result.getString("FechaInicio");
           String fechaFinal = result.getString("FechaFinal");
           String especialidad = result.getString("Especialidad");
@@ -99,12 +100,12 @@ public class HospitalizacionDAO {
           Tabla<TablaDetalleHospitalizacion> resultados = new Tabla<>();
           while (result.next()) {
               int id = result.getInt("idHospitalizacion");
-              String centro = result.getString("Centro");
-              String identificacion = result.getString("identificacionCliente");
-              String paciente = result.getString("NombrePaciente");
+              String centro = result.getString("CentroAtencion");
+              String identificacion = result.getString("Identificacion");
+              String paciente = result.getString("Nombre");
               String diagnostico = result.getString("NombreDiagnostico");
-              String fechaInicio = result.getString("inicioFecha");
-              String fechaFinal = result.getString("finalFecha");
+              String fechaInicio = result.getString("InicioFecha");
+              String fechaFinal = result.getString("FinalFecha");
               String especialidad = result.getString("Especialidad");
               String funcionario = result.getString("Funcionario");
               TablaDetalleHospitalizacion resultado = new TablaDetalleHospitalizacion(id, centro,
@@ -119,10 +120,10 @@ public class HospitalizacionDAO {
       return null;
   }
 
-  public static Tabla<TablaHospitalizaciones> hospitalizacionesRegistradas(String fechaIni1, String fechaIni2,
-      String fechaFin1, String fechaFin2, String estado, String especialidad, String nombrePaciente)
+  public static Tabla<TablaHospitalizaciones> hospitalizacionesRegistradas(String fechaIni1, String fechaFin1,
+      String fechaIni2, String fechaFin2, String estado, String especialidad, String nombrePaciente)
       throws SQLException {
-    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call hospitalizacionesRegistradas(?,?,?,?,?,?,?)}");
+    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call hospitalizacionesRegistradas(?, ?, ?, ?, ?, ?, ?)}");
     if (fechaIni1.isEmpty() == true) {
       entrada.setNull(1, java.sql.Types.VARCHAR);
     } else {

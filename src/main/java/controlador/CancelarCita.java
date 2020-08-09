@@ -50,8 +50,13 @@ public class CancelarCita {
 
   private void loadTable(Map<String, Object> model) {
     try {
-      Tabla<TablaCita> resultado = CitaDAO.obtenerCitasCancelarPaciente(ContextoUsuario.getIdUsuario());
-      model.put("resultados", resultado);
+      if(ContextoUsuario.getTipo().equals("Paciente")){
+        Tabla<TablaCita> resultado = CitaDAO.obtenerCitasCancelarPaciente(ContextoUsuario.getIdUsuario());
+        model.put("resultados", resultado);
+      } else {
+        Tabla<TablaCita> resultado = CitaDAO.obtenerCitasCancelar();
+        model.put("resultados", resultado);
+      }
     } catch (SQLException ex) {
       ex.printStackTrace();
     }
@@ -60,17 +65,22 @@ public class CancelarCita {
   @RequestMapping(method = RequestMethod.POST)
   public String cancelarCitaP(@ModelAttribute("cancelarCitaPacForm") Cita cita,
           Map<String, Object> model) {
+    String correo = null;
+    String telefono = null;
     try {
       if (ContextoUsuario.getTipo().equals("Paciente")) {
         CitaDAO.cancelarCitaPaciente(cita.getIdCita(), ContextoUsuario.getIdUsuario());
+        correo = PacienteDAO.obtenerCorreo(ContextoUsuario.getIdUsuario());
+        telefono = PacienteDAO.telefonoPaciente(ContextoUsuario.getIdUsuario());
       } else {
         CitaDAO.cancelarCitaFuncionario(cita.getIdCita(), ContextoUsuario.getIdUsuario());
+        correo = CitaDAO.obtenerCorreoFuncionario(cita.getIdCita());
+        telefono = CitaDAO.telefonoPacienteFuncionario(cita.getIdCita());
       }
       model.put("cita", "cita");
-      Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-      Message message = Message.creator(new PhoneNumber(PacienteDAO.telefonoPaciente(ContextoUsuario.getIdUsuario())),
-              new PhoneNumber("+17206369419"), "Estimado paciente su cita fue cancelada").create();
-      String correo = PacienteDAO.obtenerCorreo(ContextoUsuario.getIdUsuario());
+//      Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+//      Message message = Message.creator(new PhoneNumber(PacienteDAO.telefonoPaciente(ContextoUsuario.getIdUsuario())),
+//              new PhoneNumber("+17206369419"), "Estimado paciente su cita fue cancelada").create();
       mandarCorreo(correo);
     } catch (SQLException e) {
       model.put("error", "error");

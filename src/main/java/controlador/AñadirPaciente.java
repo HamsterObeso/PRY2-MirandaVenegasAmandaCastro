@@ -33,15 +33,14 @@ public class AñadirPaciente {
     String identificacion = form.getIdentificacion();
     String fechaNacimiento = form.getFechaNacimiento();
     String tipoSangre = form.getTipoSangre();
-    String nacionalidad = form.getNombrePaciente();
+    String nacionalidad = form.getNacionalidad();
     String correo = form.getCorreo();
     String usuario = form.getUsuario();
     String contraseña = form.getContraseña();
-    String[] resultado = ConectorTSE.obtenerInformacion(identificacion);
-    if(identificacion == null) {
-      model.put("mensaje", "Debe ingresar su identificacion");
-    }
-    else {
+    if(identificacion == null || identificacion.length()<9) {
+      model.put("mensaje", "Revise su identificacion.");
+    } else {
+      String[] resultado = ConectorTSE.obtenerInformacion(identificacion);
       if (resultado[0].equals("404")){
         model.put("mensaje", "Revise el número de identificacion");
       } else {
@@ -50,7 +49,7 @@ public class AñadirPaciente {
         model.put("mensaje", "Se agregó el nuevo paciente.");
       }
     }
-    return "anadirPaciente";
+    return "redirect:/anadirPaciente";
   }
   
   @RequestMapping(value="/anadirTelefono", method = RequestMethod.POST)
@@ -65,6 +64,6 @@ public class AñadirPaciente {
       PacienteDAO.AgregarTelefono(identificacion, telefono);
       model.put("mensaje", "Se agregó el nuevo telefono.");
     }
-    return "anadirPaciente";
+    return "redirect:/anadirPaciente";
   }
 }

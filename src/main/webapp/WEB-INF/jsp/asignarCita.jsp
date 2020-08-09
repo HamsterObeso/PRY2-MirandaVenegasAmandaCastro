@@ -94,10 +94,8 @@
 
           <form action="asignarCita" method="post" commandName="patientForm">
 
-            <label for="idCita"><b>Identificación cita</b></label>
-            <input type="text" placeholder="Ingrese la identificación de la cita" name="idCita" path="idCita" required>
-            <label for="idFuncionario"><b>Tipo funcionario</b></label>
-            <input type="text" placeholder="Indique el tipo de funcionario" name="idUsuario" path="idUsuario">
+            <label for="idCita"><b>Id de la cita</b></label>
+            <input type="text" placeholder="Ingrese el id de la cita" name="idCita" path="idCita" required>
             <button type="submit">Asignar Cita</button>
 
           </form>
