@@ -2,7 +2,7 @@ package formulario;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
  */
 public class DocEnfCantidadTratamientos {
   private String tratamiento = "";

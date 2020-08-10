@@ -2,7 +2,7 @@ package formulario;
 
 /**
  *
- * @author Muro
+ * @author amanda castro, miranda venegas
  */
 public class DocEnfCantidadDiagnosticos {
   private String nivel = "";

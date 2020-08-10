@@ -2,7 +2,7 @@ package modelo;
 
 /**
  *
- * @author Muro
+ * @author Miranda Amanda
  */
 public class Telefono {
   private String telefono;

@@ -2,7 +2,7 @@ package formulario;
 
 /**
  *
- * @author Muro
+ * @author Miranda Amanda 
  */
 public class SecretarioHospitalizacionesRegistradas {
     private String fechaIni1 = "";

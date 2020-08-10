@@ -2,7 +2,7 @@ package formulario;
 
 /**
  *
- * @author Muro
+ * @author Amanda Castro, Miranda Venegas 
  */
 public class DocEnfCantidadCitas {
   private String fecha1 = "";

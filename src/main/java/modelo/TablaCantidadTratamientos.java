@@ -2,7 +2,7 @@ package modelo;
 
 /**
  *
- * @author Muro
+ * @author Miranda, Amanda 
  */
 public class TablaCantidadTratamientos {
   private int cantidadTratamientos;

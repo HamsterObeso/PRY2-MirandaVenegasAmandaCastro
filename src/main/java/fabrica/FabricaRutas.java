@@ -2,10 +2,15 @@ package fabrica;
 
 /**
  *
- * @author Miranda Venegas
+ * @author Miranda Venegas, Amanda Castro 
  */
 public class FabricaRutas {
   
+    /**
+     * Obtener la ruta de las opciones 
+     * @param opcion opcion solicitada
+     * @return opción solicitada
+     */
   public static String getRuta(String opcion) {
     switch(opcion) {
       case "Solicitar cita":

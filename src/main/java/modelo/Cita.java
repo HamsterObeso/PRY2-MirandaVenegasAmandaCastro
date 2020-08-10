@@ -2,7 +2,7 @@ package modelo;
 
 /**
  *
- * @author Masiel Castro Mora
+ * @author Amanda Castro, Miranda Venegas 
  */
 public class Cita {
 

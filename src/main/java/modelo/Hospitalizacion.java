@@ -2,7 +2,7 @@ package modelo;
 
 /**
  *
- * @author Muro
+ * @author Amanda, Miranda 
  */
 public class Hospitalizacion {
   private String nombre;

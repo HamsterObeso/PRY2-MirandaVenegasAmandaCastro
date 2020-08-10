@@ -2,7 +2,7 @@ package modelo;
 
 /**
  *
- * @author Muro
+ * @author Miranda, Amanda 
  */
 public class TablaCentrosAtencion {
   private int id = -1;

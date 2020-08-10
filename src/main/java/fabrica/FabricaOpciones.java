@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 public class FabricaOpciones {
   
+    /**
+     * Obtener opciones de los funcionarios 
+     * @param tipoUsuario
+     * @return opciones de acuerdo a los funcionarios 
+     */
   public static ArrayList<String> getOpciones(String tipoUsuario) {
     switch(tipoUsuario) {
       case "Paciente":
@@ -16,7 +21,10 @@ public class FabricaOpciones {
         return opcionesSecretario();
     }
   }
-  
+  /**
+   * Opciones del paciente
+   * @return se dan las opciones al paciente 
+   */
   private static ArrayList<String> opcionesPaciente() {
     ArrayList<String> opciones = new ArrayList();
     opciones.add("Solicitar cita");
@@ -28,6 +36,10 @@ public class FabricaOpciones {
     return opciones;
   }
   
+  /**
+   * Opciones del doctor
+   * @return se dan las opciones al doctor 
+   */
   private static ArrayList<String> opcionesDoctor() {
     ArrayList<String> opciones = new ArrayList();
     opciones.add("Cancelar cita de paciente");
@@ -51,6 +63,10 @@ public class FabricaOpciones {
     return opciones;
   }
   
+  /**
+   * Opciones del enfermero
+   * @return se dan las opciones al enfermero  
+   */
   private static ArrayList<String> opcionesEnfermero() {
      ArrayList<String> opciones = new ArrayList();
     opciones.add("Cancelar cita de paciente");
@@ -72,6 +88,10 @@ public class FabricaOpciones {
     return opciones;
   }
   
+  /**
+   * Opciones del secretario
+   * @return se dan las opciones al secretario 
+   */
   private static ArrayList<String> opcionesSecretario() {
     ArrayList<String> opciones = new ArrayList();
     opciones.add("Cancelar cita de paciente");

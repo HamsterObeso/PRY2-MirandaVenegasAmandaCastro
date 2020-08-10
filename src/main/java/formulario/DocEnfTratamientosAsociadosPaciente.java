@@ -2,7 +2,7 @@ package formulario;
 
 /**
  *
- * @author Muro
+ * @author Amanda Castro Miranda Castro 
  */
 public class DocEnfTratamientosAsociadosPaciente {
   private String fecha1 = "";

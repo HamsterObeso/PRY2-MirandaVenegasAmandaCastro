@@ -2,7 +2,7 @@ package formulario;
 
 /**
  *
- * @author Muro
+ * @author Miranda, Amanda 
  */
 public class DocEnfDetalleHospitalizacion {
   private String nombrePaciente = "";

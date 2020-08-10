@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Miranda Venegas
+ * @author Miranda Venegas, Amanda Castro 
  * @param <E>
  */
 public class Tabla<E> {
@@ -39,6 +39,12 @@ public class Tabla<E> {
     }
   }
  
+  /**
+   * obtener campos 
+   * @param indice
+   * @return numero de campos 
+   * @throws Exception 
+   */
   public ArrayList<Object> obtenerCampos(int indice) throws Exception {
     ArrayList<Object> campos = new ArrayList<>();
     Object valor = elementos.get(indice);
@@ -55,6 +61,10 @@ public class Tabla<E> {
     return campos;
   }
   
+  /**
+   * obtener columnas 
+   * @param valor 
+   */
   private void obtenerColumnas(E valor) {
     Class<?> clazz = valor.getClass();
     for(Field field : clazz.getDeclaredFields()) {
