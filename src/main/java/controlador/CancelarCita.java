@@ -26,7 +26,8 @@ import mensaje.Mensaje;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro
+ * Clase que permite cancelar cita 
  */
 @Controller
 @RequestMapping(value = "/cancelarCita")
@@ -40,6 +41,10 @@ public class CancelarCita {
     return "cancelarCita";
   }
 
+  /**
+   * Carga el método obtenerCitasCancelarPaciente
+   * @param model objeto de tipo Tabla 
+   */
   private void loadTable(Map<String, Object> model) {
     try {
       if(ContextoUsuario.getTipo().equals("Paciente")){
@@ -54,6 +59,12 @@ public class CancelarCita {
     }
   }
 
+  /**
+   * Método que permite cancelar citas 
+   * @param cita objeto de tipo Cita
+   * @param model objeto de tipo Map
+   * @return Se calcela la cita 
+   */
   @RequestMapping(method = RequestMethod.POST)
   public String cancelarCitaP(@ModelAttribute("cancelarCitaPacForm") Cita cita,
           Map<String, Object> model) {

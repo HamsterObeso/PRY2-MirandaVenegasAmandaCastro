@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Amanda Castro, Miranda Venegas 
+ * Clase que permite agregar funcionarios 
  */
 
 @Controller
@@ -26,7 +27,13 @@ public class AñadirFuncionario {
     model.put("funcionarioForm", funcionario);
     return "anadirFuncionario";
   }
-
+  
+/**
+ * 
+ * @param funcionario objeto de tipo Funcionario 
+ * @param model objeto de tipo Tabla 
+ * @return se añade el funcionario 
+ */
   @RequestMapping(method = RequestMethod.POST)  
   public String anadirFuncionario(@ModelAttribute("funcionarioForm") Funcionario funcionario,
       Map<String, Object> model) {

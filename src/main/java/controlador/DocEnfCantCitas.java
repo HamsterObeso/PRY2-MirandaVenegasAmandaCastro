@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
+ * Clase que permite saber la cantidad de citas 
  */
 
 @Controller
@@ -31,7 +32,13 @@ public class DocEnfCantCitas {
     loadTable("", "", "", "", model);
     return "cantidadCitas";
   }
-    
+   
+  /**
+   * 
+   * @param form objeto tipo form cantidadCitas
+   * @param model objeto de tipo Tabla 
+   * @return 
+   */
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroCantidadCitas(@ModelAttribute("cantidadCitasForm") DocEnfCantidadCitas form,
       Map<String, Object> model) {
@@ -39,6 +46,14 @@ public class DocEnfCantCitas {
     return "cantidadCitas";
   }
   
+  /**
+   * Carga la tabla de cantidad de citas 
+   * @param f1 primer fecha 
+   * @param f2 segunda fecha 
+   * @param pEstado estado cita
+   * @param pEspecialidad especialidad cita
+   * @param model objeto de tipo Tabla 
+   */
   private void loadTable(String f1, String f2, String pEstado, 
       String pEspecialidad, Map<String, Object> model) {
     try {

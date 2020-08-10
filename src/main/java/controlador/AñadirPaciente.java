@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Amanda Castro, Miranda Venegas 
+ * Clase que permite agregar pacientes 
  */
 
 @Controller
@@ -26,7 +27,12 @@ public class AñadirPaciente {
     model.put("telefono", tel);
     return "anadirPaciente";
   }
-  
+  /**
+   * 
+   * @param form objeto de tipo Paciente 
+   * @param model objeto de tipo Map
+   * @return añade al paciente 
+   */
   @RequestMapping(value="/anadirPaciente", method = RequestMethod.POST)
   public String anadirPaciente(@ModelAttribute("paciente") Paciente form,
       Map<String, Object> model) {
@@ -51,7 +57,13 @@ public class AñadirPaciente {
     }
     return "redirect:/anadirPaciente";
   }
-  
+
+  /**
+   * Método que permite añasor telefonos 
+   * @param tel objeto de tipo Telefono 
+   * @param model objeto de tipo Map 
+   * @return añade el telefono 
+   */
   @RequestMapping(value="/anadirTelefono", method = RequestMethod.POST)
   public String anadirTelefono(@ModelAttribute("telefono") Telefono tel,
       Map<String, Object> model) {

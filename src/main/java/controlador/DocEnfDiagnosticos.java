@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Mranda Venegas, Amanda Castro 
+ * Clase que permite conocer los diagnosticos en sistemas 
  */
 
 @Controller
@@ -33,7 +34,13 @@ public class DocEnfDiagnosticos {
     loadTable("", "", "", "", "", model);
     return "diagnosticosDocEnf";
   }
-    
+   
+  /**
+   * Carga los datos de DocEnfDiagnosticosAsociadosPaciente
+   * @param form un objeto de tipo DocEnfDiagnosticosAsociadosPaciente
+   * @param model objeto de tipo Tabla 
+   * @return los diagnosticos 
+   */
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroDiagnosticosDE(@ModelAttribute("diagnosticosDocEnfForm") DocEnfDiagnosticosAsociadosPaciente form,
       Map<String, Object> model) {
@@ -41,6 +48,15 @@ public class DocEnfDiagnosticos {
     return "diagnosticosDocEnf";
   }
   
+  /**
+   * Permite crear los filtros de acuerdo a lo solicitado 
+   * @param identificacion identificacion del paciente
+   * @param f1 fecha inicial 
+   * @param f2 fecha final 
+   * @param pNivel novel del diagnostico 
+   * @param pNombreDiag nombre del diagnostico 
+   * @param model 
+   */
   private void loadTable(String identificacion, String f1, String f2, String pNivel, 
       String pNombreDiag, Map<String, Object> model) {
     try {

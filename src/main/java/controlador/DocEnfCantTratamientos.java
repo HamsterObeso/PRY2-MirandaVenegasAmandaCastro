@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
+ * Clase que permite conocer la cantidad de tratamientos 
  */
 
 @Controller
@@ -34,6 +35,12 @@ public class DocEnfCantTratamientos {
     return "cantidadTratamientos";
   }
     
+  /**
+   * Método que permite el filtro de cantidad de tratamientos 
+   * @param form objeto de tipo DocEnfCantidadTratamientos
+   * @param model objeto de tipo Tabla 
+   * @return la cantidad de tratamietos 
+   */
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroCantidadDiagnosticos(@ModelAttribute("cantidadTratamientosForm") DocEnfCantidadTratamientos form,
       Map<String, Object> model) {
@@ -41,6 +48,13 @@ public class DocEnfCantTratamientos {
     return "cantidadTratamientos";
   }
   
+  /**
+   * Carga los filtros encontrados 
+   * @param pTipo tipo de tratamiento
+   * @param pEspecialidad especialidad del tratamiento 
+   * @param pPaciente nombre paciente 
+   * @param model objeto de tipo Tabla 
+   */
   private void loadTable(String pTipo, String pEspecialidad, String pPaciente,
     Map<String, Object> model) {
     try {

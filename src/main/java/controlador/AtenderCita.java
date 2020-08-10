@@ -21,7 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Amanda Castro, Miranda Venegas 
+ * Clase que permite atender una cita 
  */
 
 @Controller
@@ -34,7 +35,13 @@ public class AtenderCita {
     loadTable(model);
     return "atenderCita";
   }
-    
+   
+  /**
+   * 
+   * @param form objeto tipo atenderCita form
+   * @param model objeto de tipo Tabla 
+   * @return la cita atendida 
+   */
   @RequestMapping(method = RequestMethod.POST)  
   public String atenderCita(@ModelAttribute("atenderCitaForm") FormAtenderCita form,
       Map<String, Object> model) {
@@ -42,6 +49,10 @@ public class AtenderCita {
     return "redirect:/realizarDiagnostico";
   }
   
+  /**
+   * Carga tabla de citas Atendidas 
+   * @param model objeto de tipo Tabla 
+   */
   private void loadTable(Map<String, Object> model) {
     try {
       Tabla<TablaCita> resultado = CitaDAO.obtenerCitasAtender();

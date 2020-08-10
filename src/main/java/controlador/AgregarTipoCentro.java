@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro
+ * Método que permite agregar tipos de centros 
  */
 @Controller 
 @RequestMapping(value = "/agregarTipoCentro")
@@ -31,6 +32,12 @@ public class AgregarTipoCentro {
     return "tipoCentro";
   }
   
+  /**
+   * 
+   * @param tipoCentro objeto de tipo TipoCentroAtencion
+   * @param model objetp de tipo Map
+   * @return agregar el tipoCentro
+   */
   @RequestMapping(method = RequestMethod.POST)  
   public String tipoCentro(@ModelAttribute("agregarTipoCentroForm") TipoCentroAtencion tipoCentro,
       Map<String, Object> model) {
@@ -46,6 +53,11 @@ public class AgregarTipoCentro {
     return "redirect:/agregarTipoCentro";
   }
   
+
+    /**
+     * Método que permite cargar la tabla tipo centro
+     * @param model objeto de tipo Map 
+     */
   private void loadTable(Map<String, Object> model) {
     try {     
       ArrayList<TablaTipoCentro> resultados = TipoCentroDAO.obtenerTipoCentros();

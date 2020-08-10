@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
+ * Clase que permite conocer las citas en sistema 
  */
 @Controller
 @RequestMapping(value = "/citasSistemaDocEnf")
@@ -29,6 +30,12 @@ public class DocEnfCitas{
     return "citasSistemaDocEnf";
   }
 
+  /**
+   * Método que permite conocer las citas en sistema 
+   * @param form objeto de tipo DocEnfCitasRegistradasSistema 
+   * @param model objeto de tipo Tabla 
+   * @return 
+   */
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroCitasDE(@ModelAttribute("citasAsociadasPacForm") DocEnfCitasRegistradasSistema form,
       Map<String, Object> model) {
@@ -36,6 +43,15 @@ public class DocEnfCitas{
     return "citasSistemaDocEnf";
   }
   
+  /**
+   * Método que permite cargar los datos de losfiltros correspondientes 
+   * @param f1 fecha inicial 
+   * @param f2 fech final
+   * @param pEstado estado de la cita
+   * @param pEspecialidad especialidad de la cita 
+   * @param pNombrePaciente nombre del paciente de la cita 
+   * @param model objeto de tipo Tabla 
+   */
   private void loadTable(String f1, String f2, String pEstado, 
       String pEspecialidad, String pNombrePaciente, Map<String, Object> model) {
     try {

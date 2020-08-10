@@ -17,7 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Amanda Castro, Miranda Venegas
+ * 
+ */
+
+/**
+ * Método que permite agregar centros 
  */
 @Controller 
 @RequestMapping(value = "/agregarCentro")
@@ -49,6 +54,10 @@ public class AgregarCentro {
     return "redirect:/agregarCentro";
   }
   
+  /**
+   * Carga la tabla de centroAtencion 
+   * @param model objeto de tipo Map 
+   */
   private void loadTable(Map<String, Object> model) {
     try {     
       ArrayList<TablaCentrosAtencion> resultados = CentroDAO.obtenerCentros();

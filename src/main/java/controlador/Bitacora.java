@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
+ * Clase que permite cargar la bitacora 
  */
 
 @Controller 
@@ -25,6 +26,10 @@ public class Bitacora {
     return "bitacora";
   }
   
+  /**
+   * Carga el método obtener bitacora 
+   * @param model parámetro de tipo Map
+   */
   private void loadTable(Map<String, Object> model) {
     try {     
       ArrayList<TablaBitácora> resultados = BitacoraDAO.obtenerBitacora();
