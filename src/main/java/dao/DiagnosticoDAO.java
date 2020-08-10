@@ -16,10 +16,18 @@ import modelo.TablaDiagnosticosDE;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
  */
 public class DiagnosticoDAO {
   
+    /**
+     * Añadir diagnostico 
+     * @param nombreDiagnostico nombre diagnostico
+     * @param nivel nivel del diagnostico 
+     * @param observaciones observaciones del diagnostico 
+     * @param idCita cita del diagnosticos 
+     * @throws SQLException 
+     */
   public static void anadirDiagnostico(String nombreDiagnostico, String nivel, String observaciones,
     int idCita) throws SQLException {
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call registrarDiagnosticos(?, ?, ?, ?)}");
@@ -30,6 +38,12 @@ public class DiagnosticoDAO {
     entrada.execute();
   }
   
+  /**
+   * Obtener diagnostico 
+   * @param idCita identificacion cita 
+   * @return diagnostico 
+   * @throws SQLException 
+   */
   public static Tabla<TablaDiagnostico> obtenerDiagnosticos(int idCita) throws SQLException {
     try (CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call cargarDiagnosticos(?)}");) {
@@ -54,6 +68,16 @@ public class DiagnosticoDAO {
     return null;
   }
   
+  /**
+   * Diagnosticos de los pacienes 
+   * @param f1 fecha inicial 
+   * @param f2 fecha final 
+   * @param pNivel nivel de los diagnostico 
+   * @param pNombre nombre de los diagnosticos 
+   * @param idUsuario identificacion de usuario 
+   * @return diagnosticos pacientes 
+   * @throws SQLException 
+   */
   public static Tabla<TablaDiagnosticosPaciente> diagnosticosAsociadosP(String f1, String f2, String pNivel, String pNombre, int idUsuario) throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call diagnosticosP(?, ?, ?, ?, ?)}");
     if(f1.isEmpty() == true) {
@@ -94,6 +118,14 @@ public class DiagnosticoDAO {
     return null;
   }
   
+  /**
+   * Cantidad diagnosticos 
+   * @param pNivel nivel diagnostico 
+   * @param pEspecialidad especialidad diagnosticos 
+   * @param pPaciente nombre paciente 
+   * @return cantidad diagnosticos 
+   * @throws SQLException 
+   */
   public static Tabla<TablaCantidadDiagnosticos> cantidadDiagnosticos(String pNivel, String pEspecialidad, String pPaciente) throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cantidadDiagnosticos(?, ?, ?)}");
     if(pNivel.isEmpty() == true) {
@@ -133,6 +165,16 @@ public class DiagnosticoDAO {
     }
   }
   
+  /**
+   * Diagnosticos del paciente 
+   * @param f1 fecha inicial 
+   * @param f2 fecha final 
+   * @param pNivel nivel del diagnostico 
+   * @param pNombre nombre del diagnostico 
+   * @param pIdentificacion identificación del daignostico 
+   * @return diagnosticos asociados 
+   * @throws SQLException 
+   */
   public static Tabla<TablaDiagnosticosDE> diagnosticosAsociadosDE(String f1, String f2, String pNivel, String pNombre, String pIdentificacion) throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call diagnosticosDE(?, ?, ?, ?, ?)}");
     if(f1.isEmpty() == true) {

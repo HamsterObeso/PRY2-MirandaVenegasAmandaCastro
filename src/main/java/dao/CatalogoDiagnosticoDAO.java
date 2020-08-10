@@ -9,10 +9,14 @@ import modelo.CatalogoDiagnostico;
 
 /**
  *
- * @author Miranda Venegas
+ * @author Miranda Venegas, Amanda Castro 
  */
 public class CatalogoDiagnosticoDAO {
-  
+  /**
+   * Obtener diagnosticos 
+   * @return diagnosticos 
+   * @throws SQLException 
+   */
   public static Tabla<CatalogoDiagnostico> obtenerDiagnosticos() throws SQLException {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call obtenerCatalogoDiagnosticos()}");) {
@@ -33,6 +37,11 @@ public class CatalogoDiagnosticoDAO {
     return null;
   }
 
+  /**
+   * Crear diagnosticos 
+   * @param nombre nombre del diagnostico 
+   * @return verdadero si se cumple 
+   */
   public static boolean crearDiagnostico(String nombre) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call crearCatalogoDiagnostico(?)}");) {
@@ -45,6 +54,12 @@ public class CatalogoDiagnosticoDAO {
     return false; 
   }
   
+  /**
+   * Actualizar diagnosticos 
+   * @param id identificación del diagnostico 
+   * @param nombre nombre del diagnostico 
+   * @return verdadero si se cumple 
+   */
   public static boolean actualizarDiagnostico(int id, String nombre) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call actualizarCatalogoDiagnostico(?, ?)}");) {
@@ -58,6 +73,11 @@ public class CatalogoDiagnosticoDAO {
     return false; 
   }
   
+  /**
+   * Eliminar diagnostico 
+   * @param id identificación del diagnostico
+   * @return verdadero si se cumple. 
+   */
   public static boolean eliminarDiagnostico(int id) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call eliminarCatalogoDiagnostico(?)}");) {

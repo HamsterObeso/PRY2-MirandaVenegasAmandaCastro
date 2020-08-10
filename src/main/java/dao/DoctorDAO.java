@@ -10,7 +10,7 @@ import modelo.Paciente;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
  */
 public class DoctorDAO {
 
@@ -20,6 +20,12 @@ public class doctorDAO {
     public  Paciente paciente;
     public  Cita cita;
     
+    /**
+     * cancelar cita 
+     * @param pIDCita identificacion cita
+     * @param pIDFuncionario identificación funcionario 
+     * @throws SQLException 
+     */
     public void cancelarCita( int pIDCita, int pIDFuncionario)throws SQLException{
        CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cancelarCitaCentro(?,?)}"); 
        entrada.setInt(1, pIDCita);
@@ -33,7 +39,14 @@ public class doctorDAO {
 //        entrada.setString(2,cita.getEstado());//Falta
 //        entrada.execute();
 //    }
-    
+    /**
+     * Registrar diagnosticos 
+     * @param cita identificacion cita 
+     * @param nivel nombre nivel 
+     * @param observaciones nombre observaciones 
+     * @param nombreDiagnostico nombre diagnosticos 
+     * @throws SQLException 
+     */
     public void registrarDiagnosticos(int cita, String nivel, String observaciones, String nombreDiagnostico) throws SQLException{
          CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call registrarDiagnosticos(?,?,?,?)}");
          entrada.setInt(1, cita);
@@ -42,7 +55,14 @@ public class doctorDAO {
          entrada.setString(4, nombreDiagnostico);
          entrada.execute();
     }
-    
+    /**
+     * Registrar tratamientos 
+     * @param nombreTrata nombre del tratamiento 
+     * @param dosis dosis
+     * @param tipo tipo 
+     * @param idDiagnostico identificación del diagnostico 
+     * @throws SQLException 
+     */
     public void registrarTratamientos(String nombreTrata, String dosis, String tipo, int idDiagnostico) throws SQLException{
         CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call registrarTratamientos(?,?,?,?)}");
         entrada.setString(1, nombreTrata);

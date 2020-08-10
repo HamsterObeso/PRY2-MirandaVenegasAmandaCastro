@@ -9,7 +9,14 @@ import java.sql.SQLException;
  * @author Muro
  */
 public class SeguimientoDAO {
-  
+  /**
+   * Seguimiento 
+   * @param pHospitalizacion
+   * @param pUsuario
+   * @param observacion
+   * @param tratamientoAsociado
+   * @throws SQLException 
+   */
   public static void anadirSeguimiento(int pHospitalizacion, int pUsuario, String observacion, String tratamientoAsociado)throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call realizarSeguimiento(?, ?, ?, ?)}");
     entrada.setInt(1, pHospitalizacion);

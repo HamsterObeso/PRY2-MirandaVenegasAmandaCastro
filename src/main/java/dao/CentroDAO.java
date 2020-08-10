@@ -9,9 +9,17 @@ import modelo.TablaCentrosAtencion;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
  */
 public class CentroDAO {
+    /**
+     * Crear Centro 
+     * @param nombre nombre del centro 
+     * @param lugar lugar del centro
+     * @param capacidad capacidad de la misma 
+     * @param tipoCentro tipo de centro 
+     * @return 
+     */
   public static boolean crearCentro(String nombre, String lugar, int capacidad, String tipoCentro) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call crearCentros(?, ?, ?, ?)}");) {
@@ -27,6 +35,11 @@ public class CentroDAO {
     return false; 
   }
   
+  /**
+   * Obtener los centros 
+   * @return los resultados buscados 
+   * @throws SQLException 
+   */
   public static ArrayList<TablaCentrosAtencion> obtenerCentros() throws SQLException {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call cargarCentros()}");) {

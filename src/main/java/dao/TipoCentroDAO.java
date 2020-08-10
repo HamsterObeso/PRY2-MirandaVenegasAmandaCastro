@@ -12,10 +12,14 @@ import modelo.TablaTipoCentro;
 
 /**
  *
- * @author Muro
+ * @author Miranda, Amanda 
  */
 public class TipoCentroDAO {
-  
+  /**
+   * crear tipo centro 
+   * @param nombre
+   * @return true si se realizo 
+   */
   public static boolean crearTipoCentro(String nombre) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call crearTipoCentro(?)}");) {
@@ -28,6 +32,11 @@ public class TipoCentroDAO {
     return false; 
   }
   
+  /**
+   * Obtener  tipo de centros 
+   * @return tipos de centros 
+   * @throws SQLException 
+   */
   public static ArrayList<TablaTipoCentro> obtenerTipoCentros() throws SQLException {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call cargarTipoCentro()}");) {

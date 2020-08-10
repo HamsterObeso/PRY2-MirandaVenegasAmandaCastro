@@ -9,9 +9,15 @@ import modelo.TablaBitácora;
 
 /**
  *
- * @author Muro
+ * @author Miranda, Amanda 
+ * 
  */
 public class BitacoraDAO {
+    /**
+     * Obtener bitacora 
+     * @return bitacora 
+     * @throws SQLException 
+     */
   public static ArrayList<TablaBitácora> obtenerBitacora() throws SQLException {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call cargarBitacora()}");) {

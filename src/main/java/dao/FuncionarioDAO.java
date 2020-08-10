@@ -6,9 +6,19 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Muro
+ * @author Miranda, Amanda 
  */
 public class FuncionarioDAO {
+    /**
+     * Añadir funcioanrio 
+     * @param identificacion
+     * @param nombre
+     * @param tipoFuncionario
+     * @param area
+     * @param usuario
+     * @param contraseña
+     * @throws SQLException 
+     */
   public static void anadirFuncionario(String identificacion, String nombre,
     String tipoFuncionario, String area, String usuario, String contraseña) throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call "

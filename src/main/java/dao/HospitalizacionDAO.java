@@ -14,10 +14,20 @@ import modelo.TablaHospitalizaciones;
 
 /**
  *
- * @author Muro
+ * @author Miranda, Amanda 
  */
 public class HospitalizacionDAO {
-
+/**
+ * Añadir hospitalizacion 
+ * @param nombre
+ * @param identificacion
+ * @param centro
+ * @param especialidad
+ * @param diagnostico
+ * @param fecha
+ * @param funcionario
+ * @throws SQLException 
+ */
   public static void anadirHospitalizacion(String nombre, String identificacion,
       String centro, String especialidad, String diagnostico, String fecha,  int funcionario)
       throws SQLException {
@@ -32,6 +42,11 @@ public class HospitalizacionDAO {
     entrada.execute();
   }
 
+  /**
+   * Obtener hospitalizaciones 
+   * @return las hospitalizaciones 
+   * @throws SQLException 
+   */
   public static Tabla<TablaHospitalizaciones> obtenerHospitalizaciones() throws SQLException {
     try (CallableStatement cstmt = ConexionSQL.getConnection()
         .prepareCall("{call mostrarHospitalizaciones()}");) {
@@ -60,6 +75,12 @@ public class HospitalizacionDAO {
     return null;
   }
 
+  /**
+   * obtener hospitalizaciones pacientes 
+   * @param idUsuario
+   * @return las hospitalizaciones de los pacientes 
+   * @throws SQLException 
+   */
   public static Tabla<TablaHospitalizacionesPaciente> obtenerHospitalizacionesPaciente(int idUsuario) throws SQLException {
       try (CallableStatement cstmt = ConexionSQL.getConnection()
               .prepareCall("{call hospitalizacionesPaciente(?)}");) {
@@ -88,6 +109,12 @@ public class HospitalizacionDAO {
       return null;
   }
 
+  /**
+   * Detalles de las hospitalizaciones 
+   * @param nombrePaciente
+   * @return detalles de las hospitalizaciones 
+   * @throws SQLException 
+   */
   public static Tabla<TablaDetalleHospitalizacion> detalleHospitalizacion(String nombrePaciente)
           throws SQLException {
       CallableStatement cstmt = ConexionSQL.getConnection().prepareCall("{call detalleHospitalizacion(?)}");
@@ -119,7 +146,18 @@ public class HospitalizacionDAO {
       }
       return null;
   }
-
+/**
+ * Hospitalizaciones registradas 
+ * @param fechaIni1
+ * @param fechaIni2
+ * @param fechaFin1
+ * @param fechaFin2
+ * @param estado
+ * @param especialidad
+ * @param nombrePaciente
+ * @return hospitalizaciones registradas 
+ * @throws SQLException 
+ */
   public static Tabla<TablaHospitalizaciones> hospitalizacionesRegistradas(String fechaIni1, String fechaIni2,
       String fechaFin1, String fechaFin2, String estado, String especialidad, String nombrePaciente)
       throws SQLException {

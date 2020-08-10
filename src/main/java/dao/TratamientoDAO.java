@@ -15,10 +15,17 @@ import modelo.TablaCantidadTratamientos;
 
 /**
  *
- * @author Muro
+ * @author Miranda, Amanda 
  */
 public class TratamientoDAO {
-  
+  /**
+   * Añadir tratamientos 
+   * @param nombre
+   * @param dosis
+   * @param tipo
+   * @param idDiagnostico
+   * @throws SQLException 
+   */
   public static void anadirTratamiento(String nombre, String dosis, String tipo, int idDiagnostico)
     throws SQLException {
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call registrarTratamientos(?, ?, ?, ?)}");
@@ -28,7 +35,16 @@ public class TratamientoDAO {
     entrada.setInt(4, idDiagnostico);
     entrada.execute();
   }
-  
+  /**
+   * Tratamientos asociados al paciente 
+   * @param f1
+   * @param f2
+   * @param pTipo
+   * @param pNombre
+   * @param idUsuario
+   * @return tratamientos del paciente 
+   * @throws SQLException 
+   */
   public static Tabla<TablaTratamientosPaciente> tratamientosAsociadosP(String f1, String f2, String pTipo, String pNombre, int idUsuario) throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call tratamientosP(?, ?, ?, ?, ?)}");
     if(f1.isEmpty() == true) {
@@ -68,7 +84,14 @@ public class TratamientoDAO {
     }
     return null;
     }
-  
+  /**
+   * cantidad de tratamientos 
+   * @param pTipo
+   * @param pEspecialidad
+   * @param pPaciente
+   * @return cantodad de tratamientos 
+   * @throws SQLException 
+   */
   public static Tabla<TablaCantidadTratamientos> cantidadTratamientos(String pTipo, String pEspecialidad, String pPaciente) throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cantidadTratamientos(?, ?, ?)}");
     if(pTipo.isEmpty() == true) {
@@ -107,7 +130,16 @@ public class TratamientoDAO {
       return valor;
     }
   }
-  
+  /**
+   * tratamientos asociados 
+   * @param f1
+   * @param f2
+   * @param pTipo
+   * @param pNombre
+   * @param pIdentificacion
+   * @return tratamientos asociados 
+   * @throws SQLException 
+   */
   public static Tabla<TablaTratamientosDE> tratamientosAsociadosDE(String f1, String f2, String pTipo, String pNombre, String pIdentificacion) throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call tratamientosDE(?, ?, ?, ?, ?)}");
     if(f1.isEmpty() == true) {

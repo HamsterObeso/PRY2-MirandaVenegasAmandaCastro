@@ -10,10 +10,16 @@ import modelo.CatalogoTratamiento;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
  */
 public class CatalogoTratamientoDAO {
   
+    /**
+     * Obtener  los tratamientos en sistema
+     * @param idDiagnostico identificación del diagnostico 
+     * @return las datos solicitados 
+     * @throws SQLException 
+     */
   public static Tabla<CatalogoTratamiento> obtenerTratamientosID(int idDiagnostico) throws SQLException {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call mostrarTratamientos(?)}");) {
@@ -36,6 +42,11 @@ public class CatalogoTratamientoDAO {
     return null; 
   } 
   
+  /**
+   * Obtener tratamientos 
+   * @return datos de los tratamientos 
+   * @throws SQLException 
+   */
   public static ArrayList<CatalogoTratamiento> obtenerTratamientos() throws SQLException {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call obtenerCatalogoTratamientos()}");) {
@@ -57,6 +68,12 @@ public class CatalogoTratamientoDAO {
     return null; 
   } 
   
+  /**
+   * Crear tratamiento 
+   * @param nombre nombre del tratamiento 
+   * @param diagnostico nombre diagnostico 
+   * @return verdadero si se cumple 
+   */
   public static boolean crearTratamiento(String nombre, String diagnostico) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call crearCatalogoTratamiento(?, ?)}");) {
@@ -70,6 +87,13 @@ public class CatalogoTratamientoDAO {
     return false; 
   }
   
+  /**
+   * Actualizar tratamientos 
+   * @param id identificación del tratamiento 
+   * @param nombre nombre del tratamiento 
+   * @param diagnostico nombre del diagnostico 
+   * @return 
+   */
   public static boolean actualizarTratamiento(int id, String nombre, String diagnostico) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call actualizarCatalogoTratamiento(?, ?, ?)}");) {
@@ -84,6 +108,11 @@ public class CatalogoTratamientoDAO {
     return false; 
   }
   
+  /**
+   * Eliminar tratamiento 
+   * @param id identificación del tratamiento 
+   * @return 
+   */
   public static boolean eliminarTratamiento(int id) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call eliminarCatalogoTratamiento(?)}");) {

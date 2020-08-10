@@ -40,7 +40,11 @@ public class AreasTrabajoDAO {
     }
     return null; 
   } 
-  
+  /**
+   * Creacion de areas 
+   * @param nombre
+   * @return true si es verdadera 
+   */
    public static boolean crearArea(String nombre) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call anadirAreas(?)}");) {
@@ -52,7 +56,12 @@ public class AreasTrabajoDAO {
     }
     return false; 
   }
-  
+  /**
+   * Actualizar areas 
+   * @param id
+   * @param nombre
+   * @return true si se cumple 
+   */
   public static boolean actualizarArea(int id, String nombre) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call actualizarArea(?, ?)}");) {
@@ -65,7 +74,11 @@ public class AreasTrabajoDAO {
     }
     return false; 
   }
-  
+  /**
+   * Eliminar area
+   * @param id
+   * @return true si se cumple 
+   */
   public static boolean eliminarArea(int id) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call borrarArea(?)}");) {

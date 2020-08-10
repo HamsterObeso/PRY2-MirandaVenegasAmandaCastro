@@ -10,12 +10,17 @@ import modelo.TablaPacientesAtendidos;
 
 /**
  *
- * @author Muro
+ * @author Miranda, Amanda 
  */
 public class PacienteDAO {
   public static String correoPaciente;
   public static String numeroPaciente;
   
+  /**
+   * Obtener los pacientes obtenidos
+   * @return pacientes atentidos 
+   * @throws SQLException 
+   */
   public static Tabla<TablaPacientesAtendidos> obtenerPacientesAtentidos() throws SQLException {
     try (CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call mostrarPacientesAtendidos()}");) {
@@ -39,6 +44,20 @@ public class PacienteDAO {
     return null;
   }
   
+  /**
+   * Agregar paciente 
+   * @param cedula
+   * @param nombre
+   * @param fechaNacimiento
+   * @param tipoSangre
+   * @param nacionalidad
+   * @param provincia
+   * @param canton
+   * @param correo
+   * @param usuario
+   * @param contraseña
+   * @return paciente agregado 
+   */
   public static boolean AgregarPaciente(String cedula, String nombre, String fechaNacimiento, String tipoSangre,
     String nacionalidad, String provincia, String canton, String correo, String usuario, String contraseña) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
@@ -61,6 +80,12 @@ public class PacienteDAO {
     return false; 
   }
   
+  /**
+   * Agregar telefono 
+   * @param identificacion
+   * @param telefono
+   * @return telefonos agregados 
+   */
   public static boolean AgregarTelefono(String identificacion, String telefono) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call anadirTelefonosPaciente(?, ?)}");) {
@@ -74,6 +99,12 @@ public class PacienteDAO {
     return false; 
   }
   
+  /**
+   * Telefono paciente 
+   * @param idUsuario
+   * @return telefono paciente 
+   * @throws SQLException 
+   */
   public static String telefonoPaciente(int idUsuario) throws SQLException {
     try (CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{? = call obtenerTelefono(?)}")) {
       entrada.registerOutParameter(1, java.sql.Types.VARCHAR);
@@ -89,7 +120,12 @@ public class PacienteDAO {
       return numeroPaciente;
     }
   }
-  
+  /**
+   * Obtener correo paciente 
+   * @param idUsuario
+   * @return correo del paciente 
+   * @throws SQLException 
+   */
   public static String obtenerCorreo(int idUsuario) throws SQLException{
     CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{? = call obtenerCorreo(?)}");
     entrada.registerOutParameter(1, java.sql.Types.VARCHAR);
