@@ -6,7 +6,11 @@ import java.util.Scanner;
 
 /**
  *
- * @author Miranda Venegas
+ * @author Miranda Venegas, Amanda Castro
+ */
+/**
+ * Método quer permite establecer conexión con la pagina del TSE
+ * 
  */
 public class ConectorTSE {
   

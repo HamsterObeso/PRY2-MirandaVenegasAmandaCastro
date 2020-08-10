@@ -2,7 +2,8 @@ package contexto;
 
 /**
  *
- * @author Muro
+ * @author Amanda Castro, Miranda Venegas
+ * Método que permite guardar la información de los diagnosticos 
  */
 public class ContextoDiagnostico {
   

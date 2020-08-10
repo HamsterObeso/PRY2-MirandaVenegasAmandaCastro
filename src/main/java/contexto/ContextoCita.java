@@ -2,7 +2,9 @@ package contexto;
 
 /**
  *
- * @author Muro
+ * @author Amanda Castro, Miranda Venegas
+ * 
+ * Método que permite guardar información de las citas 
  */
 public class ContextoCita {
   

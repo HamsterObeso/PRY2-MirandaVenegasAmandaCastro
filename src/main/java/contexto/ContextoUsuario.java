@@ -6,12 +6,23 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * 
+ * @author Amanda Castro, Miranda Venegas
+ * Se definen los tipos de usuario
+ */
 public class ContextoUsuario {
   
   private static String usuario;
   private static String tipo;
   private static int idUsuario;
   
+  /**
+   * Se le asignan los datos a la cuenta 
+   * @param usuario nombre usuario
+   * @param tipo tipo de usuario
+   * @param idUsuario identificador del usuario 
+   */
   public static void setCuenta(String usuario, String tipo, int idUsuario) {
     ContextoUsuario.usuario = usuario;
     ContextoUsuario.tipo = tipo;
@@ -29,7 +40,14 @@ public class ContextoUsuario {
   public static String getTipo() {
     return tipo;
   }
-   
+  
+  
+  /**
+   * Método para iniciar sesión 
+   * @param usuario nombre del usuario 
+   * @param password contraseña del usuario 
+   * @return 
+   */   
   public static boolean iniciarSesion(String usuario, String password) {
     try(CallableStatement cstmt = ConexionSQL.getConnection()
           .prepareCall("{call iniciarSesion(?, ?)}");) {

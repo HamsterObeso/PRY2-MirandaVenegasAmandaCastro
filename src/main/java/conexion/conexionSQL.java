@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author Masiel Castro Mora
+ * @author Amanda Castro, Miranda Venegas
  */
 public class ConexionSQL {
   
