@@ -37,9 +37,6 @@ import conexion.Email;
 @RequestMapping(value = "/cancelarCita")
 public class CancelarCita {
 
-  public static final String ACCOUNT_SID = "ACb0102705c4599e19c6c61a51d9a4f3e6";
-  public static final String AUTH_TOKEN = "b996568aa4e138ddcc7e189a254aa30d";
-
   @RequestMapping(method = RequestMethod.GET)
   public String viewCancelarCitaP(Map<String, Object> model) {
     Cita cita = new Cita();
@@ -65,23 +62,26 @@ public class CancelarCita {
   @RequestMapping(method = RequestMethod.POST)
   public String cancelarCitaP(@ModelAttribute("cancelarCitaPacForm") Cita cita,
           Map<String, Object> model) {
+    int resultado = 0;
+    int num = 0;
     String correo = null;
     String telefono = null;
     try {
       if (ContextoUsuario.getTipo().equals("Paciente")) {
-        CitaDAO.cancelarCitaPaciente(cita.getIdCita(), ContextoUsuario.getIdUsuario());
+        resultado = CitaDAO.cancelarCitaPaciente(cita.getIdCita(), ContextoUsuario.getIdUsuario());
         correo = PacienteDAO.obtenerCorreo(ContextoUsuario.getIdUsuario());
         telefono = PacienteDAO.telefonoPaciente(ContextoUsuario.getIdUsuario());
+        num = resultado;
       } else {
-        CitaDAO.cancelarCitaFuncionario(cita.getIdCita(), ContextoUsuario.getIdUsuario());
+        resultado = CitaDAO.cancelarCitaFuncionario(cita.getIdCita(), ContextoUsuario.getIdUsuario());
         correo = CitaDAO.obtenerCorreoFuncionario(cita.getIdCita());
         telefono = CitaDAO.telefonoPacienteFuncionario(cita.getIdCita());
+        num = resultado;
       }
       model.put("cita", "cita");
-//      Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-//      Message message = Message.creator(new PhoneNumber(PacienteDAO.telefonoPaciente(ContextoUsuario.getIdUsuario())),
-//              new PhoneNumber("+17206369419"), "Estimado paciente su cita fue cancelada").create();
-      mandarCorreo(correo);
+      if (num == 1){
+        mandarCorreo(correo);
+      }
     } catch (SQLException e) {
       model.put("error", "error");
       e.printStackTrace();

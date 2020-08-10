@@ -4,7 +4,6 @@ import java.sql.CallableStatement;
 import java.sql.SQLException;
 
 import conexion.ConexionSQL;
-import static dao.PacienteDAO.numeroPaciente;
 
 import generico.Tabla;
 
@@ -138,18 +137,26 @@ public class CitaDAO {
     entrada.execute();
   }
 
-  public static void cancelarCitaPaciente(int idCita, int idUsuario) throws SQLException {
-    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cancelarCitaPaciente(?, ?)}");
-    entrada.setInt(1, idCita);
-    entrada.setInt(2, idUsuario);
+  public static int cancelarCitaPaciente(int idCita, int idUsuario) throws SQLException {
+    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{? = call cancelarCitaPaciente(?, ?)}");
+    entrada.registerOutParameter(1, java.sql.Types.INTEGER);
+    entrada.setInt(2, idCita);
+    entrada.setInt(3, idUsuario);
     entrada.execute();
+    int num = entrada.getInt(1);
+    System.out.println(String.valueOf(num));
+    return num;
   }
 
-  public static void cancelarCitaFuncionario(int idCita, int idUsuario) throws SQLException {
-    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{call cancelarCitaCentro(?, ?)}");
-    entrada.setInt(1, idCita);
-    entrada.setInt(2, idUsuario);
+  public static int cancelarCitaFuncionario(int idCita, int idUsuario) throws SQLException {
+    CallableStatement entrada = ConexionSQL.getConnection().prepareCall("{? = call cancelarCitaCentro(?, ?)}");
+    entrada.registerOutParameter(1, java.sql.Types.INTEGER);
+    entrada.setInt(2, idCita);
+    entrada.setInt(3, idUsuario);
     entrada.execute();
+    int num = entrada.getInt(1);
+    System.out.println(String.valueOf(num));
+    return num;
   }
 
   public static Tabla<TablaCita> citasAsociadasPaciente(String f1, String f2, String pEstado, String pEspecialidad, int idUsuario) throws SQLException {
