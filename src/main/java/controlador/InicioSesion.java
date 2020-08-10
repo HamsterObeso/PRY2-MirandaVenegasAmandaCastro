@@ -16,12 +16,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Miranda Venegas
+ * @author Miranda Venegas, Amanda Castro 
  */
 @Controller 
 @RequestMapping(value = "/inicioSesion")
 public class InicioSesion {
     
+  /**
+   * Inicio de sesión 
+   * @param model objeto de tipo Map 
+   * @return 
+   */
   @RequestMapping(method = RequestMethod.GET)
   public String viewInicioSesion(Map<String, Object> model) {
     Cuenta cuenta = new Cuenta();
@@ -31,6 +36,12 @@ public class InicioSesion {
     return "inicioSesion";
   }
 
+  /**
+   * Validar el inicio de sesión 
+   * @param cuenta objeto de tipo Cuenta
+   * @param model objeto de tipo Tabla 
+   * @return 
+   */
   @RequestMapping(method = RequestMethod.POST)
   public String validarInicioSesion(@ModelAttribute("userForm") Cuenta cuenta,
       Map<String, Object> model) {

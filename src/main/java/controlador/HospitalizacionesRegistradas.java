@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Masiel Castro Mora
+ * @author Amanda Castro, Miranda Venegas 
  */
 @Controller
 @RequestMapping(value = "/hospitalizacionesRegistradas")
@@ -34,6 +34,12 @@ public class HospitalizacionesRegistradas {
     return "hospitalizacionesRegistradas";
   }
 
+  /**
+   * Filtro de las hospitalizaciones 
+   * @param form objeto de tipo SecretarioHospitalizacionesRegistradas
+   * @param model objeto de tipo Tabla 
+   * @return 
+   */
   @RequestMapping(method = RequestMethod.POST)
   public String filtroHospitalizaciones(@ModelAttribute("hospitalizacionesRegistradasSForm") 
     SecretarioHospitalizacionesRegistradas form,
@@ -43,6 +49,17 @@ public class HospitalizacionesRegistradas {
     return "hospitalizacionesRegistradas";
   }
 
+  /**
+   * Carga los datos de las hospitalizaciones registradas 
+   * @param fechaIni1 primer rango de fechas 
+   * @param fechaIni2 segundo rango de fechas 
+   * @param fechaFin1 primer rango de fechas 
+   * @param fechaFin2 segundo rango de fechas 
+   * @param estado estado de las hospitalizaciones 
+   * @param especialidad especialdad de las hospitalizaciones 
+   * @param nombrePaciente nombre del paciente hospitalizado
+   * @param model objeto de tipo Tabla 
+   */
   private void loadTable(String fechaIni1, String fechaIni2, String fechaFin1, String fechaFin2,
     String estado, String especialidad, String nombrePaciente, Map<String, Object> model) {
     try {

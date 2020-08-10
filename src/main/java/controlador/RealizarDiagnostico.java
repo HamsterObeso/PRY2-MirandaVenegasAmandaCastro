@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
  */
 @Controller
 @RequestMapping(value = "/realizarDiagnostico")
@@ -47,6 +47,12 @@ public class RealizarDiagnostico {
     return "realizarDiagnostico";
   }
   
+  /**
+   * Cargar las opciones del diagnostico 
+   * @param form objeto de tipo FormDiagnostico
+   * @param model objeto de tipo Map 
+   * @return 
+   */
   @RequestMapping(method = RequestMethod.POST)
   public String diagnostico(@ModelAttribute("realizarDiagnosticoF") FormDiagnostico form,
       Map<String, Object> model) {
@@ -60,6 +66,12 @@ public class RealizarDiagnostico {
     }
   }
   
+  /**
+   * Permite diagnosticar a los pacientes 
+   * @param model objeto de tipo Map
+   * @param form objeto de tipo FormDiagnostico
+   * @return 
+   */
   private String diagnosticar(Map<String, Object> model, FormDiagnostico form) {
     String nombre = form.getNombreDiagnostico();
     String nivel = form.getNivel();
@@ -78,7 +90,12 @@ public class RealizarDiagnostico {
     loadTable(model);
     return "redirect:/realizarDiagnostico";
   }
-  
+  /**
+   * Método de atender 
+   * @param model objeto de tipo Map 
+   * @param form objeto de tipo FormDiagnostico
+   * @return el diagnostico de la cita 
+   */
   private String atender(Map<String, Object> model, FormDiagnostico form) {
     try {
       CitaDAO.atenderCita(ContextoCita.getIdCita(), ContextoUsuario.getIdUsuario());
@@ -88,12 +105,20 @@ public class RealizarDiagnostico {
       return "redirect:/realizarDiagnostico";
     }
   }
-  
+  /**
+   * Tratar los diagnosticos 
+   * @param model objeto de tipo Map 
+   * @param form objeto de tipo FormDiagnostico
+   * @return el tratamiento realizado 
+   */
   private String tratar(Map<String, Object> model, FormDiagnostico form) {
     ContextoDiagnostico.setDiagnostico(form.getIdDiagnostico());
     return "redirect:/realizarTratamiento";
   }
-  
+  /**
+   * Cargar los datos de los diagnosticos 
+   * @param model objeto de tipo Map 
+   */
   private void loadTable(Map<String, Object> model) {
     try {     
       Tabla<TablaDiagnostico> resultados = DiagnosticoDAO.obtenerDiagnosticos(ContextoCita.getIdCita());
@@ -103,6 +128,10 @@ public class RealizarDiagnostico {
     }
   }
   
+  /**
+   * Obtener nombre de los catalogos diagnosticos 
+   * @return el nombre
+   */
   private ArrayList<String> obtenerNombreCatalogoDiagnostico() {
     try {
       Tabla<CatalogoDiagnostico> resultado = CatalogoDiagnosticoDAO.obtenerDiagnosticos();

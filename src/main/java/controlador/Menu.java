@@ -10,10 +10,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * 
+ * @author Amanda Castro, Miranda Venegas
+ */
 @Controller 
 @RequestMapping(value = "/menu")
 public class Menu {
   
+    /**
+     * Incio de sesión 
+     * @param model objeto de tipo Tabla 
+     * @return el menu del usuario que ingresó 
+     */
   @RequestMapping(method = RequestMethod.GET)
   public String viewInicioSesion(Map<String, Object> model) {
     Seleccion seleccion = new Seleccion();
@@ -24,6 +33,12 @@ public class Menu {
     return "menu";
   }
 
+  /**
+   * Valida los datos ingresados 
+   * @param seleccion objeto de tipo Seleccion 
+   * @param model objeto de tipo Tabla 
+   * @return el ingreso a las opciones de los usuarios 
+   */
   @RequestMapping(method = RequestMethod.POST)
   public String validarInicioSesion(@ModelAttribute("seleccion") Seleccion seleccion,
       Map<String, Object> model) {

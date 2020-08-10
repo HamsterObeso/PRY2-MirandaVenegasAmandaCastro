@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
  */
 @Controller 
 @RequestMapping(value = "/hospitalizacionPaciente")
@@ -31,6 +31,10 @@ public class HospitalizacionPaciente {
     return "hospitalizacionesPaciente";
   }
   
+  /**
+   * Carga los datos de las hospitalizaciones 
+   * @param model objeto de tipo Tabla 
+   */
   private void loadTable(Map<String, Object> model) {
     try {     
       Tabla<TablaHospitalizacionesPaciente> resultados = 

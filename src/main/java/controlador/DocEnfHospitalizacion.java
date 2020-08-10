@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
+ * Método que permite conocer los detalles de las hospitalizaciones 
  */
 
 @Controller
@@ -32,7 +33,13 @@ public class DocEnfHospitalizacion {
     loadTable("", model);
     return "detalleHospitalizacion";
   }
-    
+  
+/**
+ *Permite traer los detalles de las hospitalizaciones desde el dao
+ * @param form objeto de tipo DocEnfDetalleHospitalizacion
+ * @param model objeto de tipo Map
+ * @return detalle de las hospitalizaciones 
+ */  
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroDetalleHospitalizacion(@ModelAttribute("detalleHospitalizacionForm") DocEnfDetalleHospitalizacion form,
       Map<String, Object> model) {
@@ -40,6 +47,11 @@ public class DocEnfHospitalizacion {
     return "detalleHospitalizacion";
   }
   
+  /**
+   * Carga los datos de las hospitalizaciones 
+   * @param nombrePaciente busqueda por nombre del paciente 
+   * @param model objeto de tipo Tabla 
+   */
   private void loadTable(String nombrePaciente, Map<String, Object> model) {
     try {
       Tabla<TablaDetalleHospitalizacion> resultado = HospitalizacionDAO.detalleHospitalizacion(nombrePaciente);

@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
+ * Método que permite conocer los tratamientos 
  */
 
 @Controller
@@ -32,7 +33,12 @@ public class DocEnfTratamientos {
     loadTable("", "", "", "", "", model);
     return "tratamientosDocEnf";
   }
-    
+   /**
+    * Se cargaran los datos de dao 
+    * @param form objeto de tipo DocEnfTratamientosAsociadosPaciente
+    * @param model objeto de tipo Tabla 
+    * @return 
+    */ 
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroTratamientosDE(@ModelAttribute("tratamientosDocEnfForm") DocEnfTratamientosAsociadosPaciente form,
       Map<String, Object> model) {
@@ -40,6 +46,15 @@ public class DocEnfTratamientos {
     return "tratamientosDocEnf";
   }
   
+  /**
+   * Se cargaran los datos 
+   * @param f1 fecha inicial 
+   * @param f2 fecha final
+   * @param pTipo tipo de tratamiento 
+   * @param pNombre nombre del tratamiento 
+   * @param pIdentificacion identificacion del paciente 
+   * @param model objeto de tipo Map 
+   */
   private void loadTable(String f1, String f2, String pTipo, 
       String pNombre, String pIdentificacion, Map<String, Object> model) {
     try {

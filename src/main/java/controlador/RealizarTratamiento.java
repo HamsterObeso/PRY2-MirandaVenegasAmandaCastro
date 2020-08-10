@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro
  */
 
 @Controller
@@ -37,6 +37,12 @@ public class RealizarTratamiento {
     return "realizarTratamiento";
   }
   
+  /**
+   * Se permite realizar el tratamiento 
+   * @param form objeto de tipo Tratamiento 
+   * @param model objeto de tipo Map
+   * @return 
+   */
   @RequestMapping(method = RequestMethod.POST)  
   public String tratamiento(@ModelAttribute("realizarTratamientoF") 
     Tratamiento form, Map<String, Object> model) {
@@ -50,6 +56,10 @@ public class RealizarTratamiento {
     return "redirect:/realizarTratamiento";
   }
   
+  /**
+   * Cargar los datos del catalago de tratamientos 
+   * @param model objeto de tipo Map
+   */
   private void loadTable(Map<String, Object> model) {
     try {     
       Tabla<CatalogoTratamiento> resultados = CatalogoTratamientoDAO.obtenerTratamientosID(ContextoDiagnostico.getIdDiagnostico());

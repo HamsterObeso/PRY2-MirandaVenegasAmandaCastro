@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro
  */
 @Controller
 @RequestMapping(value = "/realizarSeguimiento")
@@ -33,6 +33,12 @@ public class RealizarSeguimiento {
     return "seguimiento";
   }
 
+  /**
+   * Llama al objeto seguimeinto
+   * @param seguimiento objeto de tip Seguimiento 
+   * @param model  objeto de tipo Map 
+   * @return 
+   */
   @RequestMapping(method = RequestMethod.POST)  
   public String seguimiento(@ModelAttribute("realizarSeguimientoForm") Seguimiento seguimiento,
       Map<String, Object> model) {
@@ -46,6 +52,10 @@ public class RealizarSeguimiento {
     return "redirect:/realizarSeguimiento";
   }
   
+  /**
+   * Cargar los datos de las hospitalizaciones 
+   * @param model objeto de tipo Map 
+   */
   private void loadTable(Map<String, Object> model) {
     try {
       Tabla<TablaHospitalizaciones> resultado = HospitalizacionDAO.obtenerHospitalizaciones();

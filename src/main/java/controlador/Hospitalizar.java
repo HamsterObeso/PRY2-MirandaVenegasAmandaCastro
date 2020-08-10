@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Mranda Venegas, Amanda Castro 
  */
 
 @Controller
@@ -36,6 +36,12 @@ public class Hospitalizar {
     return "hospitalizar";
   }
   
+  /**
+   * Se llama a la funcion añadir hospitalizacion 
+   * @param form objeto de tipo Hospitalizacion
+   * @param model objeto de tipo Map
+   * @return la hospitalizacion de los pacientes 
+   */
   @RequestMapping(method = RequestMethod.POST)  
   public String hospitalizacion (@ModelAttribute("hospitalizarF") Hospitalizacion form,
       Map<String, Object> model) {
@@ -47,6 +53,10 @@ public class Hospitalizar {
     return "redirect:/hospitalizar";
   }
   
+  /**
+   * Cargar los datos de paciente atendidos
+   * @param model objeto de tipo Map 
+   */
   private void loadTable(Map<String, Object> model) {
     try {
       Tabla<TablaPacientesAtendidos> resultado = PacienteDAO.obtenerPacientesAtentidos();

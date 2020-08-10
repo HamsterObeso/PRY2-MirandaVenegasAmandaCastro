@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
  */
 @Controller
 @RequestMapping(value = "/solicitarCita")
@@ -32,6 +32,12 @@ public class SolicitarCita {
     return "solicitarCita";
   }
 
+  /**
+   * Solicitar cita 
+   * @param cita objeto de tipo Cita
+   * @param model objeto de tipo Map 
+   * @return 
+   */
   @RequestMapping(method = RequestMethod.POST)  
   public String solicitudCita(@ModelAttribute("patientForm") Cita cita,
       Map<String, Object> model) {

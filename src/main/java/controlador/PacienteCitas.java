@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
  */
 
 @Controller
@@ -35,6 +35,12 @@ public class PacienteCitas {
     return "citasAsociadasPaciente";
   }
 
+  /**
+   * Filtro citas paciente 
+   * @param form objeto de tipo PacienteCitasAsociadas
+   * @param model objeto de tipo Map 
+   * @return 
+   */
   @RequestMapping(method = RequestMethod.POST)  
   public String filtroCitasPaciente(@ModelAttribute("citasAsociadasPacForm") 
     PacienteCitasAsociadas form, Map<String, Object> model) {
@@ -42,6 +48,15 @@ public class PacienteCitas {
     return "citasAsociadasPaciente";
   }
   
+  /**
+   * Cargar los datos de las citas del paciente 
+   * @param f1 fecha inicial 
+   * @param f2 fecha final
+   * @param pEstado estado de las citas 
+   * @param pEspecialidad especialidad de las citas 
+   * @param pIdUsuario usuario de las citas 
+   * @param model objeto de tipo Map 
+   */
   private void loadTable(String f1, String f2, String pEstado, 
       String pEspecialidad, int pIdUsuario, Map<String, Object> model) {
     try {

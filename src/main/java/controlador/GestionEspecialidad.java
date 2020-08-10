@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Muro
+ * @author Miranda Venegas, Amanda Castro 
  */
 
 @Controller 
@@ -32,7 +32,12 @@ public class GestionEspecialidad {
     loadTable(model);
     return "especialidades";
   }
-  
+  /**
+   * Carga las opciones de gestion de la especialidad
+   * @param form objeto de tipo FormGestionEspecialidad
+   * @param model objeto de tipo Tabla 
+   * @return la opción deseada
+   */
   @RequestMapping(method = RequestMethod.POST)
   public String opcionesEspecialidad(@ModelAttribute("especialidad") FormGestionEspecialidad form,
       Map<String, Object> model) {
@@ -46,6 +51,12 @@ public class GestionEspecialidad {
     }
   }
   
+  /**
+   * Crear una especialidad
+   * @param model  un objeto tipo Tabla
+   * @param form objeto de tipo FormGestionEspecialidad
+   * @return se crea la especialidad
+   */
   private String crear(Map<String, Object> model, FormGestionEspecialidad form) {
     String nombre = form.getNombre();
     if(nombre == null) {
@@ -59,6 +70,12 @@ public class GestionEspecialidad {
     return "redirect:/gestionEspecialidad";
   }
   
+  /**
+   * Actualizar los datos de la especialidad
+   * @param model  un objeto tipo Tabla
+   * @param form objeto de tipo FormGestionEspecialidad
+   * @return actualiza la especialidad
+   */
   private String actualizar(Map<String, Object> model, FormGestionEspecialidad form) {
     String nombre = form.getNombre();
     int id = form.getId();
@@ -73,6 +90,12 @@ public class GestionEspecialidad {
     return "redirect:/gestionEspecialidad";
   }
   
+  /**
+   * Eliminar una especialidad
+   * @param model  un objeto tipo Tabla
+   * @param form objeto de tipo FormGestionEspecialidad
+   * @return se elimina la especialidad
+   */
   private String eliminar(Map<String, Object> model, FormGestionEspecialidad form) {
     int id = form.getId();
     if(id == -1) {
@@ -85,6 +108,11 @@ public class GestionEspecialidad {
     loadTable(model);
     return "redirect:/gestionEspecialidad";
   }
+  
+  /**
+   * Se cargan los datos de las areas de trabajo
+   * @param model objeto de tipo Map 
+   */
   
   private void loadTable(Map<String, Object> model) {
     try {     
