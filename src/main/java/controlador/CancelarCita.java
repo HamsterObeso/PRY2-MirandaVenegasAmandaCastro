@@ -1,11 +1,5 @@
 package controlador;
 
-import com.twilio.Twilio;
-
-import com.twilio.rest.api.v2010.account.Message;
-
-import com.twilio.type.PhoneNumber;
-
 import contexto.ContextoUsuario;
 
 import dao.CitaDAO;
@@ -27,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import conexion.Email;
+import mensaje.Mensaje;
 
 
 /**
@@ -36,9 +31,6 @@ import conexion.Email;
 @Controller
 @RequestMapping(value = "/cancelarCita")
 public class CancelarCita {
-
-  public static final String ACCOUNT_SID = "ACb0102705c4599e19c6c61a51d9a4f3e6";
-  public static final String AUTH_TOKEN = "b996568aa4e138ddcc7e189a254aa30d";
 
   @RequestMapping(method = RequestMethod.GET)
   public String viewCancelarCitaP(Map<String, Object> model) {
@@ -72,15 +64,14 @@ public class CancelarCita {
         CitaDAO.cancelarCitaPaciente(cita.getIdCita(), ContextoUsuario.getIdUsuario());
         correo = PacienteDAO.obtenerCorreo(ContextoUsuario.getIdUsuario());
         telefono = PacienteDAO.telefonoPaciente(ContextoUsuario.getIdUsuario());
+        Mensaje.enviarMensaje(telefono, "La cita se ha cancelado");
       } else {
         CitaDAO.cancelarCitaFuncionario(cita.getIdCita(), ContextoUsuario.getIdUsuario());
         correo = CitaDAO.obtenerCorreoFuncionario(cita.getIdCita());
         telefono = CitaDAO.telefonoPacienteFuncionario(cita.getIdCita());
+        Mensaje.enviarMensaje(telefono, "La cita se ha cancelado");
       }
       model.put("cita", "cita");
-//      Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-//      Message message = Message.creator(new PhoneNumber(PacienteDAO.telefonoPaciente(ContextoUsuario.getIdUsuario())),
-//              new PhoneNumber("+17206369419"), "Estimado paciente su cita fue cancelada").create();
       mandarCorreo(correo);
     } catch (SQLException e) {
       model.put("error", "error");

@@ -35,7 +35,7 @@
             <groupId>com.twilio.sdk</groupId>
             <artifactId>twilio</artifactId>
             <version>7.54.1</version>
-            <classifier>jar-with-dependencies</classifier>
+            <type>jar</type>
         </dependency>
         
         <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
