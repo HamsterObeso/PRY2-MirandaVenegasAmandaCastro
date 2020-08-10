@@ -57,16 +57,18 @@ public class CancelarCita {
   @RequestMapping(method = RequestMethod.POST)
   public String cancelarCitaP(@ModelAttribute("cancelarCitaPacForm") Cita cita,
           Map<String, Object> model) {
+    int resultado = 0;
+    int num = 0;
     String correo = null;
     String telefono = null;
     try {
       if (ContextoUsuario.getTipo().equals("Paciente")) {
-        CitaDAO.cancelarCitaPaciente(cita.getIdCita(), ContextoUsuario.getIdUsuario());
+        resultado = CitaDAO.cancelarCitaPaciente(cita.getIdCita(), ContextoUsuario.getIdUsuario());
         correo = PacienteDAO.obtenerCorreo(ContextoUsuario.getIdUsuario());
         telefono = PacienteDAO.telefonoPaciente(ContextoUsuario.getIdUsuario());
         Mensaje.enviarMensaje(telefono, "La cita se ha cancelado");
       } else {
-        CitaDAO.cancelarCitaFuncionario(cita.getIdCita(), ContextoUsuario.getIdUsuario());
+        resultado = CitaDAO.cancelarCitaFuncionario(cita.getIdCita(), ContextoUsuario.getIdUsuario());
         correo = CitaDAO.obtenerCorreoFuncionario(cita.getIdCita());
         telefono = CitaDAO.telefonoPacienteFuncionario(cita.getIdCita());
         Mensaje.enviarMensaje(telefono, "La cita se ha cancelado");
@@ -79,12 +81,12 @@ public class CancelarCita {
     }
     return "cancelarCita";
   }
-  
+
   /**
   * Se crea el objeto email deacuerdo a la información requerida
   * @param correo
   */
-     
+
   public void mandarCorreo (String correo){
     Email email = new Email();
 
