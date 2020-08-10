@@ -66,19 +66,23 @@ public class CancelarCita {
         resultado = CitaDAO.cancelarCitaPaciente(cita.getIdCita(), ContextoUsuario.getIdUsuario());
         correo = PacienteDAO.obtenerCorreo(ContextoUsuario.getIdUsuario());
         telefono = PacienteDAO.telefonoPaciente(ContextoUsuario.getIdUsuario());
-        Mensaje.enviarMensaje(telefono, "La cita se ha cancelado");
+        num = resultado;
       } else {
         resultado = CitaDAO.cancelarCitaFuncionario(cita.getIdCita(), ContextoUsuario.getIdUsuario());
         correo = CitaDAO.obtenerCorreoFuncionario(cita.getIdCita());
         telefono = CitaDAO.telefonoPacienteFuncionario(cita.getIdCita());
-        Mensaje.enviarMensaje(telefono, "La cita se ha cancelado");
+        num = resultado;
       }
       model.put("cita", "cita");
-      mandarCorreo(correo);
+      if (num == 1){
+        Mensaje.enviarMensaje(telefono, "La cita se ha cancelado");
+        mandarCorreo(correo);
+      }
     } catch (SQLException e) {
       model.put("error", "error");
       e.printStackTrace();
     }
+    loadTable(model);
     return "cancelarCita";
   }
 
